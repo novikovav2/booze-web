@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="w-100">
+    <app-card title="Продукты">
+
+      <form class="add-form" [formGroup]="form">
+        <div class="add-form-container">
+          <input placeholder="Название" class="products-form-input products-form_name"
+                 formControlName="name" type="text">
+
+          <input type="number" min="0" max="10000" placeholder="Стоимость" formControlName="price"
+                class="products-form-input products-form_price">
+
+          <select class="products-form-input products-form_buyer" formControlName="buyer">
+            <option value="" disabled>Покупатель</option>
+            <option *ngFor="let member of members" [value]="member.id">
+              {{ member.title }}
+            </option>
+          </select>
+
+          <button class="add-form-submit" (click)="submitForm($event)" [disabled]="!form.valid">
+            Добавить
+          </button>
+        </div>
+
+        <input type="checkbox" id="countable" name="countable" (change)="toggleHidden()" formControlName="showHidden"/>
+        <label for="countable" class="products-form_text" >Требует поштучного учета</label>
+
+        <div class="add-form-hidden" *ngIf="showHidden">
+          <input type="number" min="0" max="10000" placeholder="Количество*" formControlName="total"
+                 class="products-form-input products-form_price">
+
+          <p class="products-form_comment">
+            * Количество продукта надо указывать, если важно разделить его не поровну между всеми. Пример: <br>
+            - Вы купили 10 бутылок пива. <br>
+            - Иван выпил 2 бутылку<br>
+            - Денис не стал пить пиво<br>
+            - Саша выпил 8 штук. <br>
+            В этом случае указывает, что было куплено 10 бутылок и затем каждый отмечает у себя то количество,
+            которое на самом деле выпил. В результате Иван оплатит 2/10 стоимости всего пива, Денис ничего не заплатит,
+            а Саша заплатит 8/10.
+          </p>
+        </div>
+      </form>
+
+      <div class="products-table_container">
+        <table class="table">
+          <thead>
+          <tr>
+            <td>Продукт</td>
+            <td>Цена</td>
+            <td>К-во</td>
+            <td>Купил</td>
+            <td>Употребляло</td>
+            <td></td>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td>
+                <a [routerLink]="'/'" class="link">
+                  {{ product.title }}
+                </a>
+              </td>
+              <td>{{ product.price }}</td>
+              <td>
+                {{ product.total }}
+              </td>
+              <td>
+                {{ product.buyerId }}
+              </td>
+              <td class="tooltip">
+                {{ product.eaters.length }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="products-total" footer>
+        Общая сумма: <strong>XXX</strong>
+      </p>
+    </app-card>
+  </div>
+</div>

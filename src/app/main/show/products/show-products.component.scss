@@ -1,0 +1,137 @@
+.products {
+  &-form {
+    margin-top: 16px;
+
+    &_comment {
+      max-width: 900px;
+      color: var(--dark);
+      margin-top: 8px;
+      font-size: small;
+    }
+
+    &-input {
+      padding: 12px 18px;
+      background: #FFFFFF;
+      border: 1px solid var(--gray3);
+      border-radius: 8px;
+      margin-right: 20px;
+      color: var(--gray8);
+
+      &:focus {
+        outline: none;
+        border-color: var(--gray8);
+      }
+    }
+
+    &_name {
+      flex: 1 0 200px;
+    }
+
+    &_price {
+      flex: 0 0 120px;
+    }
+
+    &_buyer {
+      flex: 0 0 200px;
+    }
+
+    &-submit {
+      border: 1px solid var(--brandColor);
+      background-color: var(--dark);
+      border-radius: 8px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 21px;
+      color: #FFFFFF;
+      padding: 4px 8px;
+
+      &:hover {
+        box-shadow: 0 0 5px var(--brandColor);
+      }
+    }
+
+    &_text {
+      font-size: 12px;
+      margin-left: 8px;
+    }
+  }
+
+  &-total {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  &-table {
+    width: 100%;
+    text-align: center;
+    max-height: 600px;
+    overflow-y: scroll;
+    max-width: 900px;
+
+    &, tr, td {
+      border: 1px solid var(--light);
+      border-collapse: collapse;
+    }
+
+    &_header {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 18px;
+      color: var(--dark);
+
+      & td {
+        padding: 6px 0;
+      }
+    }
+
+    &_body {
+      color: black;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 18px;
+
+      & td {
+        padding: 6px 8px;
+      }
+    }
+  }
+}
+
+.add-form {
+  margin-top: 16px;
+  padding-bottom: 8px;
+
+  &-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  &-hidden {
+    margin-top: 16px;
+  }
+
+  &-submit {
+    border: 1px solid var(--gray3);
+    background-color: var(--gray3);
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: var(--gray10);
+    padding: 12px 16px;
+
+    &:hover {
+      background-color: var(--gray4);
+    }
+
+    &:disabled {
+      background-color: var(--gray2);
+      color: var(--gray6);
+    }
+  }
+}

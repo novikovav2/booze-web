@@ -1,0 +1,48 @@
+.header {
+  height: 80px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--brandColor);
+
+  &-title {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    color: var(--white);
+
+    &:visited {
+      color: var(--white);
+    }
+  }
+
+  &-menu {
+    display: block;
+
+    &-show {
+      display: none;
+    }
+
+    &-close {
+      display: none;
+    }
+  }
+
+  &-text {
+    margin-right: 16px;
+    font-size: 18px;
+    line-height: 21px;
+    color: var(--white);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.icon {
+  margin-right: 8px;
+}

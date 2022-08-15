@@ -1,0 +1,63 @@
+<app-card [title]="event.title" [isTitle]="true"></app-card>
+
+<div class="row">
+  <div class="w-50">
+    <app-card title="Информация">
+      <div class="event-reason">
+        <p class="event-fieldname">Повод:</p>
+        <p class="event-fieldvalue">{{ event.reason }}</p>
+      </div>
+      <div class="event-reason">
+        <p class="event-fieldname">Дата:</p>
+        <p class="event-fieldvalue">
+          {{ event.evented_at }}
+        </p>
+      </div>
+      <div class="event-reason">
+        <p class="event-fieldname">
+          Тип:
+        </p>
+        <p class="event-fieldvalue" *ngIf="event.isPublic">
+          Открытое мероприятие
+        </p>
+        <p class="event-fieldvalue" *ngIf="!event.isPublic">
+          Закрытое мероприятие
+        </p>
+      </div>
+
+      <a footer [routerLink]="['/']" class="result-link">
+        Подвести итоги
+      </a>
+    </app-card>
+  </div>
+  <div class="w-50">
+    <app-card title="Участники">
+      <div class="members">
+        <p class="add-bot-subheader" *ngIf="members.length === 0">
+          Пока участников нет
+        </p>
+        <ul>
+          <li class="members-item" *ngFor="let member of members">
+            {{ member.title }}
+          </li>
+        </ul>
+      </div>
+
+      <form footer class="add-bot">
+        <div class="add-bot-header">
+          Добавьте участника-бота
+        </div>
+        <p class="add-bot-subheader">
+          (заглушка, вместо живого человека):
+        </p>
+        <div class="add-bot-container">
+          <input [formControl]="username" class="add-bot-input" placeholder="Имя бота">
+          <button (click)="addMember($event)" class="add-bot-submit">Добавить</button>
+        </div>
+      </form>
+    </app-card>
+  </div>
+</div>
+
+<app-show-products eventId="id" [members]="members"></app-show-products>
+
