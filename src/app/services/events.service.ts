@@ -84,6 +84,10 @@ export class EventsService {
     return of(true)
   }
 
+  removeMember(memberId: string, eventId: string) {
+    return of(true)
+  }
+
   addEvent(event: EventNew) {
     return of({ id: 'aaa' })
   }
