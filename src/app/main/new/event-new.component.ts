@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-event-new',
   templateUrl: './event-new.component.html',
-  styleUrls: ['../main.component.scss', './event-new.component.scss']
+  styleUrls: ['../main.component.scss']
 })
 export  class EventNewComponent {
   MAIN_URL = MAIN_URL
@@ -17,7 +17,8 @@ export  class EventNewComponent {
   form = new FormGroup({
     title: new FormControl('', [Validators.required]),
     eventedAt: new FormControl(''),
-    reason: new FormControl('')
+    reason: new FormControl(''),
+    isPublic: new FormControl(true)
   })
 
   constructor(private eventService: EventsService,
@@ -27,8 +28,10 @@ export  class EventNewComponent {
     const title = this.form.controls['title'].value
     const evented_at = this.form.controls['eventedAt'].value || ''
     const reason = this.form.controls['reason'].value || ''
+    const isPublic = this.form.controls['isPublic'].value || true
+    const status = 'active'
     if (title) {
-      const eventNew: EventNew = { title, evented_at, reason }
+      const eventNew: EventNew = { title, evented_at, reason, isPublic, status }
       this.eventService.addEvent(eventNew)
         .subscribe({
           next: (data) => {

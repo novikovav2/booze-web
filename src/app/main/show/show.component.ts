@@ -1,8 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {EventsService} from "../../services/events.service";
 import {EVENT_DEFAULT, Event, Member} from "../../services/event.model";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, Validators} from "@angular/forms";
+import {EDIT, EVENTS, MAIN_URL} from "../../services/consts";
 
 @Component({
   selector: 'app-event-show',
@@ -14,9 +15,13 @@ export class ShowComponent implements OnInit {
   event: Event = EVENT_DEFAULT
   members: Member[] = []
   username = new FormControl('', [Validators.required])
+  MAIN_URL = MAIN_URL
+  EVENTS = EVENTS
+  EDIT = EDIT
 
   constructor(private eventService: EventsService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -57,6 +62,16 @@ export class ShowComponent implements OnInit {
          error: (error) => { console.log(error) }
        })
     }
+  }
+
+  onDelete() {
+    this.eventService.deleteEvent(this.id)
+      .subscribe({
+        next: () => {
+          this.router.navigate([MAIN_URL, EVENTS])
+        },
+        error: (error) => { console.log(error) }
+      })
   }
 
 }

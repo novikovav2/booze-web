@@ -14,6 +14,7 @@ import {ProductsComponent} from "./products/products.component";
 import {ProductsEatersComponent} from "./products/eaters/products-eaters.component";
 import {IndexComponent} from "./index/index.component";
 import {EventNewComponent} from "./new/event-new.component";
+import {EventEditComponent} from "./edit/event-edit.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {EventNewComponent} from "./new/event-new.component";
     ProductsComponent,
     ProductsEatersComponent,
     IndexComponent,
-    EventNewComponent
+    EventNewComponent,
+    EventEditComponent
   ],
   exports: [
     MainComponent,
@@ -34,7 +36,8 @@ import {EventNewComponent} from "./new/event-new.component";
     ProductsComponent,
     ProductsEatersComponent,
     IndexComponent,
-    EventNewComponent
+    EventNewComponent,
+    EventEditComponent
   ],
   imports: [
     CommonModule,

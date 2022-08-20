@@ -10,7 +10,8 @@ export class EventsService {
     title: 'Просто по пиву',
     reason: 'Повод не нужен',
     evented_at: '01.09.2022',
-    isPublic: true
+    isPublic: true,
+    status: "active"
   }
 
   members: Member[] = [
@@ -87,5 +88,12 @@ export class EventsService {
     return of({ id: 'aaa' })
   }
 
+  deleteEvent(id: string) {
+    return of(true)
+  }
+
+  update(event: EventNew) {
+    return of(this.event)
+  }
 
 }

@@ -125,3 +125,22 @@
     }
   }
 }
+
+.delete-link {
+  text-decoration: none;
+  color: var(--orange);
+  margin-left: 24px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.leave-link {
+  text-decoration: none;
+  color: var(--orange);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

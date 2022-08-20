@@ -1,4 +1,4 @@
-<app-card title="Новое мероприятие" [isTitle]="true"></app-card>
+<app-card title="Изменить мероприятие" [isTitle]="true"></app-card>
 
 <app-card>
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -22,9 +22,14 @@
       <input type="checkbox" formControlName="isPublic" class="form-checkbox" id="isPublic">
     </div>
 
+    <div class="form-control">
+      <label class="form-label" for="isActive">Архив:</label>
+      <input type="checkbox" formControlName="isActive" class="form-checkbox" id="isActive">
+    </div>
+
     <div class="form-buttons">
       <button type="submit" class="form-button form-apply">Сохранить</button>
-      <a [routerLink]="[MAIN_URL, EVENTS]" type="reset" class="form-button form-cancel">Отмена</a>
+      <a [routerLink]="[MAIN_URL, EVENTS, id]" type="reset" class="form-button form-cancel">Отмена</a>
     </div>
   </form>
 </app-card>

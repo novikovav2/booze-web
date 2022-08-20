@@ -3,6 +3,7 @@ import {Member, Product, PRODUCT_DEFAULT} from "../../services/event.model";
 import {ProductsService} from "../../services/products.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EventsService} from "../../services/events.service";
+import {MAIN_URL, EVENTS} from "../../services/consts";
 
 @Component({
   selector: 'app-products',
@@ -84,6 +85,6 @@ export class ProductsComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['events', this.product.eventId])
+    this.router.navigate([MAIN_URL, EVENTS, this.product.eventId])
   }
 }

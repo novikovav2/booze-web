@@ -1,4 +1,15 @@
-<app-card [title]="event.title" [isTitle]="true"></app-card>
+<app-card [title]="event.title" [isTitle]="true">
+  <div actions class="title-rightblock">
+    <a [routerLink]="[MAIN_URL, EVENTS, EDIT, event.id]" class="title-link">
+      Изменить
+    </a>
+
+    <a [routerLink]="[]" class="title-link delete-link" (click)="onDelete()">
+      Удалить
+    </a>
+  </div>
+
+</app-card>
 
 <div class="row">
   <div class="w-50">

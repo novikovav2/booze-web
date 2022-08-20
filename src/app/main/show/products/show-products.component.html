@@ -57,7 +57,7 @@
           <tbody>
             <tr *ngFor="let product of products">
               <td>
-                <a [routerLink]="['/products', product.id]" class="link">
+                <a [routerLink]="[MAIN_URL, PRODUCTS, product.id]" class="link">
                   {{ product.title }}
                 </a>
               </td>
