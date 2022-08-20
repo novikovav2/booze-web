@@ -1,9 +1,12 @@
+import {EVENT_STATUS} from "../models/event";
+
 export interface Event {
   id: string,
   title: string,
   reason: string,
   evented_at: string,
-  isPublic: boolean
+  isPublic: boolean,
+  status?: EVENT_STATUS
 }
 
 export const EVENT_DEFAULT: Event = {

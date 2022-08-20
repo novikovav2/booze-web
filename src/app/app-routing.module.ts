@@ -5,16 +5,20 @@ import {ShowComponent} from "./main/show/show.component";
 import {ProductsComponent} from "./main/products/products.component";
 import {AuthComponent} from "./auth/auth.component";
 import {LoginComponent} from "./auth/login/login.component";
-import {AUTH, LOGIN, NEW_PASSWORD, REGISTRATION} from "./services/consts";
+import {AUTH, LOGIN, MAIN, NEW_PASSWORD, REGISTRATION, EVENTS, PRODUCTS} from "./services/consts";
 import {RegistrationComponent} from "./auth/registration/registration.component";
 import {NewPasswordComponent} from "./auth/new-password/new-password.component";
+import {IndexComponent} from "./main/index/index.component";
 
 const routes: Routes = [
-  {path: '', component: MainComponent, children: [
-      { path: 'events/:id', component: ShowComponent },
-      { path: 'products/:id', component: ProductsComponent }
+  {path: MAIN, component: MainComponent, children: [
+      { path: '', redirectTo: EVENTS, pathMatch: "full" },
+      { path: EVENTS, component: IndexComponent },
+      { path: EVENTS + '/:id', component: ShowComponent },
+      { path: PRODUCTS + '/:id', component: ProductsComponent }
     ]},
   { path: AUTH, component: AuthComponent, children: [
+      { path: '', redirectTo: LOGIN, pathMatch: "full" },
       { path: LOGIN, component: LoginComponent },
       { path: REGISTRATION, component: RegistrationComponent },
       { path: NEW_PASSWORD, component: NewPasswordComponent }

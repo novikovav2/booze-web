@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {EventsService} from "../../services/events.service";
-import {EVENT_DEFAULT, Event, Member, NewMember} from "../../services/event.model";
+import {EVENT_DEFAULT, Event, Member} from "../../services/event.model";
 import {ActivatedRoute} from "@angular/router";
 import {FormControl, Validators} from "@angular/forms";
 

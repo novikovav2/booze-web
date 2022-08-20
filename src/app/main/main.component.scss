@@ -77,3 +77,24 @@
     color: var(--brandColor);
   }
 }
+
+.fields {
+  &-name {
+    flex: 1;
+  }
+
+  &-descr {
+    flex: 2;
+  }
+
+  &-date {
+    flex: 1;
+  }
+
+  &-no-data {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+  }
+}

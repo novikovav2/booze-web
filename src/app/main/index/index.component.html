@@ -1,0 +1,40 @@
+<app-card title="Мероприятия" [isTitle]="true">
+  <a actions class="button">
+    <fa-icon [icon]="iconAdd"></fa-icon>
+  </a>
+</app-card>
+
+<app-card>
+    <a class="status-links" [ngClass]="{'status-links_active': showFlag === 'active'}"
+       href="#" (click)="onChangeFlag($event, 'active')">
+      Активные
+    </a>
+    <a class="status-links" [ngClass]="{'status-links_active': showFlag === 'archive'}"
+       href="#" (click)="onChangeFlag($event, 'archive')">
+      Архив
+    </a>
+
+    <table class="table" *ngIf="events.length > 0">
+      <thead>
+      <tr>
+        <th>Название</th>
+        <th>Повод</th>
+        <th>Дата</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let event of events">
+        <td>
+          <a class="link" [routerLink]="[event.id]">
+            {{ event.title }}
+          </a>
+        </td>
+        <td>{{ event.reason }}</td>
+        <td>{{ event.evented_at }}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="fields-no-data" *ngIf="events.length === 0">
+      Мероприятия не заплонированы
+    </div>
+</app-card>

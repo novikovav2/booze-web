@@ -1,0 +1,22 @@
+.button {
+  font-size: 48px;
+  line-height: 21px;
+  color: var(--brandColor);
+
+  &:hover {
+    color: var(--gray6);
+  }
+}
+
+.status-links {
+  color: var(--gray9);
+  margin-right: 32px;
+
+  &_body {
+    margin-top: 8px;
+  }
+
+  &_active {
+    color: var(--orange);
+  }
+}

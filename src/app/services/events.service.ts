@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
-import {Event, Member, NewMember, Product} from "./event.model";
+import {Member, NewMember} from "./event.model";
 import {of} from "rxjs";
+import {EVENT_STATUS, Event} from "../models/event";
 
 @Injectable()
 export class EventsService {
@@ -17,6 +18,58 @@ export class EventsService {
     { id: 'bbb', title: 'Петров', type: 'man' },
     { id: 'ccc', title: 'Сидоров', type: 'bot' }
   ]
+
+  eventsActive: Event[] = [
+    {
+      id: '111',
+      title: 'Просто по пиву',
+      reason: 'Повод не нужен',
+      evented_at: '01.09.2022',
+      isPublic: true,
+      status: 'active'
+    },
+    {
+      id: '222',
+      title: 'Просто по пиву2',
+      reason: 'Повод нужен',
+      evented_at: '02.09.2022',
+      isPublic: false,
+      status: 'active'
+    }
+  ]
+
+  eventsArchive: Event[] = [
+    {
+      id: '111',
+      title: 'Просто по пиву',
+      reason: 'Повод не нужен',
+      evented_at: '01.09.2021',
+      isPublic: true,
+      status: 'archive'
+    },
+    {
+      id: '222',
+      title: 'Просто по пиву2',
+      reason: 'Повод нужен',
+      evented_at: '02.09.2021',
+      isPublic: false,
+      status: 'archive'
+    }
+  ]
+
+  getAll(flag: EVENT_STATUS) {
+    let result: any = ''
+    switch (flag) {
+      case 'active':
+        result = this.eventsActive;
+        break
+      case 'archive':
+        result = []
+        break
+    }
+    return of(result)
+
+  }
 
   getOne(id: string) {
     return of(this.event)

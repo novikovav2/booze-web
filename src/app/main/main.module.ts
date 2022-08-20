@@ -12,6 +12,7 @@ import {ShowProductsComponent} from "./show/products/show-products.component";
 import {ProductsService} from "../services/products.service";
 import {ProductsComponent} from "./products/products.component";
 import {ProductsEatersComponent} from "./products/eaters/products-eaters.component";
+import {IndexComponent} from "./index/index.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import {ProductsEatersComponent} from "./products/eaters/products-eaters.compone
     ShowProductsComponent,
     ProductsComponent,
     ProductsEatersComponent,
-
+    IndexComponent
   ],
   exports: [
     MainComponent,
@@ -30,7 +31,7 @@ import {ProductsEatersComponent} from "./products/eaters/products-eaters.compone
     ShowProductsComponent,
     ProductsComponent,
     ProductsEatersComponent,
-
+    IndexComponent
   ],
   imports: [
     CommonModule,
