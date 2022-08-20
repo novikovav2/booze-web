@@ -27,13 +27,27 @@ export interface NewMember {
 
 export interface Eater {
   id: string,
-  username: string
+  username: string,
+  count?: number
 }
 export interface Product {
   id: string,
+  eventId: string,
   title: string,
   price: number,
   total: number,
   buyerId: string,
   eaters: Eater[]
+}
+
+
+
+export const PRODUCT_DEFAULT: Product = {
+  id: 'aaa',
+  eventId: 'aaa',
+  title: 'Пиво',
+  price: 78,
+  total: 0,
+  buyerId: 'bbb',
+  eaters: []
 }

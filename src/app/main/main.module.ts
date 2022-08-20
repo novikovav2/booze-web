@@ -10,19 +10,27 @@ import {EventsService} from "../services/events.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ShowProductsComponent} from "./show/products/show-products.component";
 import {ProductsService} from "../services/products.service";
+import {ProductsComponent} from "./products/products.component";
+import {ProductsEatersComponent} from "./products/eaters/products-eaters.component";
 
 @NgModule({
   declarations: [
     MainComponent,
     HeaderComponent,
     ShowComponent,
-    ShowProductsComponent
+    ShowProductsComponent,
+    ProductsComponent,
+    ProductsEatersComponent,
+
   ],
   exports: [
     MainComponent,
     HeaderComponent,
     ShowComponent,
-    ShowProductsComponent
+    ShowProductsComponent,
+    ProductsComponent,
+    ProductsEatersComponent,
+
   ],
   imports: [
     CommonModule,

@@ -3,6 +3,7 @@
     <div class="card-header" *ngIf="title.length > 0">
       <h3 class="card-title" [ngClass]="{'title': isTitle}">
         {{ title }}
+        <ng-content select="[header]"></ng-content>
       </h3>
       <div class="card-actions">
         <ng-content select="[actions]"></ng-content>

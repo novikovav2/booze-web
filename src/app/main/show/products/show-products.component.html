@@ -57,7 +57,7 @@
           <tbody>
             <tr *ngFor="let product of products">
               <td>
-                <a [routerLink]="'/'" class="link">
+                <a [routerLink]="['/products', product.id]" class="link">
                   {{ product.title }}
                 </a>
               </td>
@@ -70,6 +70,9 @@
               </td>
               <td class="tooltip">
                 {{ product.eaters.length }}
+              </td>
+              <td>
+                <fa-icon [icon]="deleteIcon"></fa-icon>
               </td>
             </tr>
           </tbody>

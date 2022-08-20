@@ -1,0 +1,64 @@
+<app-card title="Информация о продукте" [isTitle]="true"></app-card>
+
+<app-card title=" ">
+    <a header class="product-submit" (click)="onSave()">
+      Сохранить
+    </a>
+  <a header class="product-submit product-cancel" (click)="onCancel()">
+    Отмена
+  </a>
+
+  <a actions class="product-submit product-delete" (click)="onDelete()">
+    Удалить
+  </a>
+
+  <div class="product-container">
+    <div class="product-row">
+      <p class="product-label">
+        Название:
+      </p>
+      <div class="product-value">
+        <input type="text" class="product-input" required [(ngModel)]="title">
+      </div>
+    </div>
+
+    <div class="product-row">
+      <p class="product-label">
+        Цена:
+      </p>
+      <div class="product-value">
+        <input type="number" class="product-input" [(ngModel)]="price">
+      </div>
+    </div>
+
+    <div class="product-row">
+      <p class="product-label">
+        Количество:
+      </p>
+      <div class="product-value">
+        <input type="number" class="product-input" [(ngModel)]="total">
+      </div>
+    </div>
+
+    <div class="product-row">
+      <p class="product-label">
+        Покупатель:
+      </p>
+      <div class="product-value">
+        <select class="product-input" [(ngModel)]="buyerId">
+          <option value="" disabled>Покупатель</option>
+          <option *ngFor="let member of members" [value]="member.id">
+            {{ member.title }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <app-products-eaters [eaters]="product.eaters"
+                       [members]="members"
+                       [numerable]="total > 0"
+                       [total]="total"
+                       (eatersChange)="onChange($event)">
+  </app-products-eaters>
+</app-card>

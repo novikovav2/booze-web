@@ -1,0 +1,52 @@
+<div class="eaters-container">
+  <div class="eaters-list">
+    <p class="eaters-list_title">
+      Употребляли
+    </p>
+    <div class="eaters-list_body">
+      <div class="eaters-list_item" *ngFor="let item of eaters"
+           [ngClass]="{'eaters-selected': item.selected}">
+        <p (click)="onClick(item.id, 'eaters')"> {{ item.username }} </p>
+
+        <p *ngIf="numerable">
+          {{ item.count }} шт.
+          (
+            <a href="#" (click)="plusOne($event, item.id)" *ngIf="item.count < total">+1</a>
+            /
+            <a href="#" (click)="minusOne($event, item.id)" *ngIf="item.count > 0">-1</a>
+          )
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="eaters-buttons">
+    <a class="eaters-button" (click)="allToRight()" >
+      <fa-icon [icon]="iconRightAll"></fa-icon>
+    </a>
+    <a class="eaters-button" (click)="selectedToRight()">
+      <fa-icon [icon]="iconRight"></fa-icon>
+    </a>
+    <a class="eaters-button" (click)="selectedToLeft()">
+      <fa-icon [icon]="iconLeft"></fa-icon>
+    </a>
+    <a class="eaters-button" (click)="allToLeft()">
+      <fa-icon [icon]="iconLeftAll"></fa-icon>
+    </a>
+  </div>
+
+
+  <div class="eaters-list">
+    <p class="eaters-list_title">
+      Не употребляли
+    </p>
+    <div class="eaters-list_body">
+      <div class="eaters-list_item" *ngFor="let item of nonEaters"
+           [ngClass]="{'eaters-selected': item.selected}"
+           (click)="onClick(item.id, 'nonEaters')">
+        {{ item.username }}
+      </div>
+    </div>
+  </div>
+</div>
+

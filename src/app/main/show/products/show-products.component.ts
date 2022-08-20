@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from "@angular/core";
 import {Member, Product} from "../../../services/event.model";
 import {ProductsService} from "../../../services/products.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
 
 @Component({
   selector: 'app-show-products',
@@ -13,6 +14,7 @@ export class ShowProductsComponent implements OnInit {
   @Input() members: Member[] = []
   products: Product[] = []
   showHidden: boolean = false
+  deleteIcon = faTrashCan
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     price: new FormControl(0, [Validators.required]),
