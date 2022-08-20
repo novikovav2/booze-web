@@ -13,7 +13,7 @@ export class AuthService {
     return of(true)
   }
 
-  resetPassword() {
-
+  newPassword(email: string) {
+    return of(true)
   }
 }

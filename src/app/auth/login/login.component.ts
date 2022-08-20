@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {faUsersGear} from "@fortawesome/free-solid-svg-icons";
-import {AUTH_TOKEN, AUTH_URL, NEW_PASSWORD_URL, REGISTRATION, ROOT_URL} from "../../services/consts";
+import {AUTH_TOKEN, AUTH_URL, NEW_PASSWORD, REGISTRATION, ROOT_URL} from "../../services/consts";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Auth} from "../../models/auth";
@@ -16,7 +16,7 @@ export class LoginComponent {
   ROOT_URL = ROOT_URL;
   AUTH_URL = AUTH_URL
   REGISTRATION = REGISTRATION
-  NEW_PASSWORD_URL = NEW_PASSWORD_URL
+  NEW_PASSWORD = NEW_PASSWORD
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
