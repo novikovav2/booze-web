@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Member, NewMember} from "./event.model";
 import {of} from "rxjs";
-import {EVENT_STATUS, Event} from "../models/event";
+import {EVENT_STATUS, Event, EventNew} from "../models/event";
 
 @Injectable()
 export class EventsService {
@@ -81,6 +81,10 @@ export class EventsService {
 
   addMember(bot: NewMember) {
     return of(true)
+  }
+
+  addEvent(event: EventNew) {
+    return of({ id: 'aaa' })
   }
 
 

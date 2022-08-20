@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {faCirclePlus} from "@fortawesome/free-solid-svg-icons";
 import {EventsService} from "../../services/events.service";
 import {EVENT_STATUS, Event} from "../../models/event";
+import {NEW} from "../../services/consts";
 
 @Component({
   selector: 'app-index',
@@ -12,6 +13,7 @@ export class IndexComponent implements OnInit{
   iconAdd = faCirclePlus
   showFlag: EVENT_STATUS = 'active'
   events: Event[] = []
+  NEW = NEW
 
   constructor(private eventService: EventsService) {}
 

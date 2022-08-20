@@ -1,0 +1,25 @@
+<app-card title="Новое мероприятие" [isTitle]="true"></app-card>
+
+<app-card>
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+      <label class="form-label" for="name">Придумай название</label>
+      <input type="text" autofocus class="form-input" id="name" formControlName="title">
+    </div>
+
+    <div class="form-control">
+      <label class="form-label" for="evented_at">Когда пьем:</label>
+      <input type="date" class="form-input" id="evented_at" formControlName="eventedAt">
+    </div>
+
+    <div class="form-control">
+      <label class="form-label" for="reason">Какой повод:</label>
+      <input type="text" class="form-input" id="reason" formControlName="reason">
+    </div>
+
+    <div class="form-buttons">
+      <button type="submit" class="form-button form-apply">Сохранить</button>
+      <a [routerLink]="[MAIN_URL, EVENTS]" type="reset" class="form-button form-cancel">Отмена</a>
+    </div>
+  </form>
+</app-card>

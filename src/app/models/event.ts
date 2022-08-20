@@ -8,3 +8,9 @@ export interface Event {
   isPublic: boolean,
   status?: EVENT_STATUS
 }
+
+export interface EventNew {
+  title: string,
+  reason: string,
+  evented_at: string
+}
