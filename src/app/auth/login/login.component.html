@@ -1,0 +1,42 @@
+<div class="auth-container">
+  <div class="auth-left">
+    <h1 class="auth-logo">
+      <a [routerLink]="[ROOT_URL]" class="auth-logo">
+        <fa-icon [icon]="iconLogo"></fa-icon> Разделялка
+      </a>
+    </h1>
+    <p class="auth-subheader">
+      Управляй общими тратами на праздниках,
+      корпоративах, пьянках и в путешествиях
+    </p>
+
+    <h2 class="auth-header">Добро пожаловать</h2>
+    <p class="auth-text">Если пока нет аккаунта - не беда, создайте его</p>
+    <a [routerLink]="[REGISTRATION_URL]" class="auth-link">
+      Регистрация
+    </a>
+  </div>
+
+  <div class="auth-right">
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-control">
+        <label class="form-label" for="email">Email</label>
+        <input type="email" autofocus autocomplete="email" class="form-input" id="email" formControlName="email">
+      </div>
+
+      <div class="form-control">
+        <label for="password" class="form-label">Пароль</label>
+        <input type="password" class="form-input" id="password" formControlName="password">
+      </div>
+
+      <button class="form-button" type="submit" [disabled]="!form.valid">
+        Войти
+      </button>
+
+      <a [routerLink]="[NEW_PASSWORD_URL]" class="form-link">
+        Забыли пароль?
+      </a>
+    </form>
+  </div>
+</div>
+
