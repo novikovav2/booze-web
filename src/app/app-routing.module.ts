@@ -5,14 +5,17 @@ import {ShowComponent} from "./main/show/show.component";
 import {ProductsComponent} from "./main/products/products.component";
 import {AuthComponent} from "./auth/auth.component";
 import {LoginComponent} from "./auth/login/login.component";
+import {AUTH, LOGIN, REGISTRATION} from "./services/consts";
+import {RegistrationComponent} from "./auth/registration/registration.component";
 
 const routes: Routes = [
   {path: '', component: MainComponent, children: [
       { path: 'events/:id', component: ShowComponent },
       { path: 'products/:id', component: ProductsComponent }
     ]},
-  { path: 'auth', component: AuthComponent, children: [
-      { path: 'login', component: LoginComponent }
+  { path: AUTH, component: AuthComponent, children: [
+      { path: LOGIN, component: LoginComponent },
+      { path: REGISTRATION, component: RegistrationComponent }
     ]}
 ];
 

@@ -6,17 +6,16 @@
       </a>
     </h1>
     <p class="auth-subheader">
-      Управляй общими тратами на праздниках,
-      корпоративах, пьянках и в путешествиях
+      Управляй общими тратами на праздниках, корпоративах,
+      пьянках и в путешествиях
     </p>
 
-    <h2 class="auth-header">Добро пожаловать</h2>
-    <p class="auth-text">Если пока нет аккаунта - не беда, создайте его</p>
-    <a [routerLink]="[AUTH_URL, REGISTRATION]" class="auth-link">
-      Регистрация
+    <h2 class="auth-header">Регистрация</h2>
+    <p class="auth-text">Уже есть аккаунт?</p>
+    <a [routerLink]="[AUTH_URL, LOGIN]" class="auth-link">
+      Вход
     </a>
   </div>
-
   <div class="auth-right">
     <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form-control">
@@ -29,14 +28,17 @@
         <input type="password" class="form-input" id="password" formControlName="password">
       </div>
 
-      <button class="form-button" type="submit" [disabled]="!form.valid">
-        Войти
-      </button>
+      <div class="form-control">
+        <label for="password_confirmation" class="form-label">Повторите пароль</label>
+        <input type="password" class="form-input" id="password_confirmation" formControlName="password_confirmation">
+      </div>
+      <p class="form-error" *ngIf="!passwordsEqual">
+        Пароли не совпадают
+      </p>
 
-      <a [routerLink]="[NEW_PASSWORD_URL]" class="form-link">
-        Забыли пароль?
-      </a>
+      <button class="form-button" type="submit" [disabled]="!form.valid">
+        Зарегистрироваться
+      </button>
     </form>
   </div>
 </div>
-
