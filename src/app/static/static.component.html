@@ -1,0 +1,103 @@
+<header class="header">
+  <div class="header-container">
+    <a class="header-logo" [routerLink]="[ROOT_URL]">
+      <fa-icon [icon]="iconLogo"></fa-icon> Разделялка
+    </a>
+  </div>
+</header>
+
+<div class="static">
+  <div class="row">
+    <div class="container">
+      <div class="row-left">
+        <div class="text">
+          <p class="text-bold">
+            Хотите честно делить все траты
+          </p>
+          <p class="text-normal">
+            с вечеринок, поездок и других мероприятий,
+            где участвует много людей?
+          </p>
+        </div>
+        <a [routerLink]="[WELCOME_URL]" class="button">
+          Присоединяйтесь
+        </a>
+      </div>
+      <div class="row-right bg-image">
+      </div>
+    </div>
+  </div>
+  <div class="row bg-blue">
+    <div class="container">
+      <div class="row-left">
+        <fa-icon [icon]="iconPlus" class="icon icon-orange"></fa-icon>
+      </div>
+      <div class="row-right">
+        <div class="text">
+          <p class="text-bold">
+            Пригласите участников
+          </p>
+          <p class="text-normal">
+            присоединиться к мероприятию
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="container">
+      <div class="row-left">
+        <div class="text">
+          <p class="text-bold">
+            Внесите траты
+          </p>
+          <p class="text-normal">
+            указав кто за что платил
+          </p>
+        </div>
+      </div>
+      <div class="row-right">
+        <fa-icon [icon]="iconMartini" class="icon icon-gray"></fa-icon>
+      </div>
+    </div>
+  </div>
+  <div class="row bg-blue">
+    <div class="container">
+      <div class="row-left">
+        <fa-icon [icon]="iconListCheck" class="icon icon-blue"></fa-icon>
+      </div>
+      <div class="row-right">
+        <div class="text">
+          <p class="text-bold">
+            Отметьте
+          </p>
+          <p class="text-normal">
+            что каждый из участников ел/пил
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row ">
+  <div class="container">
+    <div class="row-left">
+      <div class="text">
+        <p class="text-bold">
+          Получите результат
+        </p>
+        <p class="text-normal">
+          где будет автоматически расчитано кто кому сколько должен перевести
+        </p>
+      </div>
+      <a [routerLink]="[WELCOME_URL]" class="button">
+        Попробовать
+      </a>
+    </div>
+    <div class="row-right">
+      <fa-icon [icon]="iconFaceSmile" class="icon icon-brand"></fa-icon>
+    </div>
+  </div>
+</div>
+</div>
+
+
