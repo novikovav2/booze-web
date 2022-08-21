@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Auth} from "../../models/auth";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent {
   })
 
   constructor(private authService: AuthService,
-              private router: Router) {  }
+              private router: Router,
+              private toastr: ToastrService) {  }
 
   onSubmit() {
     const email = this.form.controls['email'].value
@@ -34,6 +36,7 @@ export class LoginComponent {
       this.authService.login(user)
         .subscribe({
           next: (data) => {
+            this.toastr.success('Auth success', 'WOW')
             localStorage.setItem(AUTH_TOKEN, data)
             this.router.navigate([MAIN_URL])
           },

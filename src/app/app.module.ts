@@ -7,6 +7,8 @@ import {MainModule} from "./main/main.module";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {AuthModule} from "./auth/auth.module";
 import {StaticModule} from "./static/static.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {StaticModule} from "./static/static.module";
     MainModule,
     FontAwesomeModule,
     AuthModule,
-    StaticModule
+    StaticModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
