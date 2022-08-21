@@ -4,4 +4,16 @@
       <fa-icon [icon]="icon" class="icon"></fa-icon>Разделялка
     </a>
   </p>
+
+  <nav class="header-menu">
+    <a class="header-text" [routerLink]="[MAIN_URL, PROFILE]">
+      Профиль
+    </a>
+    <a class="header-text" (click)="onExit()">
+      Выход
+    </a>
+    <a class="header-text" [routerLink]="[AUTH_URL, LOGIN]">
+      Войти
+    </a>
+  </nav>
 </header>
