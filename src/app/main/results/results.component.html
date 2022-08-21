@@ -1,0 +1,28 @@
+<app-card title="Итоги"
+          [returnLink]="[MAIN_URL, EVENTS, result.eventId]"
+          [isTitle]="true"></app-card>
+
+<app-card>
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th rowspan="2">Кто переводит</th>
+          <th [colSpan]="result.recipients.length">Кому переводит</th>
+        </tr>
+
+        <tr>
+          <td *ngFor="let user of result.recipients">{{ user.username }}</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of result.donors">
+          <td>{{ item.donor.username }}</td>
+          <td *ngFor="let payment of item.payments">
+            {{ payment.value }} руб.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</app-card>

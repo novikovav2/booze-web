@@ -10,6 +10,7 @@ export const EVENTS = 'events'
 export const PRODUCTS = 'products'
 export const NEW = 'new'
 export const EDIT = 'edit'
+export const RESULTS = 'results'
 
 export const ROOT_URL = '/' + ROOT
 export const AUTH_URL = '/' + AUTH
@@ -20,4 +21,5 @@ export const MAIN_URL = '/' + MAIN
 export const EVENTS_URL = '/' + EVENTS
 export const NEW_URL = '/' + NEW
 export const EDIT_URL = '/' + EDIT
+export const RESULTS_URL = '/' + RESULTS
 

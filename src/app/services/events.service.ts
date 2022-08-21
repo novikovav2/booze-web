@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Member, NewMember} from "./event.model";
 import {of} from "rxjs";
 import {EVENT_STATUS, Event, EventNew} from "../models/event";
+import {Result} from "../models/result";
 
 @Injectable()
 export class EventsService {
@@ -58,6 +59,31 @@ export class EventsService {
     }
   ]
 
+  results: Result =
+    {
+      eventId: '111',
+      recipients: [
+        {id: 'aaa', username: 'Иванов'}
+      ],
+      donors: [
+        {
+          donor: { id: 'bbb', username: 'Петров' },
+          payments: [{
+            recipient: {id: 'aaa', username: 'Иванов'},
+            value: 100
+          }]
+        },
+        {
+          donor: { id: 'ccc', username: 'Сидоров' },
+          payments: [{
+            recipient: {id: 'aaa', username: 'Иванов'},
+            value: 200
+          }]
+        }
+      ]
+    }
+
+
   getAll(flag: EVENT_STATUS) {
     let result: any = ''
     switch (flag) {
@@ -98,6 +124,10 @@ export class EventsService {
 
   update(event: EventNew) {
     return of(this.event)
+  }
+
+  getResult(eventId: string) {
+    return of(this.results)
   }
 
 }

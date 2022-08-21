@@ -5,12 +5,24 @@ import {ShowComponent} from "./main/show/show.component";
 import {ProductsComponent} from "./main/products/products.component";
 import {AuthComponent} from "./auth/auth.component";
 import {LoginComponent} from "./auth/login/login.component";
-import {AUTH, LOGIN, MAIN, NEW_PASSWORD, REGISTRATION, EVENTS, PRODUCTS, NEW_URL, EDIT_URL} from "./services/consts";
+import {
+  AUTH,
+  LOGIN,
+  MAIN,
+  NEW_PASSWORD,
+  REGISTRATION,
+  EVENTS,
+  PRODUCTS,
+  NEW_URL,
+  EDIT_URL,
+  RESULTS_URL
+} from "./services/consts";
 import {RegistrationComponent} from "./auth/registration/registration.component";
 import {NewPasswordComponent} from "./auth/new-password/new-password.component";
 import {IndexComponent} from "./main/index/index.component";
 import {EventNewComponent} from "./main/new/event-new.component";
 import {EventEditComponent} from "./main/edit/event-edit.component";
+import {ResultsComponent} from "./main/results/results.component";
 
 const routes: Routes = [
   {path: MAIN, component: MainComponent, children: [
@@ -18,6 +30,7 @@ const routes: Routes = [
       { path: EVENTS, component: IndexComponent },
       { path: EVENTS + NEW_URL, component: EventNewComponent },
       { path: EVENTS + EDIT_URL + '/:id', component: EventEditComponent },
+      { path: EVENTS + RESULTS_URL + '/:id', component: ResultsComponent },
       { path: EVENTS + '/:id', component: ShowComponent },
       { path: PRODUCTS + '/:id', component: ProductsComponent }
     ]},

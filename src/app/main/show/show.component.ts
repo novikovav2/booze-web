@@ -3,7 +3,7 @@ import {EventsService} from "../../services/events.service";
 import {EVENT_DEFAULT, Event, Member} from "../../services/event.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, Validators} from "@angular/forms";
-import {EDIT, EVENTS, MAIN_URL} from "../../services/consts";
+import {EDIT, EVENTS, MAIN_URL, RESULTS} from "../../services/consts";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -19,6 +19,7 @@ export class ShowComponent implements OnInit {
   MAIN_URL = MAIN_URL
   EVENTS = EVENTS
   EDIT = EDIT
+  RESULTS = RESULTS
   iconTrash = faTrash
 
   constructor(private eventService: EventsService,
