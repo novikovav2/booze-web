@@ -15,7 +15,7 @@ import {
   PRODUCTS,
   NEW_URL,
   EDIT_URL,
-  RESULTS_URL
+  RESULTS_URL, PROFILE
 } from "./services/consts";
 import {RegistrationComponent} from "./auth/registration/registration.component";
 import {NewPasswordComponent} from "./auth/new-password/new-password.component";
@@ -23,6 +23,7 @@ import {IndexComponent} from "./main/index/index.component";
 import {EventNewComponent} from "./main/new/event-new.component";
 import {EventEditComponent} from "./main/edit/event-edit.component";
 import {ResultsComponent} from "./main/results/results.component";
+import {ProfileComponent} from "./main/profile/profile.component";
 
 const routes: Routes = [
   {path: MAIN, component: MainComponent, children: [
@@ -32,7 +33,8 @@ const routes: Routes = [
       { path: EVENTS + EDIT_URL + '/:id', component: EventEditComponent },
       { path: EVENTS + RESULTS_URL + '/:id', component: ResultsComponent },
       { path: EVENTS + '/:id', component: ShowComponent },
-      { path: PRODUCTS + '/:id', component: ProductsComponent }
+      { path: PRODUCTS + '/:id', component: ProductsComponent },
+      { path: PROFILE, component: ProfileComponent }
     ]},
   { path: AUTH, component: AuthComponent, children: [
       { path: '', redirectTo: LOGIN, pathMatch: "full" },

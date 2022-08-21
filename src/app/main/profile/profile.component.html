@@ -1,0 +1,32 @@
+<app-card title="Профиль" [isTitle]="true"></app-card>
+
+<app-card>
+  <form [formGroup]="form" (ngSubmit)="onSubmitForm()">
+    <div class="form-control">
+      <label for="username" class="form-label">Ваше имя:</label>
+      <input type="text" autofocus class="form-input" formControlName="username" id="username">
+    </div>
+
+    <div class="form-buttons">
+      <button type="submit" class="form-button form-apply">Сохранить</button>
+    </div>
+  </form>
+
+  <hr class="form-delimiter"/>
+
+  <form [formGroup]="formPassword" class="form" (ngSubmit)="onSubmitPassword()">
+    <div class="form-control">
+      <label for="password" class="form-label">Новый пароль:</label>
+      <input type="password" class="form-input" formControlName="password" id="password">
+    </div>
+
+    <div class="form-control">
+      <label for="password_confirmation" class="form-label">Повторите пароль:</label>
+      <input type="password" class="form-input" formControlName="password_confirmation" id="password_confirmation">
+    </div>
+
+    <div class="form-buttons">
+      <button type="submit" class="form-button form-apply">Изменить пароль</button>
+    </div>
+  </form>
+</app-card>

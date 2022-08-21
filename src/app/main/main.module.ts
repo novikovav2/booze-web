@@ -16,6 +16,7 @@ import {IndexComponent} from "./index/index.component";
 import {EventNewComponent} from "./new/event-new.component";
 import {EventEditComponent} from "./edit/event-edit.component";
 import {ResultsComponent} from "./results/results.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {ResultsComponent} from "./results/results.component";
     IndexComponent,
     EventNewComponent,
     EventEditComponent,
-    ResultsComponent
+    ResultsComponent,
+    ProfileComponent
   ],
   exports: [
     MainComponent,
@@ -40,7 +42,8 @@ import {ResultsComponent} from "./results/results.component";
     IndexComponent,
     EventNewComponent,
     EventEditComponent,
-    ResultsComponent
+    ResultsComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
