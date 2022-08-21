@@ -18,6 +18,8 @@ export class ProductsComponent implements OnInit {
   buyerId: string = 'bbb'
   members: Member[] = []
   eaters: any[] = []
+  MAIN_URL = MAIN_URL
+  EVENTS = EVENTS
 
   constructor(private productService: ProductsService,
               private route: ActivatedRoute,

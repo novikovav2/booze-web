@@ -1,4 +1,6 @@
-<app-card [title]="event.title" [isTitle]="true">
+<app-card [title]="event.title"
+          [returnLink]="[MAIN_URL, EVENTS]"
+          [isTitle]="true">
   <div actions class="title-rightblock">
     <a [routerLink]="[MAIN_URL, EVENTS, EDIT, event.id]" class="title-link">
       Изменить

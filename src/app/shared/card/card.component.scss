@@ -29,6 +29,8 @@
 
   &-title {
     font-weight: normal;
+    display: flex;
+    align-items: center;
   }
 
   &-body {
@@ -56,4 +58,15 @@
   line-height: 36px;
   color: var(--gray9);
   font-weight: bold;
+}
+
+.back-link {
+  text-decoration: none;
+  color: var(--gray4);
+  margin-right: 12px;
+  font-size: 32px;
+
+  &:hover {
+    color: var(--gray8);
+  }
 }

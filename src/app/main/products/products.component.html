@@ -1,4 +1,6 @@
-<app-card title="Информация о продукте" [isTitle]="true"></app-card>
+<app-card title="Информация о продукте"
+          [returnLink]="[MAIN_URL, EVENTS, product.eventId]"
+          [isTitle]="true"></app-card>
 
 <app-card title=" ">
     <a header class="product-submit" (click)="onSave()">

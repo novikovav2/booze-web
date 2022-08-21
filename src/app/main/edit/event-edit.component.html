@@ -1,4 +1,7 @@
-<app-card title="Изменить мероприятие" [isTitle]="true"></app-card>
+<app-card title="Изменить мероприятие"
+          [isTitle]="true"
+          [returnLink]="[MAIN_URL, EVENTS, id]"
+></app-card>
 
 <app-card>
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">

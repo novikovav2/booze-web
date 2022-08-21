@@ -1,7 +1,11 @@
 <div class="row w-100">
   <div class="card">
     <div class="card-header" *ngIf="title.length > 0">
+
       <h3 class="card-title" [ngClass]="{'title': isTitle}">
+        <a [routerLink]="returnLink" class="back-link" *ngIf="returnLink.length > 0">
+          <fa-icon [icon]="iconBack" size="1x"></fa-icon>
+        </a>
         {{ title }}
         <ng-content select="[header]"></ng-content>
       </h3>

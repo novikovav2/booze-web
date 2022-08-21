@@ -1,4 +1,5 @@
 import {Component, Input} from "@angular/core";
+import {faCircleLeft} from "@fortawesome/free-regular-svg-icons";
 
 @Component({
   selector: 'app-card',
@@ -8,4 +9,6 @@ import {Component, Input} from "@angular/core";
 export class CardComponent {
   @Input() title = ''
   @Input() isTitle: boolean = false
+  @Input() returnLink: any[] = []
+  iconBack = faCircleLeft
 }
