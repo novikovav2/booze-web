@@ -15,7 +15,7 @@ import {
   PRODUCTS,
   NEW_URL,
   EDIT_URL,
-  RESULTS_URL, PROFILE, ROOT
+  RESULTS_URL, PROFILE, ROOT, WELCOME
 } from "./services/consts";
 import {RegistrationComponent} from "./auth/registration/registration.component";
 import {NewPasswordComponent} from "./auth/new-password/new-password.component";
@@ -25,6 +25,7 @@ import {EventEditComponent} from "./main/edit/event-edit.component";
 import {ResultsComponent} from "./main/results/results.component";
 import {ProfileComponent} from "./main/profile/profile.component";
 import {StaticComponent} from "./static/static.component";
+import {WelcomeComponent} from "./static/welcome/welcome.component";
 
 const routes: Routes = [
   {path: MAIN, component: MainComponent, children: [
@@ -43,7 +44,8 @@ const routes: Routes = [
       { path: REGISTRATION, component: RegistrationComponent },
       { path: NEW_PASSWORD, component: NewPasswordComponent }
     ]},
-  { path: ROOT, component: StaticComponent }
+  { path: ROOT, component: StaticComponent },
+  { path: WELCOME, component: WelcomeComponent }
 ];
 
 @NgModule({

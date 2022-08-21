@@ -3,13 +3,16 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {StaticComponent} from "./static.component";
+import {WelcomeComponent} from "./welcome/welcome.component";
 
 @NgModule({
   declarations: [
-    StaticComponent
+    StaticComponent,
+    WelcomeComponent
   ],
   exports: [
-    StaticComponent
+    StaticComponent,
+    WelcomeComponent
   ],
   imports: [
     CommonModule,

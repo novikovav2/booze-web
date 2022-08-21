@@ -1,0 +1,29 @@
+<header class="header">
+  <div class="header-container">
+    <a class="header-logo" [routerLink]="[ROOT_URL]">
+      <fa-icon [icon]="iconLogo"></fa-icon> Разделялка
+    </a>
+  </div>
+</header>
+
+<div class="row full-height">
+  <div class="container">
+    <div class="row-center">
+      <p class="text-normal">
+        Выберите как хотите продолжить:
+      </p>
+      <a [routerLink]="[ROOT_URL]" class="button bg-orange">
+        Без регистрации
+      </a>
+      <p class="text-help">
+        Быстрый старт
+      </p>
+      <a [routerLink]="[ROOT_URL]" class="button">
+        С регистрацией
+      </a>
+      <p class="text-help">
+        Возможность сохранить мероприятие в личном кабинете
+      </p>
+    </div>
+  </div>
+</div>
