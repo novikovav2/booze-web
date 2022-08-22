@@ -1,9 +1,10 @@
 import {Component} from "@angular/core";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {EVENTS, MAIN_URL} from "../../services/consts"
+import {EVENTS, MAIN_URL, MSG_ERROR, MSG_EVENT_CREATED} from "../../services/consts"
 import {EventsService} from "../../services/events.service";
 import {EventNew} from "../../models/event";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-event-new',
@@ -22,7 +23,8 @@ export  class EventNewComponent {
   })
 
   constructor(private eventService: EventsService,
-              private router: Router) {  }
+              private router: Router,
+              private toastr: ToastrService) {  }
 
   onSubmit() {
     const title = this.form.controls['title'].value
@@ -35,9 +37,13 @@ export  class EventNewComponent {
       this.eventService.addEvent(eventNew)
         .subscribe({
           next: (data) => {
+            this.toastr.success(MSG_EVENT_CREATED)
             this.router.navigate([MAIN_URL, EVENTS, data.id])
           },
-          error: (error) => { console.log(error) }
+          error: (error) => {
+            this.toastr.error(MSG_ERROR)
+            console.log(error)
+          }
         })
     }
   }

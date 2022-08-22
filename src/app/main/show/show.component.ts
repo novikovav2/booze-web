@@ -3,8 +3,18 @@ import {EventsService} from "../../services/events.service";
 import {EVENT_DEFAULT, Event, Member} from "../../services/event.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, Validators} from "@angular/forms";
-import {EDIT, EVENTS, MAIN_URL, RESULTS} from "../../services/consts";
+import {
+  EDIT,
+  EVENTS,
+  MAIN_URL,
+  MSG_ERROR,
+  MSG_EVENT_DELETED,
+  MSG_MEMBER_ADDED,
+  MSG_MEMBER_DELETED,
+  RESULTS
+} from "../../services/consts";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-event-show',
@@ -24,7 +34,8 @@ export class ShowComponent implements OnInit {
 
   constructor(private eventService: EventsService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -40,7 +51,10 @@ export class ShowComponent implements OnInit {
     this.eventService.getOne(this.id)
       .subscribe({
         next: (data) => {this.event = data},
-        error: (error) => {console.log(error)}
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
       })
   }
 
@@ -48,7 +62,10 @@ export class ShowComponent implements OnInit {
     this.eventService.getMembers(this.id)
       .subscribe({
         next: (data) => { this.members = data },
-        error: (error) => { console.log(error) }
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
       })
   }
 
@@ -60,9 +77,13 @@ export class ShowComponent implements OnInit {
       this.eventService.addMember(bot)
        .subscribe({
          next: () => {
+           this.toastr.success(MSG_MEMBER_ADDED)
            this.getMembersData()
          },
-         error: (error) => { console.log(error) }
+         error: (error) => {
+           this.toastr.error(MSG_ERROR)
+           console.log(error)
+         }
        })
     }
   }
@@ -71,9 +92,13 @@ export class ShowComponent implements OnInit {
     this.eventService.removeMember(memberId, this.id)
       .subscribe({
         next: () => {
+          this.toastr.success(MSG_MEMBER_DELETED)
           this.getMembersData()
         },
-        error: (error) => { console.log(error) }
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
       })
   }
 
@@ -81,9 +106,13 @@ export class ShowComponent implements OnInit {
     this.eventService.deleteEvent(this.id)
       .subscribe({
         next: () => {
+          this.toastr.success(MSG_EVENT_DELETED)
           this.router.navigate([MAIN_URL, EVENTS])
         },
-        error: (error) => { console.log(error) }
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
       })
   }
 

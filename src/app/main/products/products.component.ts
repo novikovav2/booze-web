@@ -3,7 +3,8 @@ import {Member, Product, PRODUCT_DEFAULT} from "../../services/event.model";
 import {ProductsService} from "../../services/products.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EventsService} from "../../services/events.service";
-import {MAIN_URL, EVENTS} from "../../services/consts";
+import {MAIN_URL, EVENTS, MSG_ERROR, MSG_PRODUCTS_UPDATED, MSG_PRODUCT_DELETED} from "../../services/consts";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-products',
@@ -24,7 +25,8 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductsService,
               private route: ActivatedRoute,
               private eventService: EventsService,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -45,7 +47,10 @@ export class ProductsComponent implements OnInit {
           this.buyerId = data.buyerId
           this.getMembers(data.eventId)
         },
-        error: (error) => { console.log(error) }
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
       })
   }
 
@@ -55,7 +60,10 @@ export class ProductsComponent implements OnInit {
         next: (data) => {
           this.members = data
         },
-        error: (error) => { console.log(error) }
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
       })
   }
 
@@ -73,16 +81,28 @@ export class ProductsComponent implements OnInit {
     }
     this.productService.update(this.product.id, product)
       .subscribe({
-        next: () => { this.router.navigate(['events', this.product.eventId]) },
-        error: (error) => { console.log(error) }
+        next: () => {
+          this.toastr.success(MSG_PRODUCTS_UPDATED)
+          this.router.navigate(['events', this.product.eventId])
+        },
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
       })
   }
 
   onDelete() {
     this.productService.delete(this.product.id)
       .subscribe({
-        next: () => { this.router.navigate(['events', this.product.eventId]) },
-        error: (error) => { console.log(error) }
+        next: () => {
+          this.toastr.success(MSG_PRODUCT_DELETED)
+          this.router.navigate(['events', this.product.eventId])
+        },
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
       })
   }
 

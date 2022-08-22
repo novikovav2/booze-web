@@ -3,7 +3,8 @@ import {EventsService} from "../../services/events.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Event, EVENT_DEFAULT, EventNew} from "../../models/event";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {EVENTS, MAIN_URL} from "../../services/consts";
+import {EVENTS, MAIN_URL, MSG_ERROR, MSG_EVENT_EDITED} from "../../services/consts";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-event-edit',
@@ -26,7 +27,8 @@ export class EventEditComponent implements OnInit {
 
   constructor(private eventService: EventsService,
               private route: ActivatedRoute,
-              private router: Router) {  }
+              private router: Router,
+              private toastr: ToastrService) {  }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id') || ''
@@ -41,7 +43,10 @@ export class EventEditComponent implements OnInit {
             this.form.controls['isPublic'].setValue(data.isPublic)
             this.form.controls['isActive'].setValue(data.status !== 'active')
           },
-          error: (error) => { console.log(error) }
+          error: (error) => {
+            this.toastr.error(MSG_ERROR)
+            console.log(error)
+          }
         })
     }
   }
@@ -59,9 +64,13 @@ export class EventEditComponent implements OnInit {
       this.eventService.update(event)
         .subscribe({
           next: (data) => {
+            this.toastr.success(MSG_EVENT_EDITED)
             this.router.navigate([MAIN_URL, EVENTS, data.id])
           },
-          error: (error) => { console.log(error) }
+          error: (error) => {
+            this.toastr.error(MSG_ERROR)
+            console.log(error)
+          }
         })
     }
 

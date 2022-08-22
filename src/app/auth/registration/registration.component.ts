@@ -1,10 +1,11 @@
 import {Component} from "@angular/core";
-import {AUTH_URL, LOGIN, ROOT_URL} from "../../services/consts";
+import {AUTH_URL, LOGIN, MSG_ERROR, MSG_REGISTRATION_SUCCESS, ROOT_URL} from "../../services/consts";
 import {faUsersGear} from "@fortawesome/free-solid-svg-icons";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Auth} from "../../models/auth";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-registration',
@@ -28,7 +29,8 @@ export class RegistrationComponent {
   })
 
   constructor(private authService: AuthService,
-              private router: Router) {  }
+              private router: Router,
+              private toastr: ToastrService) {  }
 
   onSubmit() {
     const email = this.form.controls['email'].value
@@ -38,9 +40,13 @@ export class RegistrationComponent {
       this.authService.registration(newUser)
         .subscribe({
           next: () => {
+            this.toastr.success(MSG_REGISTRATION_SUCCESS)
             this.router.navigate([AUTH_URL, LOGIN])
           },
-          error: (error) => { console.log(error) }
+          error: (error) => {
+            this.toastr.error(MSG_ERROR)
+            console.log(error)
+          }
         })
     }
   }

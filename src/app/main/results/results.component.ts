@@ -2,7 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {EventsService} from "../../services/events.service";
 import {ActivatedRoute} from "@angular/router";
 import {Result, RESULT_DEFAULT} from "../../models/result";
-import {MAIN_URL, EVENTS} from "../../services/consts";
+import {MAIN_URL, EVENTS, MSG_ERROR} from "../../services/consts";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-results',
@@ -16,7 +17,8 @@ export class ResultsComponent implements OnInit {
   EVENTS = EVENTS
 
   constructor(private eventService: EventsService,
-              private route: ActivatedRoute) {  }
+              private route: ActivatedRoute,
+              private toastr: ToastrService) {  }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id') || ''
@@ -26,7 +28,10 @@ export class ResultsComponent implements OnInit {
           next: (data) => {
             this.result = data
           },
-          error: (error) => { console.log(error) }
+          error: (error) => {
+            this.toastr.error(MSG_ERROR)
+            console.log(error)
+          }
         })
     }
   }

@@ -1,6 +1,14 @@
 import {Component} from "@angular/core";
 import {faUsersGear} from "@fortawesome/free-solid-svg-icons";
-import {AUTH_TOKEN, AUTH_URL, MAIN_URL, NEW_PASSWORD, REGISTRATION, ROOT_URL} from "../../services/consts";
+import {
+  AUTH_TOKEN,
+  AUTH_URL,
+  MAIN_URL, MSG_ERROR,
+  MSG_LOGIN_SUCCESS,
+  NEW_PASSWORD,
+  REGISTRATION,
+  ROOT_URL
+} from "../../services/consts";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Auth} from "../../models/auth";
@@ -36,11 +44,14 @@ export class LoginComponent {
       this.authService.login(user)
         .subscribe({
           next: (data) => {
-            this.toastr.success('Auth success', 'WOW')
+            this.toastr.success(MSG_LOGIN_SUCCESS)
             localStorage.setItem(AUTH_TOKEN, data)
             this.router.navigate([MAIN_URL])
           },
-          error: (error) => { console.log(error) }
+          error: (error) => {
+            this.toastr.error(MSG_ERROR)
+            console.log(error)
+          }
         })
     }
   }

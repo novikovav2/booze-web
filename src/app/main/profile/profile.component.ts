@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthService} from "../../services/auth.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
+import {MSG_ERROR, MSG_PASSWORD_UPDATED, MSG_UPDATED} from "../../services/consts";
 
 @Component({
   selector: 'app-profile',
@@ -21,7 +23,8 @@ export class ProfileComponent implements OnInit {
       [Validators.required, Validators.minLength(6)])
   })
 
-  constructor(private authService: AuthService) {  }
+  constructor(private authService: AuthService,
+              private toastr: ToastrService) {  }
 
   ngOnInit() {
     this.authService.getProfile()
@@ -30,7 +33,10 @@ export class ProfileComponent implements OnInit {
           this.form.controls['id'].setValue(data.id)
           this.form.controls['username'].setValue(data.username)
         },
-        error: (error) => { console.log(error)}
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
       })
   }
 
@@ -40,9 +46,12 @@ export class ProfileComponent implements OnInit {
       this.authService.updateProfile(username)
         .subscribe({
           next: () => {
-
+            this.toastr.success(MSG_UPDATED)
           },
-          error: (error) => { console.log(error) }
+          error: (error) => {
+            this.toastr.error(MSG_ERROR)
+            console.log(error)
+          }
         })
     }
 
@@ -55,9 +64,12 @@ export class ProfileComponent implements OnInit {
       this.authService.updatePassword(password)
         .subscribe({
           next: () => {
-
+            this.toastr.success(MSG_PASSWORD_UPDATED)
           },
-          error: (error) => { console.log(error) }
+          error: (error) => {
+            this.toastr.error(MSG_ERROR)
+            console.log(error)
+          }
         })
     }
   }

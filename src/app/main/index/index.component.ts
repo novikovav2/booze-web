@@ -2,7 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {faCirclePlus} from "@fortawesome/free-solid-svg-icons";
 import {EventsService} from "../../services/events.service";
 import {EVENT_STATUS, Event} from "../../models/event";
-import {NEW} from "../../services/consts";
+import {MSG_ERROR, NEW} from "../../services/consts";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-index',
@@ -15,7 +16,8 @@ export class IndexComponent implements OnInit{
   events: Event[] = []
   NEW = NEW
 
-  constructor(private eventService: EventsService) {}
+  constructor(private eventService: EventsService,
+              private toastr: ToastrService) {}
 
   ngOnInit() {
     this.getData()
@@ -27,7 +29,10 @@ export class IndexComponent implements OnInit{
         next: (data) => {
           this.events = data
         },
-        error: (error) => { console.log(error) }
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
       })
   }
 
