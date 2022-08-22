@@ -26,3 +26,6 @@ export const EDIT_URL = '/' + EDIT
 export const RESULTS_URL = '/' + RESULTS
 export const PROFILE_URL = '/' + PROFILE
 export const WELCOME_URL = '/' + WELCOME
+
+export const MSG_ERROR = 'Ууупс... '
+export const MSG_EVENT_GENERATED = 'Событие создано. Вперед!'

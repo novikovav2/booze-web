@@ -130,4 +130,7 @@ export class EventsService {
     return of(this.results)
   }
 
+  startWithoutRegistration() {
+    return of({ id: 'aaaaa' })
+  }
 }

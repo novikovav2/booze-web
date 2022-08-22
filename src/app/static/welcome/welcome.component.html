@@ -12,13 +12,13 @@
       <p class="text-normal">
         Выберите как хотите продолжить:
       </p>
-      <a [routerLink]="[ROOT_URL]" class="button bg-orange">
+      <a href="#" class="button bg-orange" (click)="withoutRegistration($event)">
         Без регистрации
       </a>
       <p class="text-help">
         Быстрый старт
       </p>
-      <a [routerLink]="[ROOT_URL]" class="button">
+      <a [routerLink]="[AUTH_URL, LOGIN]" class="button">
         С регистрацией
       </a>
       <p class="text-help">
