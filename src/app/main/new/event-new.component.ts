@@ -28,7 +28,8 @@ export  class EventNewComponent {
 
   onSubmit() {
     const title = this.form.controls['title'].value
-    const evented_at = this.form.controls['eventedAt'].value || ''
+    // const evented_at = new Date(this.form.controls['eventedAt'].value)
+    const evented_at = new Date()
     const reason = this.form.controls['reason'].value || ''
     const isPublic = this.form.controls['isPublic'].value || true
     const status = 'active'

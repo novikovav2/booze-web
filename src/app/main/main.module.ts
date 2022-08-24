@@ -17,6 +17,7 @@ import {EventNewComponent} from "./new/event-new.component";
 import {EventEditComponent} from "./edit/event-edit.component";
 import {ResultsComponent} from "./results/results.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {ProfileComponent} from "./profile/profile.component";
     FontAwesomeModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     EventsService,

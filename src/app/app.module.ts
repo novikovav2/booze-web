@@ -9,6 +9,11 @@ import {AuthModule} from "./auth/auth.module";
 import {StaticModule} from "./static/static.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import {registerLocaleData} from "@angular/common";
+import ru from "@angular/common/locales/ru"
+
+
+registerLocaleData(ru)
 
 @NgModule({
   declarations: [

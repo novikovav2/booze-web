@@ -23,7 +23,7 @@
       <div class="event-reason">
         <p class="event-fieldname">Дата:</p>
         <p class="event-fieldvalue">
-          {{ event.evented_at }}
+          {{ event.evented_at | date: 'fullDate' : '' : 'ru-RU'}}
         </p>
       </div>
       <div class="event-reason">

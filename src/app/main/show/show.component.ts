@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {EventsService} from "../../services/events.service";
-import {EVENT_DEFAULT, Event, Member} from "../../services/event.model";
+import {Member} from "../../services/event.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, Validators} from "@angular/forms";
 import {
@@ -15,6 +15,7 @@ import {
 } from "../../services/consts";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
 import {ToastrService} from "ngx-toastr";
+import {Event, EVENT_DEFAULT} from "../../models/event"
 
 @Component({
   selector: 'app-event-show',
@@ -50,7 +51,12 @@ export class ShowComponent implements OnInit {
   getEventData() {
     this.eventService.getOne(this.id)
       .subscribe({
-        next: (data) => {this.event = data},
+        next: (data) => {
+          this.event = {
+            ...data,
+            evented_at: new Date (+data.evented_at * 1000)
+          }
+        },
         error: (error) => {
           this.toastr.error(MSG_ERROR)
           console.log(error)

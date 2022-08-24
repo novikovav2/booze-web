@@ -1,16 +1,23 @@
 import {Injectable} from "@angular/core";
 import {Member, NewMember} from "./event.model";
-import {of} from "rxjs";
+import {Observable, of} from "rxjs";
 import {EVENT_STATUS, Event, EventNew} from "../models/event";
 import {Result} from "../models/result";
+import {environment} from "../../environments/environment";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {EVENTS_URL} from "./consts";
 
 @Injectable()
 export class EventsService {
+  url = environment.apiUrl + EVENTS_URL
+
+  constructor(private http: HttpClient) {  }
+
   event: Event = {
     id: '111',
     title: 'Просто по пиву',
     reason: 'Повод не нужен',
-    evented_at: '01.09.2022',
+    evented_at: new Date(),
     isPublic: true,
     status: "active"
   }
@@ -19,44 +26,6 @@ export class EventsService {
     { id: 'aaa', title: 'Иванов', type: 'man' },
     { id: 'bbb', title: 'Петров', type: 'man' },
     { id: 'ccc', title: 'Сидоров', type: 'bot' }
-  ]
-
-  eventsActive: Event[] = [
-    {
-      id: '111',
-      title: 'Просто по пиву',
-      reason: 'Повод не нужен',
-      evented_at: '01.09.2022',
-      isPublic: true,
-      status: 'active'
-    },
-    {
-      id: '222',
-      title: 'Просто по пиву2',
-      reason: 'Повод нужен',
-      evented_at: '02.09.2022',
-      isPublic: false,
-      status: 'active'
-    }
-  ]
-
-  eventsArchive: Event[] = [
-    {
-      id: '111',
-      title: 'Просто по пиву',
-      reason: 'Повод не нужен',
-      evented_at: '01.09.2021',
-      isPublic: true,
-      status: 'archive'
-    },
-    {
-      id: '222',
-      title: 'Просто по пиву2',
-      reason: 'Повод нужен',
-      evented_at: '02.09.2021',
-      isPublic: false,
-      status: 'archive'
-    }
   ]
 
   results: Result =
@@ -85,21 +54,25 @@ export class EventsService {
 
 
   getAll(flag: EVENT_STATUS) {
-    let result: any = ''
+    let result: Observable<any>
     switch (flag) {
       case 'active':
-        result = this.eventsActive;
+        result = this.http.get(this.url, {
+          params: new HttpParams().set('status', 'active')
+        })
         break
       case 'archive':
-        result = []
+        result = this.http.get(this.url, {
+          params: new HttpParams().set('status', 'archive')
+        })
         break
     }
-    return of(result)
+    return result
 
   }
 
   getOne(id: string) {
-    return of(this.event)
+    return this.http.get<Event>(this.url + '/' + id)
   }
 
   getMembers(id: string) {
@@ -131,6 +104,6 @@ export class EventsService {
   }
 
   startWithoutRegistration() {
-    return of({ id: 'aaaaa' })
+    return this.http.get<Event>(this.url + '/generate')
   }
 }

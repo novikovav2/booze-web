@@ -19,7 +19,7 @@ export class EventEditComponent implements OnInit {
 
   form = new FormGroup({
     title: new FormControl('', [Validators.required]),
-    eventedAt: new FormControl(''),
+    eventedAt: new FormControl(new Date()),
     reason: new FormControl(''),
     isPublic: new FormControl(true),
     isActive: new FormControl(true)
@@ -56,7 +56,8 @@ export class EventEditComponent implements OnInit {
     if (title) {
       const event: EventNew = {
         title: title,
-        evented_at: this.form.controls['eventedAt'].value || '',
+        // evented_at: this.form.controls['eventedAt'].value || '',
+        evented_at: new Date(),
         reason: this.form.controls['reason'].value || '',
         isPublic: this.form.controls['isPublic'].value || true,
         status: this.form.controls['isActive'].value ? 'active' : 'archive'
