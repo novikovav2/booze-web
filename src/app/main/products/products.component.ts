@@ -1,10 +1,11 @@
 import {Component, OnInit} from "@angular/core";
-import {Member, Product, PRODUCT_DEFAULT} from "../../services/event.model";
+import {Product, PRODUCT_DEFAULT} from "../../services/event.model";
 import {ProductsService} from "../../services/products.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EventsService} from "../../services/events.service";
 import {MAIN_URL, EVENTS, MSG_ERROR, MSG_PRODUCTS_UPDATED, MSG_PRODUCT_DELETED} from "../../services/consts";
 import {ToastrService} from "ngx-toastr";
+import {Member} from "../../models/member";
 
 @Component({
   selector: 'app-products',

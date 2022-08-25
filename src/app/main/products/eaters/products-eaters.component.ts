@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {faAnglesLeft, faAnglesRight, faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
-import {Member} from "../../../services/event.model";
+import {Member} from "../../../models/member";
 
 @Component({
   selector: 'app-products-eaters',
@@ -26,7 +26,7 @@ export class ProductsEatersComponent implements OnInit {
         if (!exist) {
           this.nonEaters.push({
             id: member.id,
-            username: member.title,
+            username: member.user.username,
             selected: false
           })
         }

@@ -1,15 +1,17 @@
 import {Injectable} from "@angular/core";
-import {Member, NewMember} from "./event.model";
+import {NewMember} from "../models/member";
+import {Member} from "../models/member";
 import {Observable, of} from "rxjs";
 import {EVENT_STATUS, Event, EventNew} from "../models/event";
 import {Result} from "../models/result";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {EVENTS_URL} from "./consts";
+import {EVENTS_URL, MEMBERS_URL} from "./consts";
 
 @Injectable()
 export class EventsService {
   url = environment.apiUrl + EVENTS_URL
+  urlMembers = environment.apiUrl + MEMBERS_URL
 
   constructor(private http: HttpClient) {  }
 
@@ -21,12 +23,6 @@ export class EventsService {
     isPublic: true,
     status: "active"
   }
-
-  members: Member[] = [
-    { id: 'aaa', title: 'Иванов', type: 'man' },
-    { id: 'bbb', title: 'Петров', type: 'man' },
-    { id: 'ccc', title: 'Сидоров', type: 'bot' }
-  ]
 
   results: Result =
     {
@@ -76,11 +72,11 @@ export class EventsService {
   }
 
   getMembers(id: string) {
-    return of(this.members)
+    return this.http.get<Member[]>(this.urlMembers + '/' + id)
   }
 
   addMember(bot: NewMember) {
-    return of(true)
+    return this.http.post(this.urlMembers, bot)
   }
 
   removeMember(memberId: string, eventId: string) {

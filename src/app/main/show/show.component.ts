@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {EventsService} from "../../services/events.service";
-import {Member} from "../../services/event.model";
+import {Member} from "../../models/member";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, Validators} from "@angular/forms";
 import {
@@ -79,7 +79,10 @@ export class ShowComponent implements OnInit {
     event.preventDefault()
     const username = this.username.value
     if (username) {
-      const bot = { username }
+      const bot = {
+        eventId: this.id,
+        username
+      }
       this.eventService.addMember(bot)
        .subscribe({
          next: () => {

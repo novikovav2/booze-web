@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {Member, Product} from "../../../services/event.model";
+import {Product} from "../../../services/event.model";
 import {ProductsService} from "../../../services/products.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
 import {MAIN_URL, PRODUCTS} from "../../../services/consts";
+import {Member} from "../../../models/member";
 
 @Component({
   selector: 'app-show-products',

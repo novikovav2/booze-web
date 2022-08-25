@@ -51,7 +51,7 @@
         </p>
         <ul>
           <li class="members-item" *ngFor="let member of members">
-            {{ member.title }}
+            {{ member.user.username }}
             <a (click)="deleteMember(member.id)" class="remove-link">
               <fa-icon [icon]="iconTrash"></fa-icon>
             </a>
