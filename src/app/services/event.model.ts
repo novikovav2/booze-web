@@ -9,25 +9,6 @@ export interface Event {
   status?: EVENT_STATUS
 }
 
-export const EVENT_DEFAULT: Event = {
-  id: '',
-  title: '',
-  reason: '',
-  evented_at: '',
-  isPublic: true
-}
-
-export type MemberType = 'man' | 'bot'
-export interface Member {
-  id: string,
-  title: string,
-  type: MemberType
-}
-
-export interface NewMember {
-  username: string
-}
-
 export interface Eater {
   id: string,
   username: string,
@@ -41,16 +22,4 @@ export interface Product {
   total: number,
   buyerId: string,
   eaters: Eater[]
-}
-
-
-
-export const PRODUCT_DEFAULT: Product = {
-  id: 'aaa',
-  eventId: 'aaa',
-  title: 'Пиво',
-  price: 78,
-  total: 0,
-  buyerId: 'bbb',
-  eaters: []
 }

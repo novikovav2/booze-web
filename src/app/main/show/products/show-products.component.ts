@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {Product} from "../../../services/event.model";
+import {Product} from "../../../models/product";
 import {ProductsService} from "../../../services/products.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {faTrashCan} from "@fortawesome/free-regular-svg-icons";

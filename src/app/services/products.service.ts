@@ -1,30 +1,20 @@
 import {Injectable} from "@angular/core";
-import {Product} from "./event.model";
+import {Product, PRODUCT_DEFAULT} from "../models/product";
 import {of} from "rxjs";
+import {environment} from "../../environments/environment";
+import {EVENTS_URL, PRODUCTS_URL} from "./consts";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class ProductsService {
-  products: Product[] = [
-    { id: 'aaa', title: 'Пиво', price: 100, total: 0, buyerId: 'aaa', eaters: [], eventId: 'aaa' },
-    { id: 'aaa', title: 'Квас', price: 80, total: 2, buyerId: 'aaa', eaters: [], eventId: 'aaa' },
-    { id: 'aaa', title: 'Закусь', price: 1000, total: 0, buyerId: 'aaa', eaters: [], eventId: 'aaa' }
-  ]
+  url = environment.apiUrl
 
-  product: Product = {
-    id: 'aaa',
-    title: 'Пиво',
-    price: 100,
-    total: 5,
-    buyerId: 'aaa',
-    eaters: [
-      { id: 'aaa', username: 'Иванов', count: 2 },
-      { id: 'bbb', username: 'Петров', count: 1 }
-    ],
-    eventId: 'aaa'
-  }
+  product: Product = PRODUCT_DEFAULT
+
+  constructor(private http: HttpClient) {  }
 
   getProducts(eventId: string) {
-    return of(this.products)
+    return this.http.get<Product[]>(this.url + EVENTS_URL + '/' + eventId + PRODUCTS_URL)
   }
 
   getOne(id: string) {

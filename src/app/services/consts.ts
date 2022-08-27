@@ -21,6 +21,7 @@ export const REGISTRATION_URL = '/' + REGISTRATION
 export const NEW_PASSWORD_URL = '/' + NEW_PASSWORD
 export const MAIN_URL = '/' + MAIN
 export const EVENTS_URL = '/' + EVENTS
+export const PRODUCTS_URL = '/' + PRODUCTS
 export const NEW_URL = '/' + NEW
 export const EDIT_URL = '/' + EDIT
 export const RESULTS_URL = '/' + RESULTS

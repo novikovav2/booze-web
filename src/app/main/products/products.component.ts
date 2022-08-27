@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {Product, PRODUCT_DEFAULT} from "../../services/event.model";
+import {Product, PRODUCT_DEFAULT} from "../../models/product";
 import {ProductsService} from "../../services/products.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EventsService} from "../../services/events.service";
@@ -45,7 +45,7 @@ export class ProductsComponent implements OnInit {
           this.title = data.title
           this.price = data.price
           this.total = data.total
-          this.buyerId = data.buyerId
+          this.buyerId = data.buyer.id
           this.getMembers(data.eventId)
         },
         error: (error) => {
