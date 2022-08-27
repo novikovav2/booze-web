@@ -1,10 +1,11 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {Product} from "../../../models/product";
+import {NewProduct, Product} from "../../../models/product";
 import {ProductsService} from "../../../services/products.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
-import {MAIN_URL, PRODUCTS} from "../../../services/consts";
+import {MAIN_URL, MSG_ERROR, MSG_PRODUCT_ADDED, PRODUCTS} from "../../../services/consts";
 import {Member} from "../../../models/member";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-show-products',
@@ -28,7 +29,8 @@ export class ShowProductsComponent implements OnInit {
     total: new FormControl(0)
   })
 
-  constructor(private productService: ProductsService) {
+  constructor(private productService: ProductsService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -51,7 +53,25 @@ export class ShowProductsComponent implements OnInit {
 
   submitForm(event: any) {
     event.preventDefault()
-    console.log("SUBMIT")
+    const product: NewProduct = {
+      eventId: this.eventId,
+      title: this.form.controls['name'].value || '',
+      price: this.form.controls['price'].value || 0,
+      total: this.form.controls['total'].value || 0,
+      buyerId: this.form.controls['buyer'].value || '',
+      eaters: this.members
+    }
+    this.productService.add(product)
+      .subscribe({
+        next: () => {
+          this.toastr.success(MSG_PRODUCT_ADDED)
+          this.getData()
+        },
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
+      })
   }
 
 }

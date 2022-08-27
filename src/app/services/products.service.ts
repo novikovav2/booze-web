@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Product, PRODUCT_DEFAULT} from "../models/product";
+import {NewProduct, Product, PRODUCT_DEFAULT} from "../models/product";
 import {of} from "rxjs";
 import {environment} from "../../environments/environment";
 import {EVENTS_URL, PRODUCTS_URL} from "./consts";
@@ -29,4 +29,7 @@ export class ProductsService {
     return of (this.product)
   }
 
+  add(product: NewProduct) {
+    return this.http.post(this.url + PRODUCTS_URL, product)
+  }
 }

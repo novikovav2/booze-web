@@ -88,6 +88,7 @@ export class ShowComponent implements OnInit {
          next: () => {
            this.toastr.success(MSG_MEMBER_ADDED)
            this.getMembersData()
+           this.username.reset()
          },
          error: (error) => {
            this.toastr.error(MSG_ERROR)

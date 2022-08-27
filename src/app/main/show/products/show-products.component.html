@@ -12,7 +12,7 @@
 
           <select class="products-form-input products-form_buyer" formControlName="buyer">
             <option value="" disabled>Покупатель</option>
-            <option *ngFor="let member of members" [value]="member.id">
+            <option *ngFor="let member of members" [value]="member.user.id">
               {{ member.user.username }}
             </option>
           </select>
