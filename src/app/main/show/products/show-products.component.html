@@ -72,7 +72,9 @@
                 {{ product.eaters.length }}
               </td>
               <td>
-                <fa-icon [icon]="deleteIcon"></fa-icon>
+                <a href="#" (click)="onDelete($event, product.id)" class="link" >
+                  <fa-icon [icon]="deleteIcon"></fa-icon>
+                </a>
               </td>
             </tr>
           </tbody>

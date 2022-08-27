@@ -3,7 +3,7 @@ import {NewProduct, Product} from "../../../models/product";
 import {ProductsService} from "../../../services/products.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
-import {MAIN_URL, MSG_ERROR, MSG_PRODUCT_ADDED, PRODUCTS} from "../../../services/consts";
+import {MAIN_URL, MSG_ERROR, MSG_PRODUCT_ADDED, MSG_PRODUCT_DELETED, PRODUCTS} from "../../../services/consts";
 import {Member} from "../../../models/member";
 import {ToastrService} from "ngx-toastr";
 
@@ -65,6 +65,22 @@ export class ShowProductsComponent implements OnInit {
       .subscribe({
         next: () => {
           this.toastr.success(MSG_PRODUCT_ADDED)
+          this.getData()
+          this.form.reset()
+        },
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
+      })
+  }
+
+  onDelete(event: any, id: string) {
+    event.preventDefault()
+    this.productService.delete(id)
+      .subscribe({
+        next: () => {
+          this.toastr.success(MSG_PRODUCT_DELETED)
           this.getData()
         },
         error: (error) => {

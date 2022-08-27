@@ -22,7 +22,7 @@ export class ProductsService {
   }
 
   delete(id: string) {
-    return of(true)
+    return this.http.delete(this.url + PRODUCTS_URL + '/' + id)
   }
 
   update(id: string, product: any) {
