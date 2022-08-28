@@ -20,6 +20,7 @@ export class ShowProductsComponent implements OnInit {
   deleteIcon = faTrashCan
   MAIN_URL = MAIN_URL
   PRODUCTS = PRODUCTS
+  sum: number = 0
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -42,7 +43,12 @@ export class ShowProductsComponent implements OnInit {
   getData() {
     this.productService.getProducts(this.eventId)
       .subscribe({
-        next: (data) => { this.products = data },
+        next: (data) => {
+          this.products = data
+          this.sum = data.reduce((accumulator, product) => {
+            return accumulator + product.price
+          }, 0)
+        },
         error: (error) => {console.log(error)}
       })
   }
