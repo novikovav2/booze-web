@@ -91,8 +91,8 @@ export class EventsService {
     return this.http.delete(this.url + '/' + id)
   }
 
-  update(event: EventNew) {
-    return of(this.event)
+  update(id: string, event: EventNew) {
+    return this.http.put(this.url + '/' + id, event)
   }
 
   getResult(eventId: string) {

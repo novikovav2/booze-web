@@ -13,7 +13,7 @@ export interface EventNew {
   title: string,
   reason: string,
   evented_at: string,
-  isPublic: boolean,
+  isPublic: boolean | null,
   status: EVENT_STATUS,
   authorId?: string
 }

@@ -59,14 +59,14 @@ export class EventEditComponent implements OnInit {
         title: title,
         evented_at: date.toJSON(),
         reason: this.form.controls['reason'].value || '',
-        isPublic: this.form.controls['isPublic'].value || true,
+        isPublic: this.form.controls['isPublic'].value,
         status: this.form.controls['isActive'].value ? 'active' : 'archive'
       }
-      this.eventService.update(event)
+      this.eventService.update(this.id, event)
         .subscribe({
-          next: (data) => {
+          next: () => {
             this.toastr.success(MSG_EVENT_EDITED)
-            this.router.navigate([MAIN_URL, EVENTS, data.id])
+            this.router.navigate([MAIN_URL, EVENTS, this.id])
           },
           error: (error) => {
             this.toastr.error(MSG_ERROR)
