@@ -84,7 +84,7 @@ export class EventsService {
   }
 
   addEvent(event: EventNew) {
-    return of({ id: 'aaa' })
+    return this.http.post<Partial<Event>>(this.url, event)
   }
 
   deleteEvent(id: string) {

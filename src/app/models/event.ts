@@ -12,9 +12,10 @@ export interface Event {
 export interface EventNew {
   title: string,
   reason: string,
-  evented_at: Date,
+  evented_at: string,
   isPublic: boolean,
-  status: EVENT_STATUS
+  status: EVENT_STATUS,
+  authorId?: string
 }
 
 export const EVENT_DEFAULT: Event = {

@@ -28,13 +28,14 @@ export  class EventNewComponent {
 
   onSubmit() {
     const title = this.form.controls['title'].value
-    // const evented_at = new Date(this.form.controls['eventedAt'].value)
-    const evented_at = new Date()
+    const date = new Date(this.form.controls['eventedAt'].value || '')
+    const evented_at = date.toJSON()
     const reason = this.form.controls['reason'].value || ''
     const isPublic = this.form.controls['isPublic'].value || true
     const status = 'active'
+    const authorId = 'd9c1ad11-bde8-47de-8b06-7071bb66261f'
     if (title) {
-      const eventNew: EventNew = { title, evented_at, reason, isPublic, status }
+      const eventNew: EventNew = { title, evented_at, reason, isPublic, status, authorId }
       this.eventService.addEvent(eventNew)
         .subscribe({
           next: (data) => {

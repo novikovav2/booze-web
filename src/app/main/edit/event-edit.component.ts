@@ -54,10 +54,10 @@ export class EventEditComponent implements OnInit {
   onSubmit() {
     const title = this.form.controls['title'].value
     if (title) {
+      const date = new Date(this.form.controls['eventedAt'].value || '',)
       const event: EventNew = {
         title: title,
-        // evented_at: this.form.controls['eventedAt'].value || '',
-        evented_at: new Date(),
+        evented_at: date.toJSON(),
         reason: this.form.controls['reason'].value || '',
         isPublic: this.form.controls['isPublic'].value || true,
         status: this.form.controls['isActive'].value ? 'active' : 'archive'
