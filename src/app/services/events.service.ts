@@ -79,8 +79,8 @@ export class EventsService {
     return this.http.post(this.urlMembers, bot)
   }
 
-  removeMember(memberId: string, eventId: string) {
-    return of(true)
+  removeMember(id: string) {
+    return this.http.delete(this.urlMembers + '/' + id)
   }
 
   addEvent(event: EventNew) {

@@ -96,7 +96,7 @@ export class ShowComponent implements OnInit {
   }
 
   deleteMember(memberId: string) {
-    this.eventService.removeMember(memberId, this.id)
+    this.eventService.removeMember(memberId)
       .subscribe({
         next: () => {
           this.toastr.success(MSG_MEMBER_DELETED)
