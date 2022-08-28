@@ -19,7 +19,7 @@ export class EventsService {
     id: '111',
     title: 'Просто по пиву',
     reason: 'Повод не нужен',
-    evented_at: new Date(),
+    evented_at: '',
     isPublic: true,
     status: "active"
   }
@@ -88,7 +88,7 @@ export class EventsService {
   }
 
   deleteEvent(id: string) {
-    return of(true)
+    return this.http.delete(this.url + '/' + id)
   }
 
   update(event: EventNew) {

@@ -52,10 +52,7 @@ export class ShowComponent implements OnInit {
     this.eventService.getOne(this.id)
       .subscribe({
         next: (data) => {
-          this.event = {
-            ...data,
-            evented_at: new Date (+data.evented_at * 1000)
-          }
+          this.event = data
         },
         error: (error) => {
           this.toastr.error(MSG_ERROR)
@@ -124,6 +121,10 @@ export class ShowComponent implements OnInit {
           console.log(error)
         }
       })
+  }
+
+  parseDate(str: string) {
+    return new Date(+str * 1000)
   }
 
 }

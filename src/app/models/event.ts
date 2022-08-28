@@ -4,7 +4,7 @@ export interface Event {
   id: string,
   title: string,
   reason: string,
-  evented_at: Date,
+  evented_at: string,
   isPublic: boolean,
   status?: EVENT_STATUS
 }
@@ -22,7 +22,7 @@ export const EVENT_DEFAULT: Event = {
   id: '',
   title: '',
   reason: '',
-  evented_at: new Date(),
+  evented_at: '',
   isPublic: true,
   status: "active"
 }

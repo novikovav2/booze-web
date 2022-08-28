@@ -30,7 +30,7 @@
           </a>
         </td>
         <td>{{ event.reason }}</td>
-        <td>{{ event.evented_at }}</td>
+        <td>{{ parseDate(event.evented_at) | date: 'fullDate' : '' : 'ru-RU' }}</td>
       </tr>
       </tbody>
     </table>

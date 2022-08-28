@@ -28,6 +28,7 @@ export class IndexComponent implements OnInit{
       .subscribe({
         next: (data) => {
           this.events = data
+          console.log(data)
         },
         error: (error) => {
           this.toastr.error(MSG_ERROR)
@@ -40,5 +41,9 @@ export class IndexComponent implements OnInit{
     event.preventDefault()
     this.showFlag = flag
     this.getData()
+  }
+
+  parseDate(str: string) {
+    return new Date(+str * 1000)
   }
 }

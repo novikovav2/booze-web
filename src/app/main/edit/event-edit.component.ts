@@ -19,7 +19,7 @@ export class EventEditComponent implements OnInit {
 
   form = new FormGroup({
     title: new FormControl('', [Validators.required]),
-    eventedAt: new FormControl(new Date()),
+    eventedAt: new FormControl(''),
     reason: new FormControl(''),
     isPublic: new FormControl(true),
     isActive: new FormControl(true)
