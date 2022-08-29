@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {NewMember} from "../models/member";
 import {Member} from "../models/member";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {EVENT_STATUS, Event, EventNew} from "../models/event";
 import {Result} from "../models/result";
 import {environment} from "../../environments/environment";
@@ -14,40 +14,6 @@ export class EventsService {
   urlMembers = environment.apiUrl + MEMBERS_URL
 
   constructor(private http: HttpClient) {  }
-
-  event: Event = {
-    id: '111',
-    title: 'Просто по пиву',
-    reason: 'Повод не нужен',
-    evented_at: '',
-    isPublic: true,
-    status: "active"
-  }
-
-  results: Result =
-    {
-      eventId: '111',
-      recipients: [
-        {id: 'aaa', username: 'Иванов'}
-      ],
-      donors: [
-        {
-          donor: { id: 'bbb', username: 'Петров' },
-          payments: [{
-            recipient: {id: 'aaa', username: 'Иванов'},
-            value: 100
-          }]
-        },
-        {
-          donor: { id: 'ccc', username: 'Сидоров' },
-          payments: [{
-            recipient: {id: 'aaa', username: 'Иванов'},
-            value: 200
-          }]
-        }
-      ]
-    }
-
 
   getAll(flag: EVENT_STATUS) {
     let result: Observable<any>
@@ -64,7 +30,6 @@ export class EventsService {
         break
     }
     return result
-
   }
 
   getOne(id: string) {
@@ -95,8 +60,8 @@ export class EventsService {
     return this.http.put(this.url + '/' + id, event)
   }
 
-  getResult(eventId: string) {
-    return of(this.results)
+  getResult(id: string) {
+    return this.http.get<Result>(this.url + '/' + id + '/result')
   }
 
   startWithoutRegistration() {

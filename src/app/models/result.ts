@@ -6,35 +6,41 @@ export interface Payment {
 }
 
 export interface Donor {
-  donor: User,
-  payments: Payment[]
+  user: User,
+  payments: Payment[],
+  totalAte: number
+}
+
+export interface Recipient {
+  user: User,
+  totalPaid: number
 }
 
 export interface Result {
   eventId: string,
-  recipients: User[],
+  recipients: Recipient[],
   donors: Donor[]
 }
 
 export const RESULT_DEFAULT: Result = {
   eventId: '',
-  recipients: [
-    {id: '', username: ''}
-  ],
+  recipients: [ ],
   donors: [
     {
-      donor: { id: '', username: '' },
+      user: { id: '', username: '', type: 'bot' },
       payments: [{
         recipient: {id: '', username: ''},
-        value: 100
-      }]
+        value: 0
+      }],
+      totalAte: 0
     },
     {
-      donor: { id: '', username: '' },
+      user: { id: '', username: '', type: 'bot' },
       payments: [{
         recipient: {id: '', username: ''},
-        value: 200
-      }]
+        value: 0
+      }],
+      totalAte: 0
     }
   ]
 }

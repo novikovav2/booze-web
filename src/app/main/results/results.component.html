@@ -12,12 +12,12 @@
         </tr>
 
         <tr>
-          <td *ngFor="let user of result.recipients">{{ user.username }}</td>
+          <td *ngFor="let user of result.recipients">{{ user.user.username }}</td>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of result.donors">
-          <td>{{ item.donor.username }}</td>
+          <td>{{ item.user.username }}</td>
           <td *ngFor="let payment of item.payments">
             {{ payment.value }} руб.
           </td>
