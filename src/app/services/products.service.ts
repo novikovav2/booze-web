@@ -18,7 +18,7 @@ export class ProductsService {
   }
 
   getOne(id: string) {
-    return of(this.product)
+    return this.http.get<Product>(this.url + PRODUCTS_URL + '/' + id)
   }
 
   delete(id: string) {
