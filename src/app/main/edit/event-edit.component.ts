@@ -16,6 +16,7 @@ export class EventEditComponent implements OnInit {
   event: Event = EVENT_DEFAULT
   MAIN_URL = MAIN_URL
   EVENTS = EVENTS
+  loading = false
 
   form = new FormGroup({
     title: new FormControl('', [Validators.required]),
@@ -33,6 +34,7 @@ export class EventEditComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id') || ''
     if (this.id) {
+      this.loading = true
       this.eventService.getOne(this.id)
         .subscribe({
           next: (data) => {
@@ -42,6 +44,7 @@ export class EventEditComponent implements OnInit {
             this.form.controls['reason'].setValue(data.reason)
             this.form.controls['isPublic'].setValue(data.isPublic)
             this.form.controls['isActive'].setValue(data.status !== 'active')
+            this.loading = false
           },
           error: (error) => {
             this.toastr.error(MSG_ERROR)

@@ -32,6 +32,8 @@ export class ShowComponent implements OnInit {
   EDIT = EDIT
   RESULTS = RESULTS
   iconTrash = faTrash
+  loadingEvent = false
+  loadingMembers = false
 
   constructor(private eventService: EventsService,
               private route: ActivatedRoute,
@@ -49,10 +51,12 @@ export class ShowComponent implements OnInit {
   }
 
   getEventData() {
+    this.loadingEvent = true
     this.eventService.getOne(this.id)
       .subscribe({
         next: (data) => {
           this.event = data
+          this.loadingEvent = false
         },
         error: (error) => {
           this.toastr.error(MSG_ERROR)
@@ -62,9 +66,13 @@ export class ShowComponent implements OnInit {
   }
 
   getMembersData() {
+    this.loadingMembers = true
     this.eventService.getMembers(this.id)
       .subscribe({
-        next: (data) => { this.members = data },
+        next: (data) => {
+          this.members = data
+          this.loadingMembers = false
+        },
         error: (error) => {
           this.toastr.error(MSG_ERROR)
           console.log(error)

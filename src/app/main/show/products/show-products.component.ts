@@ -21,6 +21,7 @@ export class ShowProductsComponent implements OnInit {
   MAIN_URL = MAIN_URL
   PRODUCTS = PRODUCTS
   sum: number = 0
+  loading = false
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -41,6 +42,7 @@ export class ShowProductsComponent implements OnInit {
   }
 
   getData() {
+    this.loading = true
     this.productService.getProducts(this.eventId)
       .subscribe({
         next: (data) => {
@@ -48,6 +50,7 @@ export class ShowProductsComponent implements OnInit {
           this.sum = data.reduce((accumulator, product) => {
             return accumulator + product.price
           }, 0)
+          this.loading = false
         },
         error: (error) => {console.log(error)}
       })

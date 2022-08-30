@@ -2,7 +2,7 @@
           [returnLink]="[MAIN_URL, EVENTS, product.eventId]"
           [isTitle]="true"></app-card>
 
-<app-card title=" ">
+<app-card title=" " [loading]="loading">
     <a header class="product-submit" (click)="onSave()">
       Сохранить
     </a>

@@ -32,6 +32,7 @@
   border-color: var(--gray1);
   border-collapse: collapse;
   display: table;
+  margin-top: 12px;
 
   &-container {
     width: 100%;
@@ -210,5 +211,14 @@
     margin: 8px 16px;
     font-size: small;
     display: none;
+  }
+}
+
+.spinner {
+  text-align: center;
+
+  &-container {
+    display: flex;
+    justify-content: center;
   }
 }

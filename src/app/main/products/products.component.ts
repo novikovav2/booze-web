@@ -23,6 +23,7 @@ export class ProductsComponent implements OnInit {
   eaters: ExtendedEater[] = []
   MAIN_URL = MAIN_URL
   EVENTS = EVENTS
+  loading = false
 
   constructor(private productService: ProductsService,
               private route: ActivatedRoute,
@@ -39,6 +40,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getData(id: string) {
+    this.loading = true
     this.productService.getOne(id)
       .subscribe({
         next: (data) => {
@@ -49,6 +51,7 @@ export class ProductsComponent implements OnInit {
           this.buyerId = data.buyer.id
           this.eaters = data.eaters
           this.getMembers(data.eventId)
+          this.loading = false
         },
         error: (error) => {
           this.toastr.error(MSG_ERROR)

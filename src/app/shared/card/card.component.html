@@ -1,5 +1,5 @@
 <div class="row w-100">
-  <div class="card">
+  <div class="card" *ngIf="!loading">
     <div class="card-header" *ngIf="title.length > 0">
 
       <h3 class="card-title" [ngClass]="{'title': isTitle}">
@@ -19,5 +19,8 @@
     <div class="card-footer" *ngIf="!isTitle">
       <ng-content select="[footer]"></ng-content>
     </div>
+  </div>
+  <div class="card" *ngIf="loading">
+    <fa-icon [icon]="spinner" size="2x" [pulse]="true" class="card-spinner"></fa-icon>
   </div>
 </div>

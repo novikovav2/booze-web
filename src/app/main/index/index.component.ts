@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {faCirclePlus} from "@fortawesome/free-solid-svg-icons";
+import {faCirclePlus, faSpinner} from "@fortawesome/free-solid-svg-icons";
 import {EventsService} from "../../services/events.service";
 import {EVENT_STATUS, Event} from "../../models/event";
 import {MSG_ERROR, NEW} from "../../services/consts";
@@ -15,6 +15,8 @@ export class IndexComponent implements OnInit{
   showFlag: EVENT_STATUS = 'active'
   events: Event[] = []
   NEW = NEW
+  loading = false
+  spinner = faSpinner
 
   constructor(private eventService: EventsService,
               private toastr: ToastrService) {}
@@ -24,10 +26,12 @@ export class IndexComponent implements OnInit{
   }
 
   getData() {
+    this.loading = true
     this.eventService.getAll(this.showFlag)
       .subscribe({
         next: (data) => {
           this.events = data
+          this.loading = false
         },
         error: (error) => {
           this.toastr.error(MSG_ERROR)

@@ -15,6 +15,7 @@ export class ResultsComponent implements OnInit {
   result: Result = RESULT_DEFAULT
   MAIN_URL = MAIN_URL
   EVENTS = EVENTS
+  loading = false
 
   constructor(private eventService: EventsService,
               private route: ActivatedRoute,
@@ -23,10 +24,12 @@ export class ResultsComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id') || ''
     if (this.id) {
+      this.loading = true
       this.eventService.getResult(this.id)
         .subscribe({
           next: (data) => {
             this.result = data
+            this.loading = false
           },
           error: (error) => {
             this.toastr.error(MSG_ERROR)

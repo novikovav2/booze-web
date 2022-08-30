@@ -3,7 +3,7 @@
           [returnLink]="[MAIN_URL, EVENTS, id]"
 ></app-card>
 
-<app-card>
+<app-card [loading]="loading">
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-control">
       <label class="form-label" for="name">Придумай название</label>

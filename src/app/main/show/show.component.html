@@ -1,6 +1,7 @@
 <app-card [title]="event.title"
           [returnLink]="[MAIN_URL, EVENTS]"
-          [isTitle]="true">
+          [isTitle]="true"
+          [loading]="loadingEvent">
   <div actions class="title-rightblock">
     <a [routerLink]="[MAIN_URL, EVENTS, EDIT, event.id]" class="title-link">
       Изменить
@@ -15,7 +16,7 @@
 
 <div class="row">
   <div class="w-50">
-    <app-card title="Информация">
+    <app-card title="Информация" [loading]="loadingEvent">
       <div class="event-reason">
         <p class="event-fieldname">Повод:</p>
         <p class="event-fieldvalue">{{ event.reason }}</p>
@@ -44,7 +45,7 @@
     </app-card>
   </div>
   <div class="w-50">
-    <app-card title="Участники">
+    <app-card title="Участники" [loading]="loadingMembers">
       <div class="members">
         <p class="add-bot-subheader" *ngIf="members.length === 0">
           Пока участников нет
