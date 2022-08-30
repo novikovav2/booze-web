@@ -28,7 +28,6 @@ export class IndexComponent implements OnInit{
       .subscribe({
         next: (data) => {
           this.events = data
-          console.log(data)
         },
         error: (error) => {
           this.toastr.error(MSG_ERROR)

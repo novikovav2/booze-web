@@ -1,11 +1,12 @@
 import {Component, OnInit} from "@angular/core";
-import {Product, PRODUCT_DEFAULT} from "../../models/product";
+import {NewProduct, Product, PRODUCT_DEFAULT} from "../../models/product";
 import {ProductsService} from "../../services/products.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EventsService} from "../../services/events.service";
 import {MAIN_URL, EVENTS, MSG_ERROR, MSG_PRODUCTS_UPDATED, MSG_PRODUCT_DELETED} from "../../services/consts";
 import {ToastrService} from "ngx-toastr";
 import {Member} from "../../models/member";
+import {ExtendedEater} from "../../models/eater";
 
 @Component({
   selector: 'app-products',
@@ -19,7 +20,7 @@ export class ProductsComponent implements OnInit {
   total: number = 0
   buyerId: string = 'bbb'
   members: Member[] = []
-  eaters: any[] = []
+  eaters: ExtendedEater[] = []
   MAIN_URL = MAIN_URL
   EVENTS = EVENTS
 
@@ -46,6 +47,7 @@ export class ProductsComponent implements OnInit {
           this.price = data.price
           this.total = data.total
           this.buyerId = data.buyer.id
+          this.eaters = data.eaters
           this.getMembers(data.eventId)
         },
         error: (error) => {
@@ -73,7 +75,8 @@ export class ProductsComponent implements OnInit {
   }
 
   onSave() {
-    const product: any = {
+    const product: NewProduct = {
+      eventId: this.product.eventId,
       title: this.title,
       price: this.price,
       total: this.total,
@@ -84,7 +87,7 @@ export class ProductsComponent implements OnInit {
       .subscribe({
         next: () => {
           this.toastr.success(MSG_PRODUCTS_UPDATED)
-          this.router.navigate(['events', this.product.eventId])
+          this.router.navigate([MAIN_URL, EVENTS, this.product.eventId])
         },
         error: (error) => {
           this.toastr.error(MSG_ERROR)
@@ -98,7 +101,7 @@ export class ProductsComponent implements OnInit {
       .subscribe({
         next: () => {
           this.toastr.success(MSG_PRODUCT_DELETED)
-          this.router.navigate(['events', this.product.eventId])
+          this.router.navigate([MAIN_URL, EVENTS, this.product.eventId])
         },
         error: (error) => {
           this.toastr.error(MSG_ERROR)

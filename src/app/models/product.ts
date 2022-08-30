@@ -1,5 +1,4 @@
 import {User} from "./user";
-import {Member} from "./member";
 
 export interface Eater {
   user: User,
@@ -36,5 +35,5 @@ export interface NewProduct {
   price: number,
   total: number,
   buyerId: string,
-  eaters: Member[]
+  eaters: Eater[]
 }

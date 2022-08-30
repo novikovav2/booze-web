@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {NewProduct, Product} from "../../../models/product";
+import {Eater, NewProduct, Product} from "../../../models/product";
 import {ProductsService} from "../../../services/products.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
@@ -59,13 +59,21 @@ export class ShowProductsComponent implements OnInit {
 
   submitForm(event: any) {
     event.preventDefault()
+    let eaters: Eater[] = []
+    this.members.forEach((member) => {
+      const eater: Eater = {
+        user: member.user,
+        count: 0
+      }
+      eaters.push(eater)
+    })
     const product: NewProduct = {
       eventId: this.eventId,
       title: this.form.controls['name'].value || '',
       price: this.form.controls['price'].value || 0,
       total: this.form.controls['total'].value || 0,
       buyerId: this.form.controls['buyer'].value || '',
-      eaters: this.members
+      eaters
     }
     this.productService.add(product)
       .subscribe({

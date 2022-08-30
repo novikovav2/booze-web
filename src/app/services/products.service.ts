@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {NewProduct, Product, PRODUCT_DEFAULT} from "../models/product";
-import {of} from "rxjs";
 import {environment} from "../../environments/environment";
 import {EVENTS_URL, PRODUCTS_URL} from "./consts";
 import {HttpClient} from "@angular/common/http";
@@ -26,7 +25,7 @@ export class ProductsService {
   }
 
   update(id: string, product: any) {
-    return of (this.product)
+    return this.http.put(this.url + PRODUCTS_URL + '/' + id, product)
   }
 
   add(product: NewProduct) {

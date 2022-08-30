@@ -6,14 +6,14 @@
     <div class="eaters-list_body">
       <div class="eaters-list_item" *ngFor="let item of eaters"
            [ngClass]="{'eaters-selected': item.selected}">
-        <p (click)="onClick(item.id, 'eaters')"> {{ item.username }} </p>
+        <p (click)="onClick(item.user.id, 'eaters')"> {{ item.user.username }} </p>
 
         <p *ngIf="numerable">
           {{ item.count }} шт.
           (
-            <a href="#" (click)="plusOne($event, item.id)" *ngIf="item.count < total">+1</a>
+            <a href="#" (click)="plusOne($event, item.user.id)" *ngIf="item.count < total">+1</a>
             /
-            <a href="#" (click)="minusOne($event, item.id)" *ngIf="item.count > 0">-1</a>
+            <a href="#" (click)="minusOne($event, item.user.id)" *ngIf="item.count > 0">-1</a>
           )
         </p>
       </div>
@@ -43,8 +43,8 @@
     <div class="eaters-list_body">
       <div class="eaters-list_item" *ngFor="let item of nonEaters"
            [ngClass]="{'eaters-selected': item.selected}"
-           (click)="onClick(item.id, 'nonEaters')">
-        {{ item.username }}
+           (click)="onClick(item.user.id, 'nonEaters')">
+        {{ item.user.username }}
       </div>
     </div>
   </div>
