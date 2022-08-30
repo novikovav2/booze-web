@@ -3,6 +3,7 @@ import {AuthService} from "../../services/auth.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {MSG_ERROR, MSG_PASSWORD_UPDATED, MSG_UPDATED} from "../../services/consts";
+import {NewProfile} from "../../models/profile";
 
 @Component({
   selector: 'app-profile',
@@ -43,7 +44,8 @@ export class ProfileComponent implements OnInit {
   onSubmitForm() {
     const username = this.form.controls['username'].value
     if (username) {
-      this.authService.updateProfile(username)
+      const newProfile: NewProfile = { username }
+      this.authService.updateProfile(newProfile)
         .subscribe({
           next: () => {
             this.toastr.success(MSG_UPDATED)
