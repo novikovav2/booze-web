@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {of} from "rxjs";
-import {Auth} from "../models/auth";
+import {Auth, Token} from "../models/auth";
 import {NewProfile, Profile} from "../models/profile";
 import {environment} from "../../environments/environment";
-import {AUTH_URL, PROFILE_URL, REGISTRATION_URL} from "./consts";
+import {AUTH_URL, LOGIN_URL, PROFILE_URL, REGISTRATION_URL} from "./consts";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable()
@@ -18,8 +18,7 @@ export class AuthService {
   constructor(private http: HttpClient) {  }
 
   login(user: Auth) {
-    const token = 'AAAaaaBBBbbb1234567890'
-    return of(token)
+    return this.http.post<Token>(this.url + LOGIN_URL, user)
   }
 
   registration(newUser: Auth) {

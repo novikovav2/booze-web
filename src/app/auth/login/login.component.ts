@@ -45,7 +45,7 @@ export class LoginComponent {
         .subscribe({
           next: (data) => {
             this.toastr.success(MSG_LOGIN_SUCCESS)
-            localStorage.setItem(AUTH_TOKEN, data)
+            localStorage.setItem(AUTH_TOKEN, data.token)
             this.router.navigate([MAIN_URL])
           },
           error: (error) => {

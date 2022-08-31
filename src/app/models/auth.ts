@@ -3,3 +3,8 @@ export interface Auth {
   password: string
 }
 
+export interface Token {
+  token: string,
+  created_at: string,
+  ttl: number // Время жизни в секундах
+}
