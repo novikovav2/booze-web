@@ -6,7 +6,6 @@ import {
   PROFILE,
   AUTH_URL,
   LOGIN,
-  MSG_ERROR,
   MSG_LOGOUT_SUCCESS,
   AUTH_TOKEN
 } from "../../services/consts";
@@ -29,21 +28,19 @@ export class HeaderComponent {
 
   constructor(private authService: AuthService,
               private toastr: ToastrService,
-              private router: Router) { }
+              private router: Router) {
+    console.log(authService.isAuthenticate())
+  }
 
   onExit() {
+    this.router.navigate([AUTH_URL, LOGIN])
+    this.toastr.success(MSG_LOGOUT_SUCCESS)
     this.authService.logout()
       .subscribe({
-        next: () => {
-          this.toastr.success(MSG_LOGOUT_SUCCESS)
-          localStorage.removeItem(AUTH_TOKEN)
-          this.router.navigate([AUTH_URL, LOGIN])
-        },
+        next: () => {localStorage.removeItem(AUTH_TOKEN)},
         error: (error) => {
-          this.toastr.error(MSG_ERROR)
-          localStorage.removeItem(AUTH_TOKEN)
-          this.router.navigate([AUTH_URL, LOGIN])
           console.log(error)
+          localStorage.removeItem(AUTH_TOKEN)
         }
       })
   }
