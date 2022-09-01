@@ -21,6 +21,10 @@ export class AuthService {
     return this.http.post<Token>(this.url + LOGIN_URL, user)
   }
 
+  logout() {
+    return this.http.delete(this.url + LOGIN_URL)
+  }
+
   registration(newUser: Auth) {
     return this.http.post(this.url + REGISTRATION_URL, newUser)
   }

@@ -17,7 +17,8 @@ import {EventNewComponent} from "./new/event-new.component";
 import {EventEditComponent} from "./edit/event-edit.component";
 import {ResultsComponent} from "./results/results.component";
 import {ProfileComponent} from "./profile/profile.component";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthInterceptor} from "../services/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,12 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   providers: [
     EventsService,
-    ProductsService
+    ProductsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ]
 })
 export class MainModule {
