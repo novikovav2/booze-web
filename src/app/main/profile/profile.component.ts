@@ -11,7 +11,7 @@ import {NewProfile} from "../../models/profile";
   styleUrls: ['../main.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
+  loading = false
   form = new FormGroup({
     id: new FormControl(''),
     username: new FormControl('')
@@ -28,11 +28,13 @@ export class ProfileComponent implements OnInit {
               private toastr: ToastrService) {  }
 
   ngOnInit() {
+    this.loading = true
     this.authService.getProfile()
       .subscribe({
         next: (data) => {
           this.form.controls['id'].setValue(data.id)
           this.form.controls['username'].setValue(data.username)
+          this.loading = false
         },
         error: (error) => {
           this.toastr.error(MSG_ERROR)
@@ -42,6 +44,7 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmitForm() {
+    this.loading = true
     const username = this.form.controls['username'].value
     if (username) {
       const newProfile: NewProfile = { username }
@@ -49,6 +52,7 @@ export class ProfileComponent implements OnInit {
         .subscribe({
           next: () => {
             this.toastr.success(MSG_UPDATED)
+            this.loading = false
           },
           error: (error) => {
             this.toastr.error(MSG_ERROR)

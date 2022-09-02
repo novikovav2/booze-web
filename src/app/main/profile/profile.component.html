@@ -1,6 +1,6 @@
 <app-card title="Профиль" [isTitle]="true"></app-card>
 
-<app-card>
+<app-card [loading]="loading">
   <form [formGroup]="form" (ngSubmit)="onSubmitForm()">
     <div class="form-control">
       <label for="username" class="form-label">Ваше имя:</label>

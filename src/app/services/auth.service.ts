@@ -6,6 +6,7 @@ import {environment} from "../../environments/environment";
 import {AUTH_TOKEN, AUTH_URL, LOGIN_URL, PROFILE_URL, REGISTRATION_URL} from "./consts";
 import {HttpClient} from "@angular/common/http";
 import { DateTime } from "luxon";
+import {User} from "../models/user";
 
 @Injectable()
 export class AuthService {
@@ -35,8 +36,7 @@ export class AuthService {
   }
 
   getProfile() {
-    // return this.http.get(this.url + PROFILE_URL)
-    return of(this.profile)
+    return this.http.get<User>(this.url + PROFILE_URL)
   }
 
   updateProfile(profile: NewProfile) {
