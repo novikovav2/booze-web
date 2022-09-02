@@ -3,7 +3,7 @@ import {AuthService} from "../../services/auth.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {MSG_ERROR, MSG_PASSWORD_UPDATED, MSG_UPDATED} from "../../services/consts";
-import {NewProfile} from "../../models/profile";
+import {NewPassword, NewProfile} from "../../models/profile";
 
 @Component({
   selector: 'app-profile',
@@ -64,12 +64,15 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmitPassword() {
+    this.loading = true
     const password = this.formPassword.controls['password'].value
     const password_confirm = this.formPassword.controls['password_confirmation'].value
     if (password && password === password_confirm) {
-      this.authService.updatePassword(password)
+      const newPassword: NewPassword = { password }
+      this.authService.updatePassword(newPassword)
         .subscribe({
           next: () => {
+            this.loading = false
             this.toastr.success(MSG_PASSWORD_UPDATED)
           },
           error: (error) => {
