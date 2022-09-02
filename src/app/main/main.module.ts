@@ -19,6 +19,10 @@ import {ResultsComponent} from "./results/results.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "../services/auth.interceptor";
+import {MainRoutingModule} from "./main-routing.module";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatInputModule} from "@angular/material/input";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -54,7 +58,11 @@ import {AuthInterceptor} from "../services/auth.interceptor";
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MainRoutingModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   providers: [
     EventsService,

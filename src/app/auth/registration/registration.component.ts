@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {AUTH_URL, LOGIN, MSG_ERROR, MSG_REGISTRATION_SUCCESS, ROOT_URL} from "../../services/consts";
-import {faUsersGear} from "@fortawesome/free-solid-svg-icons";
+import {faSpinner, faUsersGear} from "@fortawesome/free-solid-svg-icons";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Auth} from "../../models/auth";
 import {AuthService} from "../../services/auth.service";
@@ -18,6 +18,8 @@ export class RegistrationComponent {
   AUTH_URL = AUTH_URL
   LOGIN = LOGIN
   passwordsEqual = true
+  spinner = faSpinner
+  showSpinner = false
 
   form = new FormGroup({
     email: new FormControl('',
@@ -33,6 +35,7 @@ export class RegistrationComponent {
               private toastr: ToastrService) {  }
 
   onSubmit() {
+    this.showSpinner = true
     const email = this.form.controls['email'].value
     const password = this.form.controls['password'].value
     if (email && password) {
@@ -46,6 +49,7 @@ export class RegistrationComponent {
           error: (error) => {
             this.toastr.error(MSG_ERROR)
             console.log(error)
+            this.showSpinner = false
           }
         })
     }

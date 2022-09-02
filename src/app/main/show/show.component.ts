@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {EventsService} from "../../services/events.service";
-import {Member} from "../../models/member";
+import {Member, NewMember} from "../../models/member";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, Validators} from "@angular/forms";
 import {
@@ -16,6 +16,7 @@ import {
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
 import {ToastrService} from "ngx-toastr";
 import {Event, EVENT_DEFAULT} from "../../models/event"
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-event-show',
@@ -34,11 +35,19 @@ export class ShowComponent implements OnInit {
   iconTrash = faTrash
   loadingEvent = false
   loadingMembers = false
+  loggedIn = false
+  returnLinks: string[] = []
+  eventTitle = ''
 
   constructor(private eventService: EventsService,
               private route: ActivatedRoute,
               private router: Router,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private authService: AuthService) {
+    this.loggedIn = !!this.authService.getToken()
+    if (this.loggedIn) {
+      this.returnLinks = [MAIN_URL, EVENTS]
+    }
   }
 
   ngOnInit() {
@@ -56,6 +65,8 @@ export class ShowComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.event = data
+          this.eventTitle = this.event.status === 'archive' ?
+                              `${this.event.title} (архив)` : this.event.title
           this.loadingEvent = false
         },
         error: (error) => {
@@ -132,7 +143,27 @@ export class ShowComponent implements OnInit {
   }
 
   parseDate(str: string) {
-    return new Date(+str * 1000)
+    return new Date(str)
+  }
+
+  join(e: any) {
+    e.preventDefault()
+    this.loadingMembers = true
+    const newMember: NewMember = {
+      eventId: this.event.id
+    }
+    this.eventService.join(newMember)
+      .subscribe({
+        next: () => {
+          this.toastr.success(MSG_MEMBER_ADDED)
+          this.getMembersData()
+        },
+        error: (error) => {
+          console.log(error)
+          this.toastr.error(MSG_ERROR)
+          this.loadingMembers = false
+        }
+      })
   }
 
 }

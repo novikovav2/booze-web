@@ -8,6 +8,7 @@ import {LoginComponent} from "./login/login.component";
 import {AuthService} from "../services/auth.service";
 import {RegistrationComponent} from "./registration/registration.component";
 import {NewPasswordComponent} from "./new-password/new-password.component";
+import {AuthRoutingModule} from "./auth-routing.module";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {NewPasswordComponent} from "./new-password/new-password.component";
     CommonModule,
     RouterModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthRoutingModule
   ],
   providers: [
     AuthService

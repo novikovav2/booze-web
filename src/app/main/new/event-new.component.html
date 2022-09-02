@@ -11,7 +11,10 @@
 
     <div class="form-control">
       <label class="form-label" for="evented_at">Когда пьем:</label>
-      <input type="date" class="form-input" id="evented_at" formControlName="eventedAt">
+      <input matInput [matDatepicker]="datepicker" class="form-input form-input_date"
+             placeholder="Выберите дату" formControlName="eventedAt" id="evented_at">
+      <mat-datepicker-toggle matSuffix [for]="datepicker" class="form-input_picker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
     </div>
 
     <div class="form-control">

@@ -164,6 +164,15 @@
       border-color: var(--gray8);
     }
 
+    &_picker {
+      color: var(--brandColor);
+      position: relative;
+      left: -45px;
+    }
+
+    &_date {
+      flex-basis: 200px;
+    }
   }
 
   &-checkbox {

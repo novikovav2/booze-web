@@ -1,6 +1,9 @@
 <header class="header">
   <p class="header-title">
-    <a [routerLink]="[MAIN_URL, EVENTS]" class="header-title">
+    <a [routerLink]="[MAIN_URL, EVENTS]" class="header-title" *ngIf="loggedIn">
+      <fa-icon [icon]="icon" class="icon"></fa-icon>Разделялка
+    </a>
+    <a [routerLink]="[ROOT_URL]" class="header-title" *ngIf="!loggedIn">
       <fa-icon [icon]="icon" class="icon"></fa-icon>Разделялка
     </a>
   </p>

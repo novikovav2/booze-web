@@ -67,4 +67,8 @@ export class EventsService {
   startWithoutRegistration() {
     return this.http.get<Event>(this.url + '/generate')
   }
+
+  join(user: NewMember) {
+    return this.http.put(this.urlMembers, user)
+  }
 }

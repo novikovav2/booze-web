@@ -7,7 +7,7 @@ import {
   AUTH_URL,
   LOGIN,
   MSG_LOGOUT_SUCCESS,
-  AUTH_TOKEN
+  AUTH_TOKEN, ROOT_URL
 } from "../../services/consts";
 import {AuthService} from "../../services/auth.service";
 import {ToastrService} from "ngx-toastr";
@@ -25,6 +25,7 @@ export class HeaderComponent {
   PROFILE = PROFILE
   AUTH_URL = AUTH_URL
   LOGIN = LOGIN
+  ROOT_URL = ROOT_URL
   loggedIn = false
 
   constructor(private authService: AuthService,

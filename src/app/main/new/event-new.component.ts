@@ -5,6 +5,7 @@ import {EventsService} from "../../services/events.service";
 import {EventNew} from "../../models/event";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {DateAdapter} from "@angular/material/core";
 
 @Component({
   selector: 'app-event-new',
@@ -24,7 +25,10 @@ export  class EventNewComponent {
 
   constructor(private eventService: EventsService,
               private router: Router,
-              private toastr: ToastrService) {  }
+              private toastr: ToastrService,
+              private _adapter: DateAdapter<any>) {
+    this._adapter.setLocale('ru')
+  }
 
   onSubmit() {
     const title = this.form.controls['title'].value

@@ -12,8 +12,12 @@
       <p class="text-normal">
         Выберите как хотите продолжить:
       </p>
-      <a href="#" class="button bg-orange" (click)="withoutRegistration($event)">
+      <a href="#" class="button bg-orange" (click)="withoutRegistration($event)"
+            *ngIf="!showSpinner">
         Без регистрации
+      </a>
+      <a href="#" class="button bg-orange" *ngIf="showSpinner">
+        <fa-icon [icon]="spinner" [pulse]="true"></fa-icon>
       </a>
       <p class="text-help">
         Быстрый старт

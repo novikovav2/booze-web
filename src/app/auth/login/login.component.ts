@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {faUsersGear} from "@fortawesome/free-solid-svg-icons";
+import {faSpinner, faUsersGear} from "@fortawesome/free-solid-svg-icons";
 import {
   AUTH_TOKEN,
   AUTH_URL,
@@ -26,6 +26,8 @@ export class LoginComponent {
   AUTH_URL = AUTH_URL
   REGISTRATION = REGISTRATION
   NEW_PASSWORD = NEW_PASSWORD
+  spinner = faSpinner
+  showSpinner = false
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -37,6 +39,7 @@ export class LoginComponent {
               private toastr: ToastrService) {  }
 
   onSubmit() {
+    this.showSpinner = true
     const email = this.form.controls['email'].value
     const password = this.form.controls['password'].value
     if (email && password) {
@@ -51,6 +54,7 @@ export class LoginComponent {
           error: (error) => {
             this.toastr.error(MSG_ERROR)
             console.log(error)
+            this.showSpinner = false
           }
         })
     }
