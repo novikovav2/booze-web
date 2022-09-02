@@ -26,11 +26,16 @@ import {ResultsComponent} from "./main/results/results.component";
 import {ProfileComponent} from "./main/profile/profile.component";
 import {StaticComponent} from "./static/static.component";
 import {WelcomeComponent} from "./static/welcome/welcome.component";
+import {AuthGuard} from "./services/auth.guard";
 
 const routes: Routes = [
-  {path: MAIN, component: MainComponent, children: [
+  {path: MAIN,
+    component: MainComponent,
+    children: [
       { path: '', redirectTo: EVENTS, pathMatch: "full" },
-      { path: EVENTS, component: IndexComponent },
+      { path: EVENTS,
+        component: IndexComponent,
+        canActivate: [AuthGuard]},
       { path: EVENTS + NEW_URL, component: EventNewComponent },
       { path: EVENTS + EDIT_URL + '/:id', component: EventEditComponent },
       { path: EVENTS + RESULTS_URL + '/:id', component: ResultsComponent },

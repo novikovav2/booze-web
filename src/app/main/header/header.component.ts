@@ -25,11 +25,12 @@ export class HeaderComponent {
   PROFILE = PROFILE
   AUTH_URL = AUTH_URL
   LOGIN = LOGIN
+  loggedIn = false
 
   constructor(private authService: AuthService,
               private toastr: ToastrService,
               private router: Router) {
-    console.log(authService.isAuthenticate())
+    this.loggedIn = !!this.authService.getToken()
   }
 
   onExit() {

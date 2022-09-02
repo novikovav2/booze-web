@@ -6,13 +6,13 @@
   </p>
 
   <nav class="header-menu">
-    <a class="header-text" [routerLink]="[MAIN_URL, PROFILE]">
+    <a class="header-text" [routerLink]="[MAIN_URL, PROFILE]" *ngIf="loggedIn">
       Профиль
     </a>
-    <a class="header-text" (click)="onExit()">
+    <a class="header-text" (click)="onExit()" *ngIf="loggedIn">
       Выход
     </a>
-    <a class="header-text" [routerLink]="[AUTH_URL, LOGIN]">
+    <a class="header-text" [routerLink]="[AUTH_URL, LOGIN]" *ngIf="!loggedIn">
       Войти
     </a>
   </nav>

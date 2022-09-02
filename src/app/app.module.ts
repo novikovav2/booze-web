@@ -11,6 +11,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {registerLocaleData} from "@angular/common";
 import ru from "@angular/common/locales/ru"
+import {AuthGuard} from "./services/auth.guard";
 
 
 registerLocaleData(ru)
@@ -29,7 +30,9 @@ registerLocaleData(ru)
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

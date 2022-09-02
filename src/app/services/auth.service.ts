@@ -47,17 +47,8 @@ export class AuthService {
     return of(this.profile)
   }
 
-  getToken(): string {
-    let token = ''
-    const tokenObject = localStorage.getItem(AUTH_TOKEN)
-    if (tokenObject) {
-      token = JSON.parse(tokenObject).token
-    }
-    return token
-  }
-
-  isAuthenticate() {
-    let result = false
+  getToken() {
+    let result = ''
     const now = DateTime.now()
     const tokenObject = localStorage.getItem(AUTH_TOKEN)
     if (tokenObject) {
@@ -65,7 +56,9 @@ export class AuthService {
       const expireAt = DateTime.fromISO(token.created_at)
                                 .plus({second: token.ttl})
       if (expireAt > now) {
-        result = true
+        result = token.token
+      } else {
+        localStorage.removeItem(AUTH_TOKEN)
       }
     }
     return result

@@ -8,22 +8,23 @@ import {
 } from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {AUTH_TOKEN} from "./consts";
 import {tap} from "rxjs/operators";
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let token = ''
-    const tokenStr = localStorage.getItem(AUTH_TOKEN)
-    if (tokenStr) {
-      token = JSON.parse(tokenStr).token
-    }
-    const authReq = req.clone({
-      headers: req.headers.set('Authorization', `Bearer ${token}`)
-    })
+  constructor(private authService: AuthService) {  }
 
-    return next.handle(authReq).pipe(
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    let newReq= req.clone()
+    const token = this.authService.getToken()
+    if (token) {
+      newReq = req.clone({
+        headers: req.headers.set('Authorization', `Bearer ${token}`)
+      })
+    }
+
+    return next.handle(newReq).pipe(
       tap(
         (event) => {
           if (event instanceof HttpResponse) {
