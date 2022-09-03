@@ -6,6 +6,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EVENTS, MAIN_URL, MSG_ERROR, MSG_EVENT_EDITED} from "../../services/consts";
 import {ToastrService} from "ngx-toastr";
 import {DateAdapter} from "@angular/material/core";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-event-edit',
@@ -18,6 +19,7 @@ export class EventEditComponent implements OnInit {
   MAIN_URL = MAIN_URL
   EVENTS = EVENTS
   loading = false
+  loggedIn = false
 
   form = new FormGroup({
     title: new FormControl('', [Validators.required]),
@@ -31,11 +33,13 @@ export class EventEditComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private toastr: ToastrService,
-              private _adapter: DateAdapter<any>) {
+              private _adapter: DateAdapter<any>,
+              private authService: AuthService) {
     this._adapter.setLocale('ru')
   }
 
   ngOnInit() {
+    this.loggedIn = !!this.authService.getToken()
     this.id = this.route.snapshot.paramMap.get('id') || ''
     if (this.id) {
       this.loading = true

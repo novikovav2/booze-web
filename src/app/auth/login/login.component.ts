@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {faSpinner, faUsersGear} from "@fortawesome/free-solid-svg-icons";
 import {
   AUTH_TOKEN,
-  AUTH_URL,
+  AUTH_URL, EVENTS,
   MAIN_URL, MSG_ERROR,
   MSG_LOGIN_SUCCESS,
   NEW_PASSWORD,
@@ -47,9 +47,9 @@ export class LoginComponent {
       this.authService.login(user)
         .subscribe({
           next: (data) => {
-            this.toastr.success(MSG_LOGIN_SUCCESS)
             localStorage.setItem(AUTH_TOKEN, JSON.stringify(data))
-            this.router.navigate([MAIN_URL])
+            this.router.navigate([MAIN_URL, EVENTS])
+            this.toastr.success(MSG_LOGIN_SUCCESS)
           },
           error: (error) => {
             this.toastr.error(MSG_ERROR)

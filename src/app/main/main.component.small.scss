@@ -42,4 +42,18 @@
     }
   }
 
+  .form {
+    &-control {
+      flex-wrap: wrap;
+    }
+
+    &-label {
+      flex-basis: auto;
+    }
+
+    &-value {
+      margin-left: 0;
+    }
+  }
+
 }

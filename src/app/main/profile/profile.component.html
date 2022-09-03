@@ -4,7 +4,15 @@
   <form [formGroup]="form" (ngSubmit)="onSubmitForm()">
     <div class="form-control">
       <label for="username" class="form-label">Ваше имя:</label>
-      <input type="text" autofocus class="form-input" formControlName="username" id="username">
+      <div class="form-value">
+        <input type="text" class="form-input" formControlName="username" id="username">
+        <div class="form-warning" *ngIf="form.controls['username'].invalid
+                                  && form.controls['username'].touched">
+          <p class="form-warning_text">
+            Имя не может быть пустым
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="form-buttons">
@@ -17,12 +25,30 @@
   <form [formGroup]="formPassword" class="form" (ngSubmit)="onSubmitPassword()">
     <div class="form-control">
       <label for="password" class="form-label">Новый пароль:</label>
-      <input type="password" class="form-input" formControlName="password" id="password">
+      <div class="form-value">
+        <input type="password" class="form-input" formControlName="password" id="password">
+        <div class="form-warning" *ngIf="formPassword.controls['password'].invalid
+                                  && formPassword.controls['password'].touched">
+          <p class="form-warning_text">
+            Пароль должен быть не короче 6 символов
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="form-control">
       <label for="password_confirmation" class="form-label">Повторите пароль:</label>
-      <input type="password" class="form-input" formControlName="password_confirmation" id="password_confirmation">
+      <div class="form-value">
+        <input type="password" class="form-input" formControlName="password_confirmation" id="password_confirmation">
+        <div class="form-warning" *ngIf="formPassword.controls['password_confirmation'].touched
+                                    && formPassword.controls['password'].value !==
+                                      formPassword.controls['password_confirmation'].value">
+          <p class="form-warning_text">
+            Пароли не совпадают
+          </p>
+        </div>
+      </div>
+
     </div>
 
     <div class="form-buttons">

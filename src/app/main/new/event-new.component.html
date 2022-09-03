@@ -6,25 +6,39 @@
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-control">
       <label class="form-label" for="name">Придумай название</label>
-      <input type="text" autofocus class="form-input" id="name" formControlName="title">
+      <div class="form-value">
+        <input type="text" autofocus class="form-input" id="name" formControlName="title">
+        <div class="form-warning" *ngIf="form.controls['title'].invalid
+                                  && form.controls['title'].touched">
+          <p class="form-warning_text">
+            Название не может быть пустым
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="form-control">
       <label class="form-label" for="evented_at">Когда пьем:</label>
-      <input matInput [matDatepicker]="datepicker" class="form-input form-input_date"
-             placeholder="Выберите дату" formControlName="eventedAt" id="evented_at">
-      <mat-datepicker-toggle matSuffix [for]="datepicker" class="form-input_picker"></mat-datepicker-toggle>
-      <mat-datepicker #datepicker></mat-datepicker>
+      <div class="form-value form-value_date">
+        <input matInput [matDatepicker]="datepicker" class="form-input form-input_date"
+               placeholder="Выберите дату" formControlName="eventedAt" id="evented_at">
+        <mat-datepicker-toggle matSuffix [for]="datepicker" class="form-input_picker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker></mat-datepicker>
+      </div>
     </div>
 
     <div class="form-control">
       <label class="form-label" for="reason">Какой повод:</label>
-      <input type="text" class="form-input" id="reason" formControlName="reason">
+      <div class="form-value">
+        <input type="text" class="form-input" id="reason" formControlName="reason">
+      </div>
     </div>
 
     <div class="form-control">
       <label class="form-label" for="isPublic">Публичное мероприятие:</label>
-      <input type="checkbox" formControlName="isPublic" class="form-checkbox" id="isPublic">
+      <div class="form-value form-value_date">
+        <input type="checkbox" formControlName="isPublic" class="form-checkbox" id="isPublic">
+      </div>
     </div>
 
     <div class="form-buttons">
