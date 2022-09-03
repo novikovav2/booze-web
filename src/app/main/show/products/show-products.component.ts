@@ -37,12 +37,12 @@ export class ShowProductsComponent implements OnInit {
 
   ngOnInit() {
     if (this.eventId) {
+      this.loading = true
       this.getData()
     }
   }
 
   getData() {
-    this.loading = true
     this.productService.getProducts(this.eventId)
       .subscribe({
         next: (data) => {
@@ -62,6 +62,7 @@ export class ShowProductsComponent implements OnInit {
 
   submitForm(event: any) {
     event.preventDefault()
+    this.loading = true
     let eaters: Eater[] = []
     this.members.forEach((member) => {
       const eater: Eater = {
@@ -94,6 +95,7 @@ export class ShowProductsComponent implements OnInit {
 
   onDelete(event: any, id: string) {
     event.preventDefault()
+    this.loading = true
     this.productService.delete(id)
       .subscribe({
         next: () => {

@@ -1,0 +1,22 @@
+<div class="container">
+  <a [routerLink]="ROOT_URL" class="title">
+    <fa-icon [icon]="icon"></fa-icon>
+    Разделялка
+  </a>
+  <app-card>
+    <div class="card-container">
+      <div class="error-code">
+        404
+      </div>
+      <h1 class="error-message">
+        Такая страница не существует
+      </h1>
+      <p class="text">
+        Пожалуйста, проверьте, что адрес указан правильно и попробуйте еще раз
+      </p>
+      <a [routerLink]="[ROOT_URL]" class="button">
+        На главную
+      </a>
+    </div>
+  </app-card>
+</div>

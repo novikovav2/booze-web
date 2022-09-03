@@ -12,6 +12,8 @@ import {ToastrModule} from "ngx-toastr";
 import {registerLocaleData} from "@angular/common";
 import ru from "@angular/common/locales/ru"
 import {AuthGuard} from "./services/auth.guard";
+import {NotFoundComponent} from "./static/404/404.component";
+import {SharedModule} from "./shared/shared.module";
 
 
 registerLocaleData(ru)
@@ -19,6 +21,7 @@ registerLocaleData(ru)
 @NgModule({
   declarations: [
     AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ registerLocaleData(ru)
     AuthModule,
     StaticModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    SharedModule
   ],
   providers: [
     AuthGuard

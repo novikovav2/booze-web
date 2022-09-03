@@ -13,6 +13,7 @@ export const EDIT = 'edit'
 export const RESULTS = 'results'
 export const PROFILE = 'profile'
 export const WELCOME = 'welcome'
+export const NOT_FOUND = '**'
 
 export const ROOT_URL = '/' + ROOT
 export const AUTH_URL = '/' + AUTH

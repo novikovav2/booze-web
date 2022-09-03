@@ -1,0 +1,63 @@
+.container {
+  min-height: 100vh;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  text-decoration: none;
+  font-size: 64px;
+  margin-bottom: 24px;
+  color: var(--brandColor);
+}
+
+.error-code {
+  font-size: 200px;
+  font-weight: bold;
+  color: var(--gray3);
+  line-height: 180px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.error-message {
+  color: var(--gray9);
+  font-size: 32px;
+  margin-top: 24px;
+  //border-bottom: 1px solid var(--gray9);
+  padding-bottom: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: normal;
+  color: var(--gray8);
+  text-align: center;
+  margin-top: 12px;
+}
+
+.button {
+  text-decoration: none;
+  background-color: var(--gray5);
+  padding: 8px 12px;
+  color: white;
+  font-size: 20px;
+  margin-top: 40px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: var(--gray7);
+  }
+}
