@@ -26,13 +26,24 @@
       <div class="form-control">
         <label for="password" class="form-label">Пароль</label>
         <input type="password" class="form-input" id="password" formControlName="password">
+        <div class="form-warning" *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+          <p class="form-warning_text">
+            Пароль должен быть не короче 6 символов
+          </p>
+        </div>
       </div>
 
       <div class="form-control">
         <label for="password_confirmation" class="form-label">Повторите пароль</label>
         <input type="password" class="form-input" id="password_confirmation" formControlName="password_confirmation">
+        <div class="form-warning" *ngIf="form.controls['password_confirmation'].touched && form.controls['password'].value !==
+                                      form.controls['password_confirmation'].value">
+          <p class="form-warning_text">
+            Пароли не совпадают
+          </p>
+        </div>
       </div>
-      <p class="form-error" *ngIf="!passwordsEqual">
+      <p class="form-error" >
         Пароли не совпадают
       </p>
 

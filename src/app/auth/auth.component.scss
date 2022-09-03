@@ -132,7 +132,6 @@
     &__error {
       border: 1px solid red;
     }
-
   }
 
   &-button {
@@ -181,6 +180,17 @@
     color: red;
     margin-top: 30px;
     text-align: center;
+  }
+
+  &-warning {
+    color: var(--orange);
+    text-align: left;
+    margin-top: 4px;
+    min-height: 20px;
+
+    &_text {
+      font-size: 14px;
+    }
   }
 }
 
