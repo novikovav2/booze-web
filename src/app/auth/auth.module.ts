@@ -28,7 +28,7 @@ import {AuthRoutingModule} from "./auth-routing.module";
     RouterModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    AuthRoutingModule
+    AuthRoutingModule,
   ],
   providers: [
     AuthService

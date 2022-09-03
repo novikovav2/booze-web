@@ -6,8 +6,23 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/d9425ebea5.js" crossorigin="anonymous"></script>
 </head>
 <body class="body">
+  <div class="spinner" id="spinner">
+    <div class="fa-3x">
+      <i class="fa-solid fa-cog fa-spin"></i>
+    </div>
+  </div>
+
   <app-root></app-root>
 </body>
 </html>
+
+<script>
+  "use strict";
+  const spinner = document.getElementById("spinner")
+  window.addEventListener('load', () => {
+    spinner.style.display = 'none'
+  })
+</script>

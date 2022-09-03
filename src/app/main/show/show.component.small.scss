@@ -1,0 +1,12 @@
+@media screen and (max-width: 597px) {
+  .delete-link {
+    margin-left: 10px;
+  }
+
+  .add-bot {
+    &-submit {
+      padding: 6px 12px;
+      margin-top: 6px;
+    }
+  }
+}

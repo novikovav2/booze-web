@@ -23,6 +23,8 @@ import {MainRoutingModule} from "./main-routing.module";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
+import {AuthModule} from "../auth/auth.module";
+import {AuthGuard} from "../services/auth.guard";
 
 @NgModule({
   declarations: [
@@ -56,13 +58,14 @@ import {MatNativeDateModule} from "@angular/material/core";
     RouterModule,
     FontAwesomeModule,
     SharedModule,
+    AuthModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     MainRoutingModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [
     EventsService,
@@ -71,7 +74,8 @@ import {MatNativeDateModule} from "@angular/material/core";
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    AuthGuard
   ]
 })
 export class MainModule {

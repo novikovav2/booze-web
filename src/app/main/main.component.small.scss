@@ -1,0 +1,45 @@
+@media screen and (max-width: 597px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .button {
+    font-size: 32px;
+    padding: 0;
+  }
+
+  .title {
+    font-size: 18px;
+    margin-bottom: 8px;
+
+    &-container {
+      margin-top: 12px;
+    }
+
+    &-rightblock {
+      justify-content: end;
+    }
+
+  }
+
+  .footer {
+    max-width: 340px;
+  }
+
+  .w-50 {
+    &:first-child {
+      padding-right: 0;
+    }
+
+    &:last-child {
+      padding-left: 0;
+    }
+  }
+
+  .table {
+    &-container {
+      overflow-x: auto;
+    }
+  }
+
+}

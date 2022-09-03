@@ -97,6 +97,7 @@
     font-size: 14px;
     line-height: 16px;
     text-align: center;
+    margin-top: 24px;
   }
 }
 
@@ -109,6 +110,7 @@
 
   &-rightblock {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
   }
 
@@ -231,3 +233,6 @@
     justify-content: center;
   }
 }
+
+@import "main.component.medium";
+@import "main.component.small";

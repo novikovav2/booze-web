@@ -5,7 +5,6 @@ import {NewPassword, NewProfile, Profile} from "../models/profile";
 import {environment} from "../../environments/environment";
 import {AUTH_TOKEN, AUTH_URL, LOGIN_URL, PROFILE_URL, REGISTRATION_URL} from "./consts";
 import {HttpClient} from "@angular/common/http";
-import { DateTime } from "luxon";
 import {User} from "../models/user";
 
 @Injectable()
@@ -49,13 +48,14 @@ export class AuthService {
 
   getToken() {
     let result = ''
-    const now = DateTime.now()
+    const now = new Date()
     const tokenObject = localStorage.getItem(AUTH_TOKEN)
     if (tokenObject) {
       const token = JSON.parse(tokenObject)
-      const expireAt = DateTime.fromISO(token.created_at)
-                                .plus({second: token.ttl})
-      if (expireAt > now) {
+      let tokenExp = new Date(token.created_at)
+      tokenExp.setSeconds(tokenExp.getSeconds() + token.ttl)
+
+      if (tokenExp > now) {
         result = token.token
       } else {
         localStorage.removeItem(AUTH_TOKEN)

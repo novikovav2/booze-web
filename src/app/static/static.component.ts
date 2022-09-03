@@ -11,7 +11,8 @@ import {ROOT_URL, WELCOME_URL} from "../services/consts";
 @Component({
   selector: 'app-static',
   templateUrl: './static.component.html',
-  styleUrls: ['./static.component.scss']
+  styleUrls: ['./static.component.scss', './static.component.medium.scss',
+    './static.component.small.scss']
 })
 export class StaticComponent {
   iconLogo = faUsersGear

@@ -93,6 +93,10 @@
     margin-top: 10px;
     text-align: center;
   }
+
+  &-error {
+    color: var(--orange);
+  }
 }
 
 .button {

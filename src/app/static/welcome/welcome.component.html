@@ -19,6 +19,9 @@
       <a href="#" class="button bg-orange" *ngIf="showSpinner">
         <fa-icon [icon]="spinner" [pulse]="true"></fa-icon>
       </a>
+      <p class="text-help text-error" *ngIf="error">
+        Ууупс, что то пошло не так. Попробуйте позже
+      </p>
       <p class="text-help">
         Быстрый старт
       </p>

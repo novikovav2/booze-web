@@ -1,0 +1,23 @@
+@media screen and (max-width: 597px) {
+  .products {
+    &-form {
+      &-input {
+        padding: 8px 12px;
+        margin-top: 6px;
+      }
+    }
+
+    &-table {
+      &_container {
+        overflow-x: auto;
+      }
+    }
+  }
+
+  .add-form {
+    &-submit {
+      padding: 6px 12px;
+      margin-top: 6px;
+    }
+  }
+}

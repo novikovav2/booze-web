@@ -1,0 +1,31 @@
+@media screen and (max-width: 1007px) {
+  .container {
+    max-width: 766px;
+  }
+
+  .button {
+    font-size: 32px;
+    padding: 8px 20px;
+  }
+
+  .title {
+    font-size: 20px;
+    line-height: 28px;
+
+    &-link {
+      font-size: 14px;
+    }
+  }
+
+  .delete-link {
+
+  }
+
+  .table {
+    font-size: 13px;
+  }
+
+  .footer {
+    max-width: 766px;
+  }
+}
