@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {faUsersGear} from "@fortawesome/free-solid-svg-icons";
+import {faBars, faUsersGear, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {
   MAIN_URL,
   EVENTS,
@@ -27,6 +27,8 @@ export class HeaderComponent {
   LOGIN = LOGIN
   ROOT_URL = ROOT_URL
   loggedIn = false
+  iconPhoneMenu = faBars
+  iconCloseMenu = faXmark
 
   constructor(private authService: AuthService,
               private toastr: ToastrService,
@@ -45,5 +47,19 @@ export class HeaderComponent {
           localStorage.removeItem(AUTH_TOKEN)
         }
       })
+  }
+
+  showPhoneMenu() {
+    const menu = document.getElementById('header-menu')
+    if (menu) {
+      menu.style.display = 'flex'
+    }
+  }
+
+  closePhoneMenu() {
+    const menu = document.getElementById('header-menu')
+    if (menu) {
+      menu.style.display = 'none'
+    }
   }
 }

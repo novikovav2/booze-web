@@ -8,7 +8,13 @@
     </a>
   </p>
 
-  <nav class="header-menu">
+  <fa-icon [icon]="iconPhoneMenu" class="header-menu-show" size="2x"
+           (click)="showPhoneMenu()"></fa-icon>
+
+  <nav class="header-menu" id="header-menu">
+    <fa-icon [icon]="iconCloseMenu" size="2x"
+             (click)="closePhoneMenu()" class="header-menu-close">
+    </fa-icon>
     <a class="header-text" [routerLink]="[MAIN_URL, PROFILE]" *ngIf="loggedIn">
       Профиль
     </a>

@@ -38,7 +38,7 @@ import {AuthGuard} from "../services/auth.guard";
     EventNewComponent,
     EventEditComponent,
     ResultsComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   exports: [
     MainComponent,
@@ -51,7 +51,7 @@ import {AuthGuard} from "../services/auth.guard";
     EventNewComponent,
     EventEditComponent,
     ResultsComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

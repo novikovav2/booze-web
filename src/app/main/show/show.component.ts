@@ -34,10 +34,11 @@ export class ShowComponent implements OnInit {
   RESULTS = RESULTS
   iconTrash = faTrash
   loadingEvent = false
-  loadingMembers = false
+  loadingMembers = true
   loggedIn = false
   returnLinks: string[] = []
   eventTitle = ''
+  unauthorized = false
 
   constructor(private eventService: EventsService,
               private route: ActivatedRoute,
@@ -54,7 +55,6 @@ export class ShowComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id') || ''
     if (this.id) {
       this.getEventData()
-      this.getMembersData()
     }
 
   }
@@ -64,6 +64,7 @@ export class ShowComponent implements OnInit {
     this.eventService.getOne(this.id)
       .subscribe({
         next: (data) => {
+          this.getMembersData()
           this.event = data
           this.eventTitle = this.event.status === 'archive' ?
                               `${this.event.title} (архив)` : this.event.title
@@ -72,6 +73,9 @@ export class ShowComponent implements OnInit {
         error: (error) => {
           this.toastr.error(MSG_ERROR)
           console.log(error)
+          if (error.status === 401) {
+            this.unauthorized = true
+          }
         }
       })
   }

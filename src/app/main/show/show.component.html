@@ -1,7 +1,11 @@
+<app-card title="Вы не являетесь участником этого закрытого мероприятия"
+          [isTitle]="true" *ngIf="unauthorized">
+</app-card>
+
 <app-card [title]="eventTitle"
           [returnLink]="returnLinks"
           [isTitle]="true"
-          [loading]="loadingEvent">
+          [loading]="loadingEvent" *ngIf="!unauthorized">
   <div actions class="title-rightblock">
     <a [routerLink]="[MAIN_URL, EVENTS, EDIT, event.id]" class="title-link">
       Изменить
@@ -14,7 +18,7 @@
   </div>
 </app-card>
 
-<div class="row">
+<div class="row" *ngIf="!unauthorized">
   <div class="w-50">
     <app-card title="Информация" [loading]="loadingEvent">
       <div class="event-reason">
@@ -27,7 +31,7 @@
           {{ parseDate(event.evented_at) | date: 'fullDate' : '' : 'ru-RU'}}
         </p>
       </div>
-      <div class="event-reason">
+      <div class="event-reason" *ngIf="false">
         <p class="event-fieldname">
           Тип:
         </p>
@@ -46,7 +50,8 @@
   </div>
   <div class="w-50">
     <app-card title="Участники" [loading]="loadingMembers">
-      <a href="#" actions class="join-link" (click)="join($event)" *ngIf="loggedIn">
+      <a href="#" actions class="join-link" (click)="join($event)"
+         *ngIf="loggedIn && event.isPublic">
         Присоединиться
       </a>
       <div class="members">
@@ -79,5 +84,6 @@
   </div>
 </div>
 
-<app-show-products [eventId]="id" [members]="members"></app-show-products>
+<app-show-products [eventId]="id" [members]="members" *ngIf="!unauthorized">
+</app-show-products>
 
