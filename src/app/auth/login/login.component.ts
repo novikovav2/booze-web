@@ -5,8 +5,7 @@ import {
   AUTH_URL, EVENTS,
   MAIN_URL, MSG_ERROR,
   MSG_LOGIN_SUCCESS,
-  NEW_PASSWORD,
-  REGISTRATION,
+  REGISTRATION, RESET_PASSWORD,
   ROOT_URL
 } from "../../services/consts";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -25,7 +24,7 @@ export class LoginComponent {
   ROOT_URL = ROOT_URL;
   AUTH_URL = AUTH_URL
   REGISTRATION = REGISTRATION
-  NEW_PASSWORD = NEW_PASSWORD
+  RESET_PASSWORD = RESET_PASSWORD
   spinner = faSpinner
   showSpinner = false
 

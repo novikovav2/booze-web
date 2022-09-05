@@ -10,6 +10,7 @@ import {RegistrationComponent} from "./registration/registration.component";
 import {NewPasswordComponent} from "./new-password/new-password.component";
 import {AuthRoutingModule} from "./auth-routing.module";
 import {ConfirmationComponent} from "./confirmation/confirmation.component";
+import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 
 @NgModule({
   declarations: [
@@ -17,14 +18,16 @@ import {ConfirmationComponent} from "./confirmation/confirmation.component";
     LoginComponent,
     RegistrationComponent,
     NewPasswordComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    ResetPasswordComponent
   ],
   exports: [
     AuthComponent,
     LoginComponent,
     RegistrationComponent,
     NewPasswordComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
