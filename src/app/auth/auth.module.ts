@@ -9,19 +9,22 @@ import {AuthService} from "../services/auth.service";
 import {RegistrationComponent} from "./registration/registration.component";
 import {NewPasswordComponent} from "./new-password/new-password.component";
 import {AuthRoutingModule} from "./auth-routing.module";
+import {ConfirmationComponent} from "./confirmation/confirmation.component";
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
     RegistrationComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    ConfirmationComponent
   ],
   exports: [
     AuthComponent,
     LoginComponent,
     RegistrationComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    ConfirmationComponent
   ],
   imports: [
     CommonModule,

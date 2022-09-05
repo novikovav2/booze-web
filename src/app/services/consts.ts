@@ -13,6 +13,7 @@ export const EDIT = 'edit'
 export const RESULTS = 'results'
 export const PROFILE = 'profile'
 export const WELCOME = 'welcome'
+export const CONFIRMATION = 'confirm'
 export const NOT_FOUND = '**'
 
 export const ROOT_URL = '/' + ROOT
@@ -29,9 +30,9 @@ export const RESULTS_URL = '/' + RESULTS
 export const PROFILE_URL = '/' + PROFILE
 export const WELCOME_URL = '/' + WELCOME
 export const MEMBERS_URL = '/members'
+export const CONFIRMATION_URL = '/' + CONFIRMATION
 
 export const MSG_ERROR = 'Ууупс... '
-export const MSG_EVENT_GENERATED = 'Событие создано. Вперед!'
 export const MSG_LOGIN_SUCCESS = 'Вход успешно выполнен'
 export const MSG_REGISTRATION_SUCCESS = 'Регистрация успешна'
 export const MSG_EVENT_EDITED = 'Данные успешно обновлены'
@@ -46,3 +47,5 @@ export const MSG_EVENT_DELETED = 'Событие удалено'
 export const MSG_PRODUCT_ADDED = 'Продукт успешно добавлен'
 export const MSG_LOGOUT_SUCCESS = 'Вы вышли из системы'
 export const MSG_NOT_AUTHORIZED = 'Надо войти в систему для доступа к странице'
+export const MSG_CONFIRM_SUCCESS = 'Регистрация подтверждена'
+export const MSG_CONFIRM_FAILED = 'Подверждение регистрации не удалось'

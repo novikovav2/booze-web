@@ -1,0 +1,24 @@
+<div class="auth-container">
+  <div class="auth-left">
+    <h1 class="auth-logo">
+      <a [routerLink]="[ROOT_URL]" class="auth-logo">
+        <fa-icon [icon]="iconLogo"></fa-icon> Разделялка
+      </a>
+    </h1>
+    <p class="auth-subheader">
+      Управляй общими тратами на праздниках, корпоративах,
+      пьянках и в путешествиях
+    </p>
+
+    <h2 class="auth-header">Подтверждение регистрации</h2>
+    <p class="auth-text">Уже подтвердили? Войдите</p>
+    <a [routerLink]="[AUTH_URL, LOGIN]" class="auth-link">
+      Вход
+    </a>
+  </div>
+  <div class="auth-right">
+    <div *ngIf="loading">
+      <fa-icon [icon]="spinner" [pulse]="true" size="2x" ></fa-icon>
+    </div>
+  </div>
+</div>

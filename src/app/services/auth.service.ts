@@ -1,20 +1,15 @@
 import {Injectable} from "@angular/core";
 import {of} from "rxjs";
-import {Auth, Token} from "../models/auth";
-import {NewPassword, NewProfile, Profile} from "../models/profile";
+import {Auth, ConfirmationData, Token} from "../models/auth";
+import {NewPassword, NewProfile} from "../models/profile";
 import {environment} from "../../environments/environment";
-import {AUTH_TOKEN, AUTH_URL, LOGIN_URL, PROFILE_URL, REGISTRATION_URL} from "./consts";
+import {AUTH_TOKEN, AUTH_URL, CONFIRMATION_URL, LOGIN_URL, PROFILE_URL, REGISTRATION_URL} from "./consts";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user";
 
 @Injectable()
 export class AuthService {
   url = environment.apiUrl + AUTH_URL
-
-  profile: Profile = {
-    id: 'aaa',
-    username: 'Иванов Иван'
-  }
 
   constructor(private http: HttpClient) {  }
 
@@ -44,6 +39,10 @@ export class AuthService {
 
   updatePassword(password: NewPassword) {
     return this.http.post(this.url + PROFILE_URL, password)
+  }
+
+  confirmation(data: ConfirmationData) {
+    return this.http.post(this.url + CONFIRMATION_URL, data)
   }
 
   getToken() {
