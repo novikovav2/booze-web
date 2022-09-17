@@ -22,8 +22,8 @@
           </button>
         </div>
 
-        <input type="checkbox" id="countable" name="countable" (change)="toggleHidden()" formControlName="showHidden"/>
-        <label for="countable" class="products-form_text" >Требует поштучного учета</label>
+<!--        <input type="checkbox" id="countable" name="countable" (change)="toggleHidden()" formControlName="showHidden"/>-->
+<!--        <label for="countable" class="products-form_text" >Требует поштучного учета</label>-->
 
         <div class="add-form-hidden" *ngIf="showHidden">
           <input type="number" min="0" max="10000" placeholder="Количество*" formControlName="total"
@@ -48,7 +48,7 @@
           <tr>
             <td>Продукт</td>
             <td>Цена</td>
-            <td>К-во</td>
+<!--            <td>К-во</td>-->
             <td>Купил</td>
             <td>Употребляло</td>
             <td></td>
@@ -62,14 +62,14 @@
                 </a>
               </td>
               <td>{{ product.price }}</td>
-              <td>
-                {{ product.total }}
-              </td>
+<!--              <td>-->
+<!--                {{ product.total ? product.total : '-' }}-->
+<!--              </td>-->
               <td>
                 {{ product.buyer.username }}
               </td>
               <td class="tooltip">
-                {{ product.eaters.length }}
+                {{ product.eatersCount }}
               </td>
               <td>
                 <a href="#" (click)="onDelete($event, product.id)" class="link" >

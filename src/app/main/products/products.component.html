@@ -57,7 +57,7 @@
     </div>
   </div>
 
-  <app-products-eaters [eaters]="product.eaters"
+  <app-products-eaters [eaters]="product.eaters || []"
                         [members]="members"
                        [numerable]="total > 0"
                        [total]="total"

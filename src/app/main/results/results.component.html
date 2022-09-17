@@ -19,7 +19,7 @@
         <tr *ngFor="let item of result.donors">
           <td>{{ item.user.username }}</td>
           <td *ngFor="let payment of item.payments">
-            {{ payment.value }} руб.
+            {{ payment.value  | number : '1.2-2' }} руб.
           </td>
         </tr>
       </tbody>

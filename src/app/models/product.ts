@@ -12,18 +12,19 @@ export interface Product {
   price: number,
   total: number,
   buyer: User,
-  eaters: Eater[]
+  eaters?: Eater[],
+  eatersCount?: number
 }
 
 export const PRODUCT_DEFAULT: Product = {
-  id: 'aaa',
-  eventId: 'aaa',
-  title: 'Пиво',
-  price: 78,
+  id: '',
+  eventId: '',
+  title: '',
+  price: 0,
   total: 0,
   buyer: {
-    id: 'aaa',
-    username: 'aaa',
+    id: '',
+    username: '',
     type: 'bot'
   },
   eaters: []

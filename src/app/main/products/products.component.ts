@@ -49,7 +49,7 @@ export class ProductsComponent implements OnInit {
           this.price = data.price
           this.total = data.total
           this.buyerId = data.buyer.id
-          this.eaters = data.eaters
+          this.eaters = data.eaters || []
           this.getMembers(data.eventId)
           this.loading = false
         },
