@@ -25,7 +25,9 @@ export class ShowProductsComponent implements OnInit {
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    price: new FormControl(0, [Validators.required]),
+    price: new FormControl(0, [Validators.required,
+                                                  Validators.min(0),
+                                                  Validators.max(1000000)]),
     buyer: new FormControl('', [Validators.required]),
     showHidden: new FormControl(false),
     total: new FormControl(0)
