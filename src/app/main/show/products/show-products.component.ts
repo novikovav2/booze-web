@@ -22,6 +22,8 @@ export class ShowProductsComponent implements OnInit {
   PRODUCTS = PRODUCTS
   sum: number = 0
   loading = false
+  popUpShowFlag = false
+  popUpId = ''
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -109,6 +111,12 @@ export class ShowProductsComponent implements OnInit {
           console.log(error)
         }
       })
+  }
+
+  showPopup(event: any, id: string) {
+    event.preventDefault()
+    this.popUpId = id
+    this.popUpShowFlag = true
   }
 
 }

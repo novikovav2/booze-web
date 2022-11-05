@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
-import {NewProduct, Product, PRODUCT_DEFAULT} from "../models/product";
+import {Eater, NewProduct, Product, PRODUCT_DEFAULT} from "../models/product";
 import {environment} from "../../environments/environment";
 import {EVENTS_URL, PRODUCTS_URL} from "./consts";
 import {HttpClient} from "@angular/common/http";
+import {of} from "rxjs";
 
 @Injectable()
 export class ProductsService {
@@ -30,5 +31,16 @@ export class ProductsService {
 
   add(product: NewProduct) {
     return this.http.post(this.url + PRODUCTS_URL, product)
+  }
+
+  getEaters(productId: string) {
+    const eater: Eater = {
+      user: {
+        id: 'aaa',
+        username: 'Username'
+      },
+      count: 0
+    }
+    return of([eater])
   }
 }

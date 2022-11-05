@@ -58,14 +58,14 @@
         <p class="add-bot-subheader" *ngIf="members.length === 0">
           Пока участников нет
         </p>
-        <ul>
+        <ol>
           <li class="members-item" *ngFor="let member of members">
             {{ member.user.username }}
             <a (click)="deleteMember(member.id)" class="remove-link">
               <fa-icon [icon]="iconTrash"></fa-icon>
             </a>
           </li>
-        </ul>
+        </ol>
       </div>
 
       <form footer class="add-bot">

@@ -46,6 +46,7 @@
         <table class="table">
           <thead>
           <tr>
+            <td>№</td>
             <td>Продукт</td>
             <td>Цена</td>
 <!--            <td>К-во</td>-->
@@ -55,8 +56,9 @@
           </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let product of products">
-              <td>
+            <tr *ngFor="let product of products; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td class="text-left">
                 <a [routerLink]="[MAIN_URL, PRODUCTS, product.id]" class="link">
                   {{ product.title }}
                 </a>
@@ -69,7 +71,9 @@
                 {{ product.buyer.username }}
               </td>
               <td class="tooltip">
-                {{ product.eatersCount }}
+                <a href="#" (click)="showPopup($event, product.id)">
+                  {{ product.eatersCount }}
+                </a>
               </td>
               <td>
                 <a href="#" (click)="onDelete($event, product.id)" class="link" >
@@ -87,3 +91,6 @@
     </app-card>
   </div>
 </div>
+
+<app-products-popup [show]="popUpShowFlag" [productId]="popUpId" >
+</app-products-popup>

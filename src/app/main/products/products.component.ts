@@ -24,6 +24,7 @@ export class ProductsComponent implements OnInit {
   MAIN_URL = MAIN_URL
   EVENTS = EVENTS
   loading = false
+  saveTxt = 'Сохранить'
 
   constructor(private productService: ProductsService,
               private route: ActivatedRoute,
@@ -78,6 +79,7 @@ export class ProductsComponent implements OnInit {
   }
 
   onSave() {
+    this.saveTxt = 'Сохраняется...'
     const product: NewProduct = {
       eventId: this.product.eventId,
       title: this.title,
@@ -95,6 +97,7 @@ export class ProductsComponent implements OnInit {
         error: (error) => {
           this.toastr.error(MSG_ERROR)
           console.log(error)
+          this.saveTxt = 'Сохранить'
         }
       })
   }
