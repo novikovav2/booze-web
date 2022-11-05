@@ -97,20 +97,22 @@ export class ShowProductsComponent implements OnInit {
       })
   }
 
-  onDelete(event: any, id: string) {
+  onDelete(event: any, product: Product) {
     event.preventDefault()
-    this.loading = true
-    this.productService.delete(id)
-      .subscribe({
-        next: () => {
-          this.toastr.success(MSG_PRODUCT_DELETED)
-          this.getData()
-        },
-        error: (error) => {
-          this.toastr.error(MSG_ERROR)
-          console.log(error)
-        }
-      })
+    if (confirm("Точно удаляем продукт " + product.title + "?")) {
+      this.loading = true
+      this.productService.delete(product.id)
+        .subscribe({
+          next: () => {
+            this.toastr.success(MSG_PRODUCT_DELETED)
+            this.getData()
+          },
+          error: (error) => {
+            this.toastr.error(MSG_ERROR)
+            console.log(error)
+          }
+        })
+    }
   }
 
   showPopup(event: any, id: string) {

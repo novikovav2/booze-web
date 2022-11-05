@@ -58,7 +58,7 @@
           <tbody>
             <tr *ngFor="let product of products; let i = index">
               <td>{{ i + 1 }}</td>
-              <td class="text-left">
+              <td>
                 <a [routerLink]="[MAIN_URL, PRODUCTS, product.id]" class="link">
                   {{ product.title }}
                 </a>
@@ -76,7 +76,7 @@
                 </a>
               </td>
               <td>
-                <a href="#" (click)="onDelete($event, product.id)" class="link" >
+                <a href="#" (click)="onDelete($event, product)" class="link" >
                   <fa-icon [icon]="deleteIcon"></fa-icon>
                 </a>
               </td>
