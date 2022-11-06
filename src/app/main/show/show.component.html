@@ -61,7 +61,7 @@
         <ol>
           <li class="members-item" *ngFor="let member of members">
             {{ member.user.username }}
-            <a (click)="deleteMember(member.id)" class="remove-link">
+            <a (click)="deleteMember(member)" class="remove-link">
               <fa-icon [icon]="iconTrash"></fa-icon>
             </a>
           </li>

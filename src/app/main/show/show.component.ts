@@ -9,7 +9,7 @@ import {
   MAIN_URL,
   MSG_ERROR,
   MSG_EVENT_DELETED,
-  MSG_MEMBER_ADDED,
+  MSG_MEMBER_ADDED, MSG_MEMBER_DELETE_FAILED,
   MSG_MEMBER_DELETED,
   RESULTS
 } from "../../services/consts";
@@ -118,18 +118,20 @@ export class ShowComponent implements OnInit {
     }
   }
 
-  deleteMember(memberId: string) {
-    this.eventService.removeMember(memberId)
-      .subscribe({
-        next: () => {
-          this.toastr.success(MSG_MEMBER_DELETED)
-          this.getMembersData()
-        },
-        error: (error) => {
-          this.toastr.error(MSG_ERROR)
-          console.log(error)
-        }
-      })
+  deleteMember(member: Member) {
+    if (confirm("Вы уверены, что хотите удалить участника " + member.user.username + "?")) {
+      this.eventService.removeMember(member.id)
+        .subscribe({
+          next: () => {
+            this.toastr.success(MSG_MEMBER_DELETED)
+            this.getMembersData()
+          },
+          error: (error) => {
+            this.toastr.error(MSG_MEMBER_DELETE_FAILED, MSG_ERROR)
+            console.log(error)
+          }
+        })
+    }
   }
 
   onDelete() {
