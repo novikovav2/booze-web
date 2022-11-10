@@ -51,7 +51,7 @@
   <div class="w-50">
     <app-card title="Участники" [loading]="loadingMembers">
       <a href="#" actions class="join-link" (click)="join($event)"
-         *ngIf="loggedIn && event.isPublic">
+         *ngIf="event.status === 'active' && loggedIn && event.isPublic">
         Присоединиться
       </a>
       <div class="members">
@@ -61,14 +61,15 @@
         <ol>
           <li class="members-item" *ngFor="let member of members">
             {{ member.user.username }}
-            <a (click)="deleteMember(member)" class="remove-link">
+            <a (click)="deleteMember(member)" class="remove-link"
+               *ngIf="event.status === 'active'">
               <fa-icon [icon]="iconTrash"></fa-icon>
             </a>
           </li>
         </ol>
       </div>
 
-      <form footer class="add-bot">
+      <form footer class="add-bot" *ngIf="event.status === 'active'">
         <div class="add-bot-header">
           Добавьте участника-бота
         </div>
@@ -84,6 +85,7 @@
   </div>
 </div>
 
-<app-show-products [eventId]="id" [members]="members" *ngIf="!unauthorized">
+<app-show-products [eventId]="id" [members]="members"
+                   *ngIf="!unauthorized" [readonly]="event.status === 'archive'">
 </app-show-products>
 

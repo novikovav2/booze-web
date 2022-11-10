@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="eaters-buttons">
+  <div class="eaters-buttons" *ngIf="!readonly">
     <a class="eaters-button" (click)="allToRight()" >
       <fa-icon [icon]="iconRightAll"></fa-icon>
     </a>

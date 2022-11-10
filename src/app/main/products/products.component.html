@@ -3,14 +3,15 @@
           [isTitle]="true"></app-card>
 
 <app-card title=" " [loading]="loading">
-    <a header class="product-submit" (click)="onSave()">
+    <a header class="product-submit" (click)="onSave()" *ngIf="!readonly">
       {{ saveTxt }}
     </a>
   <a header class="product-submit product-cancel" (click)="onCancel()">
     Отмена
   </a>
 
-  <a actions class="product-submit product-delete" (click)="onDelete()">
+  <a actions class="product-submit product-delete"
+     (click)="onDelete()" *ngIf="!readonly">
     Удалить
   </a>
 
@@ -20,7 +21,8 @@
         Название:
       </p>
       <div class="product-value">
-        <input type="text" class="product-input" required [(ngModel)]="title">
+        <input type="text" class="product-input" required
+               [(ngModel)]="title" [disabled]="readonly">
       </div>
     </div>
 
@@ -29,7 +31,8 @@
         Цена:
       </p>
       <div class="product-value">
-        <input type="number" class="product-input" [(ngModel)]="price">
+        <input type="number" class="product-input"
+               [(ngModel)]="price" [disabled]="readonly">
       </div>
     </div>
 
@@ -38,7 +41,8 @@
         Количество:
       </p>
       <div class="product-value">
-        <input type="number" class="product-input" [(ngModel)]="total">
+        <input type="number" class="product-input"
+               [(ngModel)]="total" [disabled]="readonly">
       </div>
     </div>
 
@@ -47,7 +51,7 @@
         Покупатель:
       </p>
       <div class="product-value">
-        <select class="product-input" [(ngModel)]="buyerId">
+        <select class="product-input" [(ngModel)]="buyerId" [disabled]="readonly">
           <option value="" disabled>Покупатель</option>
           <option *ngFor="let member of members" [value]="member.user.id">
             {{ member.user.username }}
@@ -61,6 +65,8 @@
                         [members]="members"
                        [numerable]="total > 0"
                        [total]="total"
-                       (eatersChange)="onChange($event)">
+                       (eatersChange)="onChange($event)"
+                       [readonly]="readonly"
+  >
   </app-products-eaters>
 </app-card>

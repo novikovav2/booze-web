@@ -25,6 +25,7 @@ export class ProductsComponent implements OnInit {
   EVENTS = EVENTS
   loading = false
   saveTxt = 'Сохранить'
+  readonly = false
 
   constructor(private productService: ProductsService,
               private route: ActivatedRoute,
@@ -52,6 +53,7 @@ export class ProductsComponent implements OnInit {
           this.buyerId = data.buyer.id
           this.eaters = data.eaters || []
           this.getMembers(data.eventId)
+          this.getEvent(data.eventId)
           this.loading = false
         },
         error: (error) => {
@@ -70,6 +72,15 @@ export class ProductsComponent implements OnInit {
         error: (error) => {
           this.toastr.error(MSG_ERROR)
           console.log(error)
+        }
+      })
+  }
+
+  getEvent(eventId: string) {
+    this.eventService.getOne(eventId)
+      .subscribe({
+        next: (data) => {
+          this.readonly = data.status === 'archive'
         }
       })
   }

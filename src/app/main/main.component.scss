@@ -216,6 +216,10 @@
 
   &-apply {
     background: var(--brandColor);
+
+    &:hover {
+      box-shadow: 0 0 5px var(--brandColor);
+    }
   }
 
   &-cancel {

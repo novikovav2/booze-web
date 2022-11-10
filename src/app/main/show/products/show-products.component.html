@@ -2,7 +2,7 @@
   <div class="w-100">
     <app-card title="Продукты" [loading]="loading">
 
-      <form class="add-form" [formGroup]="form">
+      <form class="add-form" [formGroup]="form" *ngIf="!readonly">
         <div class="add-form-container">
           <input placeholder="Название" class="products-form-input products-form_name"
                  formControlName="name" type="text">
@@ -76,7 +76,8 @@
                 </a>
               </td>
               <td>
-                <a href="#" (click)="onDelete($event, product)" class="link" >
+                <a href="#" (click)="onDelete($event, product)" class="link"
+                    *ngIf="!readonly">
                   <fa-icon [icon]="deleteIcon"></fa-icon>
                 </a>
               </td>

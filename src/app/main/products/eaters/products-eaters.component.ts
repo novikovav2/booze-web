@@ -19,6 +19,7 @@ export class ProductsEatersComponent implements OnChanges {
   @Output() eatersChange = new EventEmitter()
   @Input() numerable: boolean = false
   @Input() total: number = 0
+  @Input() readonly: boolean = false
 
   ngOnChanges(changes: SimpleChanges) {
     this.members.forEach((member) => {

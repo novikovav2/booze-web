@@ -15,6 +15,7 @@ import {ToastrService} from "ngx-toastr";
 export class ShowProductsComponent implements OnInit {
   @Input() eventId: string = ''
   @Input() members: Member[] = []
+  @Input() readonly: boolean = false
   products: Product[] = []
   showHidden: boolean = false
   deleteIcon = faTrashCan
