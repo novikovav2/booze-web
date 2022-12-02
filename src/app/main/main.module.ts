@@ -25,7 +25,6 @@ import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
 import {AuthModule} from "../auth/auth.module";
 import {AuthGuard} from "../services/auth.guard";
-import {ProductsPopupComponent} from "./show/products/popup/products-popup.component";
 import {FooterComponent} from "./footer/footer.component";
 
 @NgModule({
@@ -41,8 +40,7 @@ import {FooterComponent} from "./footer/footer.component";
     EventEditComponent,
     ResultsComponent,
     ProfileComponent,
-    ProductsPopupComponent,
-    FooterComponent
+    FooterComponent,
   ],
   exports: [
     MainComponent,

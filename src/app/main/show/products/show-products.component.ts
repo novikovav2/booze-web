@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
 import {Eater, NewProduct, Product} from "../../../models/product";
 import {ProductsService} from "../../../services/products.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -6,6 +6,7 @@ import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
 import {MAIN_URL, MSG_ERROR, MSG_PRODUCT_ADDED, MSG_PRODUCT_DELETED, PRODUCTS} from "../../../services/consts";
 import {Member} from "../../../models/member";
 import {ToastrService} from "ngx-toastr";
+import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-show-products',
@@ -24,7 +25,12 @@ export class ShowProductsComponent implements OnInit {
   sum: number = 0
   loading = false
   popUpShowFlag = false
-  popUpId = ''
+  popupX = ''
+  popupY = ''
+  popupEaters: Eater[] = []
+  @ViewChild('popUp') popupElement: ElementRef | undefined
+  spinner = faSpinner
+  eatersLoading = true
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -118,8 +124,43 @@ export class ShowProductsComponent implements OnInit {
 
   showPopup(event: any, id: string) {
     event.preventDefault()
-    this.popUpId = id
+    this.popupX = event.pageX - 200 + 'px'
+    this.popupY = event.pageY + 'px'
+
     this.popUpShowFlag = true
+    setTimeout(() => {
+      document.addEventListener('click', this.documentClickHandler)
+    }, 500)
+
+    this.productService.getOne(id)
+      .subscribe({
+        next: (data) => {
+          this.popupEaters = data.eaters || []
+          this.eatersLoading = false
+        },
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
+      })
   }
 
+  documentClickHandler = (event: MouseEvent) => {
+    if (!this.isInside(event.target as HTMLElement)) {
+      this.closePopup()
+    }
+  }
+
+  isInside(elementToCheck: HTMLElement): boolean {
+    return (
+      elementToCheck === this.popupElement?.nativeElement
+      || this.popupElement?.nativeElement.contains(elementToCheck)
+    )
+  }
+
+  closePopup() {
+    this.popUpShowFlag = false
+    document.removeEventListener('click', this.documentClickHandler)
+    this.eatersLoading = true
+  }
 }

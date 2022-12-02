@@ -136,4 +136,19 @@
   }
 }
 
+.popup {
+  position: absolute;
+  border: 1px solid var(--gray8);
+  border-radius: 8px;
+  background-color: white;
+  padding: 12px 28px;
+  width: 200px;
+
+  &-spinner {
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+}
+
 @import "show-products.component.small";

@@ -70,10 +70,11 @@
               <td>
                 {{ product.buyer.username }}
               </td>
-              <td class="tooltip">
+              <td>
                 <a href="#" (click)="showPopup($event, product.id)">
                   {{ product.eatersCount }}
                 </a>
+
               </td>
               <td>
                 <a href="#" (click)="onDelete($event, product)" class="link"
@@ -93,5 +94,16 @@
   </div>
 </div>
 
-<app-products-popup [show]="popUpShowFlag" [productId]="popUpId" >
-</app-products-popup>
+<div *ngIf="popUpShowFlag" [style.top]="popupY" [style.left]="popupX"
+     class="popup" #popUp>
+
+  <fa-icon [icon]="spinner" [pulse]="true" class="popup-spinner"
+    *ngIf="eatersLoading"></fa-icon>
+
+  <ul *ngIf="!eatersLoading">
+    <li *ngFor="let eater of popupEaters">
+      {{ eater.user.username }}
+    </li>
+  </ul>
+</div>
+
