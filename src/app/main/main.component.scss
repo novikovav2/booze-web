@@ -199,33 +199,6 @@
     justify-content: space-between;
   }
 
-  &-button {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 21px;
-    text-align: center;
-    color: #FFFFFF;
-    padding: 8px 20px;
-    border-radius: 31px;
-
-    &:disabled {
-      background: var(--dark);
-    }
-  }
-
-  &-apply {
-    background: var(--brandColor);
-
-    &:hover {
-      box-shadow: 0 0 5px var(--brandColor);
-    }
-  }
-
-  &-cancel {
-    background: var(--dark);
-  }
-
   &-delimiter {
     border-top: 1px solid #FFFFFF;
     margin-top: 16px;
@@ -262,33 +235,6 @@
 .details {
   &-container {
     margin-top: 24px;
-  }
-
-  &-submit {
-    border: 1px solid var(--gray3);
-    background-color: var(--brandColor);
-    border-radius: 8px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 21px;
-    color: var(--white);
-    padding: 8px 16px;
-
-    &:hover {
-      background-color: var(--gray4);
-    }
-  }
-
-  &-delete {
-    background-color: var(--orange);
-    color: var(--white);
-  }
-
-  &-cancel {
-    margin-left: 12px;
-    background-color: var(--gray3);
-    color: var(--gray6);
   }
 
   &-row {
@@ -342,6 +288,62 @@
     }
   }
 }
+
+.btn {
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  padding: 8px 16px;
+  margin: 4px;
+
+  &-main {
+    border: 1px solid var(--brandColor);
+    background-color: var(--brandColor);
+    color: var(--white);
+
+    &:hover {
+      box-shadow: 0 0 5px var(--brandColor);
+    }
+  }
+
+  &-gray {
+    border: 1px solid var(--gray3);
+    background-color: var(--gray3);
+    color: var(--gray10);
+
+    &:hover {
+      background-color: var(--gray4);
+    }
+
+    &:disabled {
+      background-color: var(--gray2);
+      color: var(--gray6);
+    }
+  }
+
+  &-orange {
+    background: var(--orange);
+    border: 2px solid var(--orange);
+    color: var(--white);
+
+    &:hover {
+      box-shadow: 0 0 5px var(--orange);
+    }
+  }
+}
+
+.smallbtn {
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  padding: 6px 10px;
+}
+
+
 
 @import "main.component.medium";
 @import "main.component.small";

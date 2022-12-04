@@ -3,16 +3,16 @@
           [isTitle]="true"></app-card>
 
 <app-card title=" " [loading]="loading">
-    <a header class="details-submit" (click)="onSave()" *ngIf="!readonly">
+    <a header class="btn btn-main" (click)="onSave()" *ngIf="!readonly">
       {{ saveTxt }}
     </a>
-  <a header class="details-submit details-cancel" (click)="onCancel()">
+  <a header class="btn btn-gray" (click)="onCancel()">
     Отмена
   </a>
 
-  <a actions class="details-submit details-delete"
+  <a actions class="btn btn-orange"
      (click)="onDelete()" *ngIf="!readonly">
-    Удалить
+    Удалить продукт
   </a>
 
   <div class="details-container">

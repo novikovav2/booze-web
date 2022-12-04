@@ -21,36 +21,36 @@
 <div class="row" *ngIf="!unauthorized">
   <div class="w-50">
     <app-card title="Информация" [loading]="loadingEvent">
-      <div class="event-reason">
-        <p class="event-fieldname">Повод:</p>
-        <p class="event-fieldvalue">{{ event.reason }}</p>
+      <div class="details-row">
+        <p class="details-label">Повод:</p>
+        <p class="details-value">{{ event.reason }}</p>
       </div>
-      <div class="event-reason">
-        <p class="event-fieldname">Дата:</p>
-        <p class="event-fieldvalue" *ngIf="event.evented_at">
+      <div class="details-row">
+        <p class="details-label">Дата:</p>
+        <p class="details-value" *ngIf="event.evented_at">
           {{ parseDate(event.evented_at) | date: 'fullDate' : '' : 'ru-RU'}}
         </p>
       </div>
-      <div class="event-reason" *ngIf="false">
-        <p class="event-fieldname">
+      <div class="details-row" *ngIf="false">
+        <p class="details-label">
           Тип:
         </p>
-        <p class="event-fieldvalue" *ngIf="event.isPublic">
+        <p class="details-value" *ngIf="event.isPublic">
           Открытое мероприятие
         </p>
-        <p class="event-fieldvalue" *ngIf="!event.isPublic">
+        <p class="details-value" *ngIf="!event.isPublic">
           Закрытое мероприятие
         </p>
       </div>
 
-      <a footer [routerLink]="[MAIN_URL, EVENTS, RESULTS, id]" class="result-link">
+      <a footer [routerLink]="[MAIN_URL, EVENTS, RESULTS, id]" class="btn btn-main result-link">
         Подвести итоги
       </a>
     </app-card>
   </div>
   <div class="w-50">
     <app-card title="Участники" [loading]="loadingMembers">
-      <a href="#" actions class="join-link" (click)="join($event)"
+      <a href="#" actions class="smallbtn btn-orange" (click)="join($event)"
          *ngIf="event.status === 'active' && loggedIn && event.isPublic">
         Присоединиться
       </a>
@@ -80,7 +80,10 @@
         </p>
         <div class="add-bot-container">
           <input [formControl]="username" class="add-bot-input" placeholder="Имя бота">
-          <button (click)="addMember($event)" class="add-bot-submit">Добавить</button>
+          <button (click)="addMember($event)"
+                  class="btn btn-gray">
+            Добавить
+          </button>
         </div>
       </form>
     </app-card>
