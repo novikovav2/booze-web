@@ -14,6 +14,7 @@ export const EDIT = 'edit'
 export const RESULTS = 'results'
 export const PROFILE = 'profile'
 export const WELCOME = 'welcome'
+export const MEMBERS = 'members'
 export const CONFIRMATION = 'confirm'
 export const NOT_FOUND = '**'
 
@@ -31,7 +32,8 @@ export const EDIT_URL = '/' + EDIT
 export const RESULTS_URL = '/' + RESULTS
 export const PROFILE_URL = '/' + PROFILE
 export const WELCOME_URL = '/' + WELCOME
-export const MEMBERS_URL = '/members'
+export const MEMBERS_URL = '/' + MEMBERS
+export const JOIN_URL = '/join'
 export const CONFIRMATION_URL = '/' + CONFIRMATION
 
 export const MSG_ERROR = 'Ууупс... '
@@ -46,6 +48,7 @@ export const MSG_PASSWORD_UPDATED = 'Пароль сменен'
 export const MSG_MEMBER_ADDED = 'Участник добавлен'
 export const MSG_MEMBER_DELETED = 'Участник удален'
 export const MSG_MEMBER_DELETE_FAILED = 'Возможно участник покупал продукты'
+export const MSG_MEMBER_UPDATED = 'Участник обновлен'
 export const MSG_EVENT_DELETED = 'Событие удалено'
 export const MSG_PRODUCT_ADDED = 'Продукт успешно добавлен'
 export const MSG_LOGOUT_SUCCESS = 'Вы вышли из системы'
@@ -54,3 +57,4 @@ export const MSG_CONFIRM_SUCCESS = 'Регистрация подтвержде�
 export const MSG_CONFIRM_FAILED = 'Подверждение регистрации не удалось'
 export const MSG_PASSWORD_RESETED = 'Ссылка для сброса пароля отправлена на почту'
 export const MSG_NEW_PASSWORD_SET = 'Пароль успешно сброшен'
+

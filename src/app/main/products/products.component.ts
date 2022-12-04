@@ -7,6 +7,7 @@ import {MAIN_URL, EVENTS, MSG_ERROR, MSG_PRODUCTS_UPDATED, MSG_PRODUCT_DELETED} 
 import {ToastrService} from "ngx-toastr";
 import {Member} from "../../models/member";
 import {ExtendedEater} from "../../models/eater";
+import {MembersService} from "../../services/members.service";
 
 @Component({
   selector: 'app-products',
@@ -31,7 +32,8 @@ export class ProductsComponent implements OnInit {
               private route: ActivatedRoute,
               private eventService: EventsService,
               private router: Router,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private memberService: MembersService) {
   }
 
   ngOnInit() {
@@ -64,7 +66,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getMembers(eventId: string) {
-    this.eventService.getMembers(eventId)
+    this.memberService.getAll(eventId)
       .subscribe({
         next: (data) => {
           this.members = data

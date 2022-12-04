@@ -259,5 +259,89 @@
   }
 }
 
+.details {
+  &-container {
+    margin-top: 24px;
+  }
+
+  &-submit {
+    border: 1px solid var(--gray3);
+    background-color: var(--brandColor);
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: var(--white);
+    padding: 8px 16px;
+
+    &:hover {
+      background-color: var(--gray4);
+    }
+  }
+
+  &-delete {
+    background-color: var(--orange);
+    color: var(--white);
+  }
+
+  &-cancel {
+    margin-left: 12px;
+    background-color: var(--gray3);
+    color: var(--gray6);
+  }
+
+  &-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  &-label {
+    width: 100px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: var(--dark);
+  }
+
+  &-value {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+    margin-left: 21px;
+    display: flex;
+    width: 70%;
+
+    &_onlytext {
+      flex: 1 1;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 21px;
+      color: #000000;
+    }
+  }
+
+  &-input {
+    border: none;
+    padding: 4px 6px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+    flex: 1 0 200px;
+    border-radius: 12px;
+
+    &_error {
+      border: 2px solid #B00100;
+    }
+  }
+}
+
 @import "main.component.medium";
 @import "main.component.small";

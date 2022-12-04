@@ -1,0 +1,41 @@
+<app-card title="Информация об участнике"
+          [returnLink]="[MAIN_URL, EVENTS, member.eventId]"
+          [isTitle]="true"></app-card>
+
+<app-card title=" " [loading]="loading">
+  <a header class="details-submit" (click)="onSave()"
+     *ngIf="!readonly && member.user.type === 'bot'">
+    {{ saveTxt }}
+  </a>
+  <a header class="details-submit details-cancel" (click)="onCancel()">
+    Отмена
+  </a>
+
+  <a actions class="details-submit details-delete"
+      (click)="onDelete()" *ngIf="!readonly">
+    Исключить из участников
+  </a>
+
+  <div class="details-container">
+    <div class="details-row">
+      <p class="details-label">
+        Имя участника:
+      </p>
+      <div class="details-value">
+        <input type="text" class="details-input" required
+            [(ngModel)]="member.user.username"
+               [disabled]="readonly || member.user.type === 'man'">
+      </div>
+    </div>
+    <div class="details-row">
+      <p class="details-label">
+        Тип участника
+      </p>
+      <div class="details-value">
+        <p class="details-value_onlytext">
+          {{ member.user.type | memberTypes }}
+        </p>
+      </div>
+    </div>
+  </div>
+</app-card>

@@ -60,7 +60,9 @@
         </p>
         <ol>
           <li class="members-item" *ngFor="let member of members">
-            {{ member.user.username }}
+            <a [routerLink]="[MAIN_URL, MEMBERS, member.id]">
+              {{ member.user.username }}
+            </a>
             <a (click)="deleteMember(member)" class="remove-link"
                *ngIf="event.status === 'active'">
               <fa-icon [icon]="iconTrash"></fa-icon>

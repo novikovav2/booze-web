@@ -26,6 +26,9 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {AuthModule} from "../auth/auth.module";
 import {AuthGuard} from "../services/auth.guard";
 import {FooterComponent} from "./footer/footer.component";
+import {MembersShowComponent} from "./members/show/members-show.component";
+import {MembersService} from "../services/members.service";
+import {MemberTypesPipe} from "../services/member-types.pipe";
 
 @NgModule({
   declarations: [
@@ -41,6 +44,8 @@ import {FooterComponent} from "./footer/footer.component";
     ResultsComponent,
     ProfileComponent,
     FooterComponent,
+    MembersShowComponent,
+    MemberTypesPipe
   ],
   exports: [
     MainComponent,
@@ -72,6 +77,7 @@ import {FooterComponent} from "./footer/footer.component";
   providers: [
     EventsService,
     ProductsService,
+    MembersService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

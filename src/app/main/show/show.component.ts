@@ -6,7 +6,7 @@ import {FormControl, Validators} from "@angular/forms";
 import {
   EDIT,
   EVENTS,
-  MAIN_URL,
+  MAIN_URL, MEMBERS,
   MSG_ERROR,
   MSG_EVENT_DELETED,
   MSG_MEMBER_ADDED, MSG_MEMBER_DELETE_FAILED,
@@ -17,6 +17,7 @@ import {faTrash} from "@fortawesome/free-solid-svg-icons";
 import {ToastrService} from "ngx-toastr";
 import {Event, EVENT_DEFAULT} from "../../models/event"
 import {AuthService} from "../../services/auth.service";
+import {MembersService} from "../../services/members.service";
 
 @Component({
   selector: 'app-event-show',
@@ -32,6 +33,7 @@ export class ShowComponent implements OnInit {
   EVENTS = EVENTS
   EDIT = EDIT
   RESULTS = RESULTS
+  MEMBERS = MEMBERS
   iconTrash = faTrash
   loadingEvent = false
   loadingMembers = true
@@ -44,7 +46,8 @@ export class ShowComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private toastr: ToastrService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private memberService: MembersService) {
     this.loggedIn = !!this.authService.getToken()
     if (this.loggedIn) {
       this.returnLinks = [MAIN_URL, EVENTS]
@@ -56,7 +59,6 @@ export class ShowComponent implements OnInit {
     if (this.id) {
       this.getEventData()
     }
-
   }
 
   getEventData() {
@@ -82,7 +84,7 @@ export class ShowComponent implements OnInit {
 
   getMembersData() {
     this.loadingMembers = true
-    this.eventService.getMembers(this.id)
+    this.memberService.getAll(this.id)
       .subscribe({
         next: (data) => {
           this.members = data
@@ -103,7 +105,7 @@ export class ShowComponent implements OnInit {
         eventId: this.id,
         username
       }
-      this.eventService.addMember(bot)
+      this.memberService.add(bot)
        .subscribe({
          next: () => {
            this.toastr.success(MSG_MEMBER_ADDED)
@@ -120,7 +122,7 @@ export class ShowComponent implements OnInit {
 
   deleteMember(member: Member) {
     if (confirm("Вы уверены, что хотите удалить участника " + member.user.username + "?")) {
-      this.eventService.removeMember(member.id)
+      this.memberService.remove(member.id)
         .subscribe({
           next: () => {
             this.toastr.success(MSG_MEMBER_DELETED)
@@ -158,7 +160,7 @@ export class ShowComponent implements OnInit {
     const newMember: NewMember = {
       eventId: this.event.id
     }
-    this.eventService.join(newMember)
+    this.memberService.join(newMember)
       .subscribe({
         next: () => {
           this.toastr.success(MSG_MEMBER_ADDED)

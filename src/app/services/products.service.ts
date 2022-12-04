@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {NewProduct, Product, PRODUCT_DEFAULT} from "../models/product";
+import {NewProduct, Product} from "../models/product";
 import {environment} from "../../environments/environment";
 import {EVENTS_URL, PRODUCTS_URL} from "./consts";
 import {HttpClient} from "@angular/common/http";
@@ -7,8 +7,6 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class ProductsService {
   url = environment.apiUrl
-
-  product: Product = PRODUCT_DEFAULT
 
   constructor(private http: HttpClient) {  }
 
