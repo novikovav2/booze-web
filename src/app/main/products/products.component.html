@@ -3,55 +3,55 @@
           [isTitle]="true"></app-card>
 
 <app-card title=" " [loading]="loading">
-    <a header class="product-submit" (click)="onSave()" *ngIf="!readonly">
+    <a header class="details-submit" (click)="onSave()" *ngIf="!readonly">
       {{ saveTxt }}
     </a>
-  <a header class="product-submit product-cancel" (click)="onCancel()">
+  <a header class="details-submit details-cancel" (click)="onCancel()">
     Отмена
   </a>
 
-  <a actions class="product-submit product-delete"
+  <a actions class="details-submit details-delete"
      (click)="onDelete()" *ngIf="!readonly">
     Удалить
   </a>
 
-  <div class="product-container">
-    <div class="product-row">
-      <p class="product-label">
+  <div class="details-container">
+    <div class="details-row">
+      <p class="details-label">
         Название:
       </p>
-      <div class="product-value">
-        <input type="text" class="product-input" required
+      <div class="details-value">
+        <input type="text" class="details-input" required
                [(ngModel)]="title" [disabled]="readonly">
       </div>
     </div>
 
-    <div class="product-row">
-      <p class="product-label">
+    <div class="details-row">
+      <p class="details-label">
         Цена:
       </p>
-      <div class="product-value">
-        <input type="number" class="product-input"
+      <div class="details-value">
+        <input type="number" class="details-input"
                [(ngModel)]="price" [disabled]="readonly">
       </div>
     </div>
 
-    <div class="product-row">
-      <p class="product-label">
+    <div class="details-row">
+      <p class="details-label">
         Количество:
       </p>
-      <div class="product-value">
-        <input type="number" class="product-input"
+      <div class="details-value">
+        <input type="number" class="details-input"
                [(ngModel)]="total" [disabled]="readonly">
       </div>
     </div>
 
-    <div class="product-row">
-      <p class="product-label">
+    <div class="details-row">
+      <p class="details-label">
         Покупатель:
       </p>
-      <div class="product-value">
-        <select class="product-input" [(ngModel)]="buyerId" [disabled]="readonly">
+      <div class="details-value">
+        <select class="details-input" [(ngModel)]="buyerId" [disabled]="readonly">
           <option value="" disabled>Покупатель</option>
           <option *ngFor="let member of members" [value]="member.user.id">
             {{ member.user.username }}

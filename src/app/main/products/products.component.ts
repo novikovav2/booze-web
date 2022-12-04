@@ -12,7 +12,7 @@ import {MembersService} from "../../services/members.service";
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['../main.component.scss']
 })
 export class ProductsComponent implements OnInit {
   product: Product = PRODUCT_DEFAULT

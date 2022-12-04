@@ -56,4 +56,14 @@
     }
   }
 
+  .details {
+    &-value {
+      width: 60%;
+    }
+
+    &-submit {
+      padding: 6px 12px;
+    }
+  }
+
 }
