@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
-import {NewProduct, Product} from "../models/product";
+import {MemberProduct, NewProduct, Product} from "../models/product";
 import {environment} from "../../environments/environment";
-import {EVENTS_URL, PRODUCTS_URL} from "./consts";
+import {EVENTS_URL, MEMBERS_URL, PRODUCTS_URL} from "./consts";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable()
@@ -28,6 +28,14 @@ export class ProductsService {
 
   add(product: NewProduct) {
     return this.http.post(this.url + PRODUCTS_URL, product)
+  }
+
+  getMembersProducts(memberId: string) {
+    return this.http.get<MemberProduct[]>(this.url + PRODUCTS_URL + MEMBERS_URL + '/' + memberId)
+  }
+
+  updateMembersProducts(memberId: string, products: MemberProduct[]) {
+    return this.http.put(this.url + PRODUCTS_URL + MEMBERS_URL + '/' + memberId, products)
   }
 
 }

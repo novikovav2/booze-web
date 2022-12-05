@@ -12,11 +12,13 @@ import {
 import {Member, MEMBER_DEFAULT} from "../../../models/member";
 import {MembersService} from "../../../services/members.service";
 import {EventsService} from "../../../services/events.service";
+import {ProductsService} from "../../../services/products.service";
+import {MemberProduct} from "../../../models/product";
 
 @Component({
   selector: 'app-members-show',
   templateUrl: './members-show.component.html',
-  styleUrls: ['../../main.component.scss']
+  styleUrls: ['../../main.component.scss', './members-show.component.scss']
 })
 export class MembersShowComponent implements OnInit {
   MAIN_URL = MAIN_URL
@@ -25,12 +27,15 @@ export class MembersShowComponent implements OnInit {
   saveTxt = 'Сохранить'
   readonly = false
   loading = false
+  loadingProducts = false
+  memberProducts: MemberProduct[] = []
 
   constructor(private route: ActivatedRoute,
               private toastr: ToastrService,
               private memberService: MembersService,
               private eventService: EventsService,
-              private router: Router) {
+              private router: Router,
+              private productService: ProductsService) {
   }
 
   ngOnInit() {
@@ -48,6 +53,7 @@ export class MembersShowComponent implements OnInit {
           this.member = data
           this.getEvent(data.eventId)
           this.loading = false
+          this.getProductData(data.id)
         },
         error: (error) => {
           this.toastr.error(MSG_ERROR)
@@ -66,8 +72,41 @@ export class MembersShowComponent implements OnInit {
       })
   }
 
+  getProductData(memberId: string) {
+    this.loadingProducts = true
+    this.productService.getMembersProducts(memberId)
+      .subscribe({
+        next: (data) => {
+          this.memberProducts = data
+          this.loadingProducts = false
+        },
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+          this.loadingProducts = false
+        }
+      })
+  }
+
   onSave() {
     this.saveTxt = 'Сохраняется...'
+    this.updateProducts()
+  }
+
+  updateProducts() {
+    this.productService.updateMembersProducts(this.member.id, this.memberProducts)
+      .subscribe({
+        next: () => {
+          this.updateMember()
+        },
+        error: (error) => {
+          this.toastr.error(MSG_ERROR)
+          console.log(error)
+        }
+      })
+  }
+
+  updateMember() {
     this.memberService.update(this.member)
       .subscribe({
         next: () => {

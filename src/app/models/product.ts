@@ -38,3 +38,7 @@ export interface NewProduct {
   buyerId: string,
   eaters: Eater[]
 }
+
+export interface MemberProduct extends Product {
+  eaten: boolean
+}

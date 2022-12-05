@@ -4,7 +4,7 @@
 
 <app-card title=" " [loading]="loading">
   <a header class="btn btn-main" (click)="onSave()"
-     *ngIf="!readonly && member.user.type === 'bot'">
+     *ngIf="!readonly">
     {{ saveTxt }}
   </a>
   <a header class="btn btn-gray" (click)="onCancel()">
@@ -37,5 +37,16 @@
         </p>
       </div>
     </div>
+  </div>
+</app-card>
+
+<app-card title="Продукты, которые употреблял участник мероприятия:"
+          [loading]="loadingProducts">
+  <div class="form-control mt24" *ngFor="let item of memberProducts">
+    <input type="checkbox" class="form-checkbox" [id]="item.id"
+           [(ngModel)]="item.eaten">
+    <label class="form-label member-product" [for]="item.id">
+      {{ item.title }} ({{ item.price }} руб.)
+    </label>
   </div>
 </app-card>
