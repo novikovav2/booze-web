@@ -56,17 +56,17 @@ export class AuthService {
     return this.http.post(this.url + CONFIRMATION_URL, data)
   }
 
-  getToken() {
-    let result = ''
+  getToken(): Token | null {
+    let result: Token | null = null
     const now = new Date()
     const tokenObject = localStorage.getItem(AUTH_TOKEN)
     if (tokenObject) {
-      const token = JSON.parse(tokenObject)
+      const token: Token = JSON.parse(tokenObject)
       let tokenExp = new Date(token.created_at)
       tokenExp.setSeconds(tokenExp.getSeconds() + token.ttl)
 
       if (tokenExp > now) {
-        result = token.token
+        result = token
       } else {
         localStorage.removeItem(AUTH_TOKEN)
       }

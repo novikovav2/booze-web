@@ -51,7 +51,8 @@
   <div class="w-50">
     <app-card title="Участники" [loading]="loadingMembers">
       <a href="#" actions class="smallbtn btn-orange" (click)="join($event)"
-         *ngIf="event.status === 'active' && loggedIn && event.isPublic">
+         *ngIf="event.status === 'active' && loggedIn
+                  && event.isPublic && !isMember">
         Присоединиться
       </a>
       <div class="members">

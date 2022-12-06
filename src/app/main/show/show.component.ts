@@ -18,6 +18,7 @@ import {ToastrService} from "ngx-toastr";
 import {Event, EVENT_DEFAULT} from "../../models/event"
 import {AuthService} from "../../services/auth.service";
 import {MembersService} from "../../services/members.service";
+import {Token} from "../../models/auth";
 
 @Component({
   selector: 'app-event-show',
@@ -41,6 +42,8 @@ export class ShowComponent implements OnInit {
   returnLinks: string[] = []
   eventTitle = ''
   unauthorized = false
+  isMember = false
+  token: Token | null = null
 
   constructor(private eventService: EventsService,
               private route: ActivatedRoute,
@@ -48,7 +51,8 @@ export class ShowComponent implements OnInit {
               private toastr: ToastrService,
               private authService: AuthService,
               private memberService: MembersService) {
-    this.loggedIn = !!this.authService.getToken()
+    this.token = this.authService.getToken()
+    this.loggedIn = !!this.token
     if (this.loggedIn) {
       this.returnLinks = [MAIN_URL, EVENTS]
     }
@@ -88,6 +92,7 @@ export class ShowComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.members = data
+          this.checkUserIsMember(data)
           this.loadingMembers = false
         },
         error: (error) => {
@@ -172,6 +177,15 @@ export class ShowComponent implements OnInit {
           this.loadingMembers = false
         }
       })
+  }
+
+  checkUserIsMember(members: Member[]) {
+    if (this.token) {
+      const member = members.find((item) => {
+        return item.user.id === this.token?.userId
+      })
+      this.isMember = !!member
+    }
   }
 
 }
