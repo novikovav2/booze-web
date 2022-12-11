@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EVENTS, MAIN_URL, MSG_ERROR, MSG_EVENT_CREATED} from "../../services/consts"
 import {EventsService} from "../../services/events.service";
-import {EventNew} from "../../models/event";
+import {EVENT_STATUS, EventNew} from "../../models/event";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {DateAdapter} from "@angular/material/core";
@@ -20,7 +20,8 @@ export  class EventNewComponent {
     title: new FormControl('', [Validators.required]),
     eventedAt: new FormControl(''),
     reason: new FormControl(''),
-    isPublic: new FormControl(true)
+    isPublic: new FormControl(true),
+    withCommonMoney: new FormControl(false)
   })
 
   constructor(private eventService: EventsService,
@@ -36,10 +37,11 @@ export  class EventNewComponent {
     const evented_at = date.toJSON()
     const reason = this.form.controls['reason'].value || ''
     const isPublic = this.form.controls['isPublic'].value || true
-    const status = 'active'
-    const authorId = 'd9c1ad11-bde8-47de-8b06-7071bb66261f'
+    const status: EVENT_STATUS = 'active'
+    const withCommonMoney = this.form.controls['withCommonMoney'].value || false
     if (title) {
-      const eventNew: EventNew = { title, evented_at, reason, isPublic, status, authorId }
+      const eventNew: EventNew = { title, evented_at, reason, isPublic,
+          status, withCommonMoney }
       this.eventService.addEvent(eventNew)
         .subscribe({
           next: (data) => {

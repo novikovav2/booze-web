@@ -26,7 +26,8 @@ export class EventEditComponent implements OnInit {
     eventedAt: new FormControl(''),
     reason: new FormControl(''),
     isPublic: new FormControl(true),
-    isArchive: new FormControl(true)
+    isArchive: new FormControl(true),
+    withCommonMoney: new FormControl(false)
   })
 
   constructor(private eventService: EventsService,
@@ -71,7 +72,8 @@ export class EventEditComponent implements OnInit {
         evented_at: this.form.controls['eventedAt'].value || '',
         reason: this.form.controls['reason'].value || '',
         isPublic: this.form.controls['isPublic'].value,
-        status: this.form.controls['isArchive'].value ?  'archive' : 'active'
+        status: this.form.controls['isArchive'].value ?  'archive' : 'active',
+        withCommonMoney: this.form.controls['withCommonMoney'].value || false
       }
       this.eventService.update(this.id, event)
         .subscribe({

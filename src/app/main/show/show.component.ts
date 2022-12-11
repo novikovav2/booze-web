@@ -44,6 +44,7 @@ export class ShowComponent implements OnInit {
   unauthorized = false
   isMember = false
   token: Token | null = null
+  addMemberTxt = 'Добавить'
 
   constructor(private eventService: EventsService,
               private route: ActivatedRoute,
@@ -104,6 +105,7 @@ export class ShowComponent implements OnInit {
 
   addMember(event: any) {
     event.preventDefault()
+    this.addMemberTxt = 'Добавляется...'
     const username = this.username.value
     if (username) {
       const bot = {
@@ -120,6 +122,7 @@ export class ShowComponent implements OnInit {
          error: (error) => {
            this.toastr.error(MSG_ERROR)
            console.log(error)
+           this.addMemberTxt = 'Добавить'
          }
        })
     }
@@ -142,17 +145,19 @@ export class ShowComponent implements OnInit {
   }
 
   onDelete() {
-    this.eventService.deleteEvent(this.id)
-      .subscribe({
-        next: () => {
-          this.toastr.success(MSG_EVENT_DELETED)
-          this.router.navigate([MAIN_URL, EVENTS])
-        },
-        error: (error) => {
-          this.toastr.error(MSG_ERROR)
-          console.log(error)
-        }
-      })
+    if (confirm("Вы уверены, что хотите удалить это событие?")) {
+      this.eventService.deleteEvent(this.id)
+        .subscribe({
+          next: () => {
+            this.toastr.success(MSG_EVENT_DELETED)
+            this.router.navigate([MAIN_URL, EVENTS])
+          },
+          error: (error) => {
+            this.toastr.error(MSG_ERROR)
+            console.log(error)
+          }
+        })
+    }
   }
 
   parseDate(str: string) {
