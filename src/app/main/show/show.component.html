@@ -31,6 +31,15 @@
           {{ parseDate(event.evented_at) | date: 'fullDate' : '' : 'ru-RU'}}
         </p>
       </div>
+      <div class="details-row">
+        <p class="details-label">Формат бюджета:</p>
+        <p class="details-value" >
+          {{ event.withCommonMoney | commonMoney }}
+          <a [routerLink]="[MAIN_URL, EVENTS, id, COMMON_MONEY]" *ngIf="event.withCommonMoney" class="ml12">
+            <fa-icon [icon]="iconCommonMoney" size="1x"></fa-icon>
+          </a>
+        </p>
+      </div>
       <div class="details-row" *ngIf="false">
         <p class="details-label">
           Тип:
@@ -60,15 +69,17 @@
           Пока участников нет
         </p>
         <ol>
-          <li class="members-item" *ngFor="let member of members">
-            <a [routerLink]="[MAIN_URL, MEMBERS, member.id]">
-              {{ member.user.username }}
-            </a>
-            <a (click)="deleteMember(member)" class="remove-link"
-               *ngIf="event.status === 'active'">
-              <fa-icon [icon]="iconTrash"></fa-icon>
-            </a>
-          </li>
+          <ng-container *ngFor="let member of members">
+            <li class="members-item" *ngIf="member.user.type !== USER_FUND">
+              <a [routerLink]="[MAIN_URL, MEMBERS, member.id]">
+                {{ member.user.username }}
+              </a>
+              <a (click)="deleteMember(member)" class="remove-link"
+                 *ngIf="event.status === 'active'">
+                <fa-icon [icon]="iconTrash"></fa-icon>
+              </a>
+            </li>
+          </ng-container>
         </ol>
       </div>
 

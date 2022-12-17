@@ -1,6 +1,15 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
-import {EDIT_URL, EVENTS, MEMBERS, NEW_URL, PRODUCTS, PROFILE, RESULTS_URL} from "../services/consts";
+import {
+  COMMON_MONEY_URL,
+  EDIT_URL,
+  EVENTS,
+  MEMBERS,
+  NEW_URL,
+  PRODUCTS,
+  PROFILE,
+  RESULTS_URL
+} from "../services/consts";
 import {MainComponent} from "./main.component";
 import {IndexComponent} from "./index/index.component";
 import {AuthGuard} from "../services/auth.guard";
@@ -11,6 +20,7 @@ import {ShowComponent} from "./show/show.component";
 import {ProductsComponent} from "./products/products.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {MembersShowComponent} from "./members/show/members-show.component";
+import {CommonMoneyComponent} from "./members/common-money/common-money.component";
 
 const routes: Routes = [
   {path: '',
@@ -28,6 +38,7 @@ const routes: Routes = [
       { path: EVENTS + EDIT_URL + '/:id', component: EventEditComponent },
       { path: EVENTS + RESULTS_URL + '/:id', component: ResultsComponent },
       { path: EVENTS + '/:id', component: ShowComponent },
+      { path: EVENTS + '/:id' + COMMON_MONEY_URL, component: CommonMoneyComponent },
       { path: PRODUCTS + '/:id', component: ProductsComponent },
       { path: PROFILE,
         component: ProfileComponent,

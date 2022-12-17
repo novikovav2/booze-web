@@ -1,5 +1,13 @@
 export const AUTH_TOKEN = 'token'
 
+export const USER_BOT = 'bot'
+export const USER_MAN = 'man'
+export const USER_FUND = 'commonFund'
+
+export const USER_BOT_HUMAN = 'Бот'
+export const USER_MAN_HUMAN = 'Зарегистрированый пользователь'
+export const USER_FUND_HUMAN = 'Сервисная учетная запись'
+
 export const ROOT = ''
 export const AUTH = 'auth'
 export const LOGIN = 'login'
@@ -17,6 +25,7 @@ export const WELCOME = 'welcome'
 export const MEMBERS = 'members'
 export const CONFIRMATION = 'confirm'
 export const NOT_FOUND = '**'
+export const COMMON_MONEY = 'commonMoney'
 
 export const ROOT_URL = '/' + ROOT
 export const AUTH_URL = '/' + AUTH
@@ -35,6 +44,7 @@ export const WELCOME_URL = '/' + WELCOME
 export const MEMBERS_URL = '/' + MEMBERS
 export const JOIN_URL = '/join'
 export const CONFIRMATION_URL = '/' + CONFIRMATION
+export const COMMON_MONEY_URL = '/' + COMMON_MONEY
 
 export const MSG_ERROR = 'Ууупс... '
 export const MSG_LOGIN_SUCCESS = 'Вход успешно выполнен'
@@ -57,4 +67,7 @@ export const MSG_CONFIRM_SUCCESS = 'Регистрация подтвержде�
 export const MSG_CONFIRM_FAILED = 'Подверждение регистрации не удалось'
 export const MSG_PASSWORD_RESETED = 'Ссылка для сброса пароля отправлена на почту'
 export const MSG_NEW_PASSWORD_SET = 'Пароль успешно сброшен'
+export const MSG_FUND_UPDATED = 'Данные фонда обновлены'
 
+export const TXT_WITH_COMMON_MONEY = 'Общий сбор денег'
+export const TXT_WITHOUT_COMMON_MONEY = 'Каждый платит сам'

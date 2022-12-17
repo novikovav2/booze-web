@@ -3,7 +3,8 @@ import {User} from "./user";
 export interface Member {
   id: string,
   eventId: string,
-  user: User
+  user: User,
+  money?: number
 }
 
 export interface NewMember {

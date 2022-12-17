@@ -29,6 +29,8 @@ import {FooterComponent} from "./footer/footer.component";
 import {MembersShowComponent} from "./members/show/members-show.component";
 import {MembersService} from "../services/members.service";
 import {MemberTypesPipe} from "../services/member-types.pipe";
+import {CommonMoneyPipe} from "../services/common-money.pipe";
+import {CommonMoneyComponent} from "./members/common-money/common-money.component";
 
 @NgModule({
   declarations: [
@@ -45,20 +47,11 @@ import {MemberTypesPipe} from "../services/member-types.pipe";
     ProfileComponent,
     FooterComponent,
     MembersShowComponent,
-    MemberTypesPipe
+    MemberTypesPipe,
+    CommonMoneyPipe,
+    CommonMoneyComponent
   ],
   exports: [
-    // MainComponent,
-    // HeaderComponent,
-    // ShowComponent,
-    // ShowProductsComponent,
-    // ProductsComponent,
-    // ProductsEatersComponent,
-    // IndexComponent,
-    // EventNewComponent,
-    // EventEditComponent,
-    // ResultsComponent,
-    // ProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -83,7 +76,7 @@ import {MemberTypesPipe} from "../services/member-types.pipe";
       useClass: AuthInterceptor,
       multi: true
     },
-    AuthGuard
+    AuthGuard,
   ]
 })
 export class MainModule {

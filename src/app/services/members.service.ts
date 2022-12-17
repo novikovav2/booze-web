@@ -36,5 +36,9 @@ export class MembersService {
   update(member: Member) {
     return this.http.put(this.url, member)
   }
+
+  updateMoney(eventId: string, members: Member[]) {
+    return this.http.post(this.url + EVENTS_URL + '/' + eventId, members)
+  }
 }
 

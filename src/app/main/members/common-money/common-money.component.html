@@ -1,0 +1,30 @@
+<app-card title="Информация об общем фонде"
+          [returnLink]="[MAIN_URL, EVENTS, eventId]"
+          [isTitle]="true">
+  <p actions>
+    {{ sum }} руб.
+  </p>
+</app-card>
+
+<app-card title=" " [loading]="loadingData">
+  <a header class="btn btn-main" (click)="onSave()">
+    {{ saveTxt }}
+  </a>
+  <a header class="btn btn-gray" (click)="onCancel()">
+    Отмена
+  </a>
+
+  <div class="details-container">
+    <ng-container *ngFor="let member of members">
+      <div class="details-row" *ngIf="member.user.type !== USER_FUND">
+        <p class="details-label">
+          {{ member.user.username }}
+        </p>
+        <div class="details-value">
+          <input type="number" class="details-input" [(ngModel)]="member.money" >
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+</app-card>

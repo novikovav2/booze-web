@@ -54,6 +54,7 @@ export class EventEditComponent implements OnInit {
             this.form.controls['reason'].setValue(data.reason)
             this.form.controls['isPublic'].setValue(data.isPublic)
             this.form.controls['isArchive'].setValue(data.status === 'archive')
+            this.form.controls['withCommonMoney'].setValue(data.withCommonMoney || false)
             this.loading = false
           },
           error: (error) => {

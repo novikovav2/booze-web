@@ -24,7 +24,7 @@
       <div class="details-value">
         <input type="text" class="details-input" required
             [(ngModel)]="member.user.username"
-               [disabled]="readonly || member.user.type === 'man'">
+               [disabled]="readonly || member.user.type !== USER_BOT ">
       </div>
     </div>
     <div class="details-row">

@@ -40,22 +40,6 @@
   }
 }
 
-//.join-link {
-//  background: var(--orange);
-//  border: 2px solid var(--orange);
-//  border-radius: 8px;
-//  font-style: normal;
-//  font-weight: normal;
-//  font-size: 16px;
-//  line-height: 21px;
-//  color: #FFFFFF;
-//  padding: 4px 8px;
-//
-//  &:hover {
-//    box-shadow: 0 0 5px var(--orange);
-//  }
-//}
-
 .add-bot {
   width: 100%;
 
@@ -118,5 +102,9 @@
   &:hover {
     color: darkred;
   }
+}
+
+.ml12 {
+  margin-left: 12px;
 }
 @import "show.component.small";

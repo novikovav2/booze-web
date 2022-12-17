@@ -4,6 +4,7 @@ import {Member, NewMember} from "../../models/member";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, Validators} from "@angular/forms";
 import {
+  COMMON_MONEY,
   EDIT,
   EVENTS,
   MAIN_URL, MEMBERS,
@@ -11,9 +12,9 @@ import {
   MSG_EVENT_DELETED,
   MSG_MEMBER_ADDED, MSG_MEMBER_DELETE_FAILED,
   MSG_MEMBER_DELETED,
-  RESULTS
+  RESULTS, USER_FUND
 } from "../../services/consts";
-import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faCircleRight, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {ToastrService} from "ngx-toastr";
 import {Event, EVENT_DEFAULT} from "../../models/event"
 import {AuthService} from "../../services/auth.service";
@@ -45,6 +46,9 @@ export class ShowComponent implements OnInit {
   isMember = false
   token: Token | null = null
   addMemberTxt = 'Добавить'
+  USER_FUND = USER_FUND
+  iconCommonMoney = faCircleRight
+  COMMON_MONEY = COMMON_MONEY
 
   constructor(private eventService: EventsService,
               private route: ActivatedRoute,

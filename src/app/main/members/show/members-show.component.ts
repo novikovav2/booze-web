@@ -7,7 +7,7 @@ import {
   MSG_ERROR,
   MSG_MEMBER_DELETED,
   MSG_MEMBER_DELETE_FAILED,
-  MSG_MEMBER_UPDATED
+  MSG_MEMBER_UPDATED, USER_BOT
 } from "../../../services/consts";
 import {Member, MEMBER_DEFAULT} from "../../../models/member";
 import {MembersService} from "../../../services/members.service";
@@ -29,6 +29,7 @@ export class MembersShowComponent implements OnInit {
   loading = false
   loadingProducts = false
   memberProducts: MemberProduct[] = []
+  USER_BOT = USER_BOT
 
   constructor(private route: ActivatedRoute,
               private toastr: ToastrService,

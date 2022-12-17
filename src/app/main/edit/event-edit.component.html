@@ -42,12 +42,21 @@
       </div>
     </div>
 
+    <div class="form-control">
+      <label class="form-label" for="withCommonMoney">Общий сбор денег:</label>
+      <div class="form-value form-value_date">
+        <input type="checkbox" formControlName="withCommonMoney"
+               class="form-checkbox" id="withCommonMoney">
+      </div>
+    </div>
+
     <div class="form-control" *ngIf="loggedIn">
       <label class="form-label" for="isActive">Архив:</label>
       <div class="form-value form-value_date">
         <input type="checkbox" formControlName="isArchive" class="form-checkbox" id="isActive">
       </div>
     </div>
+
 
     <div class="form-buttons">
       <button type="submit" class="btn btn-main">Сохранить</button>

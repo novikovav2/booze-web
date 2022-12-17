@@ -3,7 +3,14 @@ import {Eater, NewProduct, Product} from "../../../models/product";
 import {ProductsService} from "../../../services/products.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
-import {MAIN_URL, MSG_ERROR, MSG_PRODUCT_ADDED, MSG_PRODUCT_DELETED, PRODUCTS} from "../../../services/consts";
+import {
+  MAIN_URL,
+  MSG_ERROR,
+  MSG_PRODUCT_ADDED,
+  MSG_PRODUCT_DELETED,
+  PRODUCTS,
+  USER_FUND
+} from "../../../services/consts";
 import {Member} from "../../../models/member";
 import {ToastrService} from "ngx-toastr";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
@@ -76,11 +83,13 @@ export class ShowProductsComponent implements OnInit {
     this.loading = true
     let eaters: Eater[] = []
     this.members.forEach((member) => {
-      const eater: Eater = {
-        user: member.user,
-        count: 0
+      if (member.user.type !== USER_FUND) {
+        const eater: Eater = {
+          user: member.user,
+          count: 0
+        }
+        eaters.push(eater)
       }
-      eaters.push(eater)
     })
     const product: NewProduct = {
       eventId: this.eventId,

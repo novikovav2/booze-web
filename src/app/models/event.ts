@@ -6,14 +6,12 @@ export interface EventNew {
   evented_at: string,
   isPublic: boolean | null,
   status: EVENT_STATUS,
-  withCommonMoney?: boolean
+  withCommonMoney: boolean
 }
 
 export interface Event extends EventNew {
   id: string
 }
-
-
 
 export const EVENT_DEFAULT: Event = {
   id: '',
@@ -21,5 +19,6 @@ export const EVENT_DEFAULT: Event = {
   reason: '',
   evented_at: '',
   isPublic: true,
-  status: "active"
+  status: "active",
+  withCommonMoney: false
 }
