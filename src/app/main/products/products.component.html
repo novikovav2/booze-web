@@ -15,43 +15,47 @@
     Удалить продукт
   </a>
 
-  <div class="details-container">
-    <div class="details-row">
-      <p class="details-label">
+  <div class="form">
+    <div class="form-control">
+      <label class="form-label" for="title">
         Название:
-      </p>
-      <div class="details-value">
-        <input type="text" class="details-input" required
-               [(ngModel)]="title" [disabled]="readonly">
+      </label>
+      <div class="form-value">
+        <input type="text" class="form-input" required
+               [(ngModel)]="title" [disabled]="readonly"
+                id="title">
       </div>
     </div>
 
-    <div class="details-row">
-      <p class="details-label">
+    <div class="form-control">
+      <label class="form-label" for="price">
         Цена:
-      </p>
-      <div class="details-value">
-        <input type="number" class="details-input"
-               [(ngModel)]="price" [disabled]="readonly">
+      </label>
+      <div class="form-value">
+        <input type="number" class="form-input"
+               [(ngModel)]="price" [disabled]="readonly"
+                id="price">
       </div>
     </div>
 
-    <div class="details-row">
-      <p class="details-label">
+    <div class="form-control">
+      <label class="form-label" for="total">
         Количество:
-      </p>
-      <div class="details-value">
-        <input type="number" class="details-input"
-               [(ngModel)]="total" [disabled]="readonly">
+      </label>
+      <div class="form-value">
+        <input type="number" class="form-input"
+               [(ngModel)]="total" [disabled]="readonly"
+                id="total">
       </div>
     </div>
 
-    <div class="details-row">
-      <p class="details-label">
+    <div class="form-control">
+      <label class="form-label" for="buyer">
         Покупатель:
-      </p>
-      <div class="details-value">
-        <select class="details-input" [(ngModel)]="buyerId" [disabled]="readonly">
+      </label>
+      <div class="form-value">
+        <select class="form-input" [(ngModel)]="buyerId" [disabled]="readonly"
+                id="buyer">
           <option value="" disabled>Покупатель</option>
           <option *ngFor="let member of members" [value]="member.user.id">
             {{ member.user.username }}

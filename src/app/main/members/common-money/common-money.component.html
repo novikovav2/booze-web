@@ -14,17 +14,18 @@
     Отмена
   </a>
 
-  <div class="details-container">
+  <div class="form">
     <ng-container *ngFor="let member of members">
-      <div class="details-row" *ngIf="member.user.type !== USER_FUND">
-        <p class="details-label">
-          {{ member.user.username }}
-        </p>
-        <div class="details-value">
-          <input type="number" class="details-input" [(ngModel)]="member.money" >
+      <div class="form-control" *ngIf="member.user.type !== USER_FUND">
+        <label class="form-label" [for]="member.id">
+         {{ member.user.username }}
+        </label>
+        <div class="form-value">
+          <input type="number" class="form-input" [(ngModel)]="member.money"
+                 [id]="member.id">
         </div>
       </div>
     </ng-container>
-
   </div>
+
 </app-card>

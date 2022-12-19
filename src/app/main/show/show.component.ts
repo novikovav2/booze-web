@@ -122,6 +122,7 @@ export class ShowComponent implements OnInit {
            this.toastr.success(MSG_MEMBER_ADDED)
            this.getMembersData()
            this.username.reset()
+           this.addMemberTxt = 'Добавить'
          },
          error: (error) => {
            this.toastr.error(MSG_ERROR)
