@@ -21,7 +21,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "../services/auth.interceptor";
 import {MainRoutingModule} from "./main-routing.module";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatInputModule} from "@angular/material/input";
+import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
 import {MatNativeDateModule} from "@angular/material/core";
 import {AuthModule} from "../auth/auth.module";
 import {AuthGuard} from "../services/auth.guard";
