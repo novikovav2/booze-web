@@ -13,7 +13,8 @@ export interface Donor {
 
 export interface Recipient {
   user: User,
-  totalPaid: number
+  totalPaid: number,
+  totalAte: number
 }
 
 export interface Result {

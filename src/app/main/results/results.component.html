@@ -2,7 +2,7 @@
           [returnLink]="[MAIN_URL, EVENTS, result.eventId]"
           [isTitle]="true"></app-card>
 
-<app-card [loading]="loading">
+<app-card [loading]="loading" title="Денежные переводы">
   <div class="table-container">
     <table class="table">
       <thead>
@@ -12,15 +12,45 @@
         </tr>
 
         <tr>
-          <td *ngFor="let user of result.recipients">{{ user.user.username }}</td>
+          <td *ngFor="let user of result.recipients">
+            {{ user.user.username }}
+          </td>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of result.donors">
-          <td>{{ item.user.username }}</td>
+          <td>
+            {{ item.user.username }}
+          </td>
           <td *ngFor="let payment of item.payments">
             {{ payment.value  | number : '1.2-2' }} руб.
           </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</app-card>
+
+<app-card [loading]="loading" title="Сводная таблица">
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Участник</th>
+          <th>Потратил</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let member of result.recipients">
+          <tr *ngIf="member.user.type !== USER_FUND">
+            <td>{{ member.user.username }}</td>
+            <td>{{ member.totalAte | number: '1.2-2' }} руб. </td>
+          </tr>
+        </ng-container>
+
+        <tr *ngFor="let member of result.donors">
+          <td>{{ member.user.username }}</td>
+          <td>{{ member.totalAte | number: '1.2-2' }} руб. </td>
         </tr>
       </tbody>
     </table>

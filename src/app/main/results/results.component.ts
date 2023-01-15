@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {EventsService} from "../../services/events.service";
 import {ActivatedRoute} from "@angular/router";
 import {Result, RESULT_DEFAULT} from "../../models/result";
-import {MAIN_URL, EVENTS, MSG_ERROR} from "../../services/consts";
+import {MAIN_URL, EVENTS, MSG_ERROR, USER_FUND} from "../../services/consts";
 import {ToastrService} from "ngx-toastr";
 
 @Component({
@@ -16,6 +16,7 @@ export class ResultsComponent implements OnInit {
   MAIN_URL = MAIN_URL
   EVENTS = EVENTS
   loading = false
+  USER_FUND = USER_FUND
 
   constructor(private eventService: EventsService,
               private route: ActivatedRoute,
