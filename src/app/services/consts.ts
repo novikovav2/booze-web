@@ -68,6 +68,7 @@ export const MSG_CONFIRM_FAILED = 'Подверждение регистраци
 export const MSG_PASSWORD_RESETED = 'Ссылка для сброса пароля отправлена на почту'
 export const MSG_NEW_PASSWORD_SET = 'Пароль успешно сброшен'
 export const MSG_FUND_UPDATED = 'Данные фонда обновлены'
+export const MSG_CLIENT_SIDE_ERROR = 'Ошибка с сетевым доступом'
 
 export const TXT_WITH_COMMON_MONEY = 'Общий сбор денег'
 export const TXT_WITHOUT_COMMON_MONEY = 'Каждый платит сам'

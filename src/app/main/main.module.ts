@@ -21,7 +21,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "../services/auth.interceptor";
 import {MainRoutingModule} from "./main-routing.module";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
+import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
 import {AuthModule} from "../auth/auth.module";
 import {AuthGuard} from "../services/auth.guard";
@@ -31,6 +31,7 @@ import {MembersService} from "../services/members.service";
 import {MemberTypesPipe} from "../services/member-types.pipe";
 import {CommonMoneyPipe} from "../services/common-money.pipe";
 import {CommonMoneyComponent} from "./members/common-money/common-money.component";
+import {HttpErrorInterceptor} from "../services/http-error.interceptor";
 
 @NgModule({
   declarations: [
@@ -74,6 +75,11 @@ import {CommonMoneyComponent} from "./members/common-money/common-money.componen
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
       multi: true
     },
     AuthGuard,

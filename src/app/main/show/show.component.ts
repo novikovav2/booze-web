@@ -10,7 +10,7 @@ import {
   MAIN_URL, MEMBERS,
   MSG_ERROR,
   MSG_EVENT_DELETED,
-  MSG_MEMBER_ADDED, MSG_MEMBER_DELETE_FAILED,
+  MSG_MEMBER_ADDED,
   MSG_MEMBER_DELETED,
   RESULTS, USER_FUND
 } from "../../services/consts";
@@ -109,9 +109,9 @@ export class ShowComponent implements OnInit {
 
   addMember(event: any) {
     event.preventDefault()
-    this.addMemberTxt = 'Добавляется...'
     const username = this.username.value
     if (username) {
+      this.addMemberTxt = 'Добавляется...'
       const bot = {
         eventId: this.id,
         username
@@ -140,10 +140,6 @@ export class ShowComponent implements OnInit {
           next: () => {
             this.toastr.success(MSG_MEMBER_DELETED)
             this.getMembersData()
-          },
-          error: (error) => {
-            this.toastr.error(MSG_MEMBER_DELETE_FAILED, MSG_ERROR)
-            console.log(error)
           }
         })
     }
